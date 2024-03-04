@@ -2,7 +2,7 @@
 pkgname=('snigdhaos-grub-theme')
 org=Snigdha-OS
 branch=master
-pkgver=r10.9f615d5
+pkgver=r4.ddadd07
 pkgrel=1
 pkgdesc='Grub Theme For Snigdha OS'
 arch=('any')

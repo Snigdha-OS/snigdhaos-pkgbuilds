@@ -22,3 +22,18 @@ while getopts "${opts}" arg; do
     esac
 done
 
+shift $((OPTIND - 1))
+
+initfile="$(mktemp)"
+codefile="$initfile"
+echo "#!/usr/bin/env bash" >"$initfile"
+if [ "$LAUNCH_TERMINAL_SHELL" != "bash" ]; then
+    codefile="$(mktemp)"
+    echo "$LAUNCH_TERMINAL_SHELL $codefile" >>"$initfile"
+fi
+echo "$1" >>"$codefile"
+chmod +x "$initfile"
+cmd="\"$initfile\""
+
+terminal=""
+declare -A terminals=(["alacritty"]="alacritty -e $cmd || LIBGL_ALWAYS_SOFTWARE=1 alacritty -e $cmd" ["konsole"]="konsole -e $cmd" ["kgx"]="kgx -e $cmd" ["gnome-terminal"]="gnome-terminal --wait -- $cmd" ["xfce4-terminal"]="xfce4-terminal --disable-server --command '$cmd'")

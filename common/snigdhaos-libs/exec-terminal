@@ -1,3 +1,24 @@
 #!/bin/bash
 set -e
 
+LAUNCH_TERMINAL_SHELL=bash
+
+usage(){
+    echo "Usage: ${0##*/} [cmd]"
+    echo " -s [shell]    changes the shell to [shell]"
+    echo ' -h This help'
+    exit 1
+}
+
+opts='s:h'
+
+while getopts "${opts}" arg; do
+    case "${arg}" in
+    s) LAUNCH_TERMINAL_SHELL="$OPTARGS" ;;
+    h | ?) usage 0 ;;
+    *)
+        echo "Invalid arguments '${arg}'"
+        usage 1 ;;
+    esac
+done
+

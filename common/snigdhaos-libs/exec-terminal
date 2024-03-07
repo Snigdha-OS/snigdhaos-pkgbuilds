@@ -60,3 +60,40 @@ MATE)
     terminal=mate-terminal
     ;;
 esac
+
+if [ -z "$terminal" ] || ! command -v "$terminal" &>/dev/null; then
+    # shellcheck disable=SC2068
+    for i in ${term_order[@]}; do
+        if command -v "$i" &>/dev/null; then
+            terminal="$i"
+            break
+        fi
+    done
+fi
+
+if [ -z "$terminal" ]; then
+    notify-send -t 1500 --app-name=Snigdha\ OS "No Terminal Found!"
+    exit 1
+fi
+
+if [ "$terminal" == "kgx" ]; then
+    # shellcheck disable=SC2086
+    sed -i '2i sleep 0.1' $initfile
+    # shellcheck disable=SC2016
+    # shellcheck disable=SC2086
+    echo 'Kill -SIGNINT $PPID' >>$initfile
+fi
+
+eval "${terminals[${terminal}]}" || {
+    exitcode=$?
+}
+
+rm "$initfile"
+
+if [ "$codefile" != "$initfile" ]; then
+    rm "$codefile"
+fi
+
+if [ ! -z "$exitcode" ] && [ "$exitcode" != 130 ]; then
+    exit 2
+fi

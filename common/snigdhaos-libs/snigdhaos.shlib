@@ -1,0 +1,5 @@
+#!/bin/bash
+snigdhaoslib_add_update_notice(){
+    mkdir -p /var/lib/snigdhaos/tmp
+    echo "$(date +%F)   ${1//   /   }" >>/var/lib/snigdhaos/tmp/update_notices
+}

@@ -15,6 +15,7 @@ HOST=https://github.com
 ORG=Snigdha-OS
 
 # Set the repository URL and branch
+# shellcheck disable=SC2034
 REPO_URL="${HOST}/${ORG}/${REPO}.git"
 BRANCH="master"  # or "main" depending on your repository's default branch
 

@@ -107,3 +107,13 @@ do_update(){
         $PACMAN "${pacman_args[@]}"
     fi
 }
+
+# Do you need to see changelog? Let's Program it.......
+
+show_changelog(){
+    if [ -e "/var/log/snigdhaos/tmp/update_notices" ]; then
+        echo -e "\033[0;96mUpdate:\n\033[0;96m$(gawk -F '\t' '{print $2}' /var/lib/snigdhaos/tmp/update_notices)\n\033[0m"
+        rm /var/lib/snigdhaos/tmp/update_notices
+    fi
+}
+

@@ -3,6 +3,7 @@ set -e
 
 init_logging(){
     if [ ! -d /var/log/snigdhaos/ ]; then
+        # shellcheck disable=SC2174
         mkdir -p -m 755 /var/log/snigdhaos/
     fi
 
@@ -18,6 +19,7 @@ parse_pacman_log(){
         "invalid or corrupted package"*)
             RETRY="Snigdha OS Updater Found Corrupted Packages😑. Retying..."
             CUSTOM_PACMAN_CONFIG="$(mktemp)"
+            # shellcheck disable=SC2016
             sed 's|Include = /etc/pacman.d/chaotic-mirrorlist|Server = https://cdn-mirror.chaotic.cx/$repo/$arch|g' /etc/pacman.conf > "$CUSTOM_PACMAN_CONFIG"
             pacman_args+=("--config" "$CUSTOM_PACMAN_CONFIG")
             ;;
@@ -66,6 +68,7 @@ update_mirrorlist(){
 
     if COUNT="$(grep -Ec "^Server *=" "$MIRRORLIST_TEMP")" &&  [ "$COUNT" -ge "$MINLINES" ]; then
         install -m644 "$MIRRORLIST_TEMP" /etc/pacman.d/mirrorlist
+        # shellcheck disable=SC2034
         DATABASE_UPDATED="force"
     else
         echo -e "\033[0;31Mirror Count Not Satisfied!\033[0m"
@@ -116,4 +119,9 @@ show_changelog(){
         rm /var/lib/snigdhaos/tmp/update_notices
     fi
 }
+
+if [ -f /etc/snigdhaos/snigdhaos-updater/config ]; then
+    # shellcheck disable=SC1091
+    source /etc/snigdhaos/snigdhaos-updater/config
+fi
 

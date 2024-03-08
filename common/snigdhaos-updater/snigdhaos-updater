@@ -21,7 +21,17 @@ self_update(){
     fi
     [ "$DATABASE_UPDATED" != "true" ] && local MIN_PACMAN_CONF && MIN_PACMAN_CONF="$(minimal_pacman_conf)" && $PACMAN --config "$MIN_PACMAN_CONF" -Syy && EXTRA_PARAMS=("--config" "$MIN_PACMAN_CONF") || true
     $INT
-    
+    if $PACMAN "${EXTRA_PARAMS[@]}" -Qu snigdhaos-updater &>/dev/null; then
+        local success=true
+        if ! SNAP_PAC_SKIP=y SKIP_AUTOSNAP='' $PACMAN "${EXTRA_PARAMS[@]}" -Sdd snigdhaos-updater --needed --noconfirm; then
+            $INT
+            unshare -m bash -c 'mount -t tmpfs tmpfs /usr/share/libalpm/hooks && { [ ! -d /var/cache/pacman/pkg ] mount -t tmpfs tmpfs /var/cache/pacman/pkg; } && eval "$@"' -- SNAP_PAC_SKIP=y SKIP_AUTOSNAP='' "$PACMAN" "${EXTRA_PARAMS[@]}" --hookdir "/usr/share/libalpm/hooks" -Sdd snigdhaos-updater --needed --noconfirm || success=false
+        fi
+        $INT
+        if [ "$success" == "true" ]; then
+            SNIGDHAOS_UPDATER_SELFUPDATE=2 exec /usr/bin/snigdhaos-updater "$@"
+        fi
+    fi
 }
 
 INT=true

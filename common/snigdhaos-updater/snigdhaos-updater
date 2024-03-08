@@ -1,5 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC2015
+# shellcheck disable=SC1091
 set -e
 
 minimal_pacman_conf(){
@@ -13,10 +14,8 @@ minimal_pacman_conf(){
 self_update(){
     local EXTRA_PARAMS=()
     if [ "$DATABASE_UPDATED" == "force" ]; then
-        # shellcheck disable=SC2015
         $PACMAN -Syy && DATABASE_UPDATED=true || true
     elif [ "$DATABASE_UPDATED" != "true" ]; then
-        # shellcheck disable=SC2015
         $PACMAN -Syy && DATABASE_UPDATED=true || true
     fi
     [ "$DATABASE_UPDATED" != "true" ] && local MIN_PACMAN_CONF && MIN_PACMAN_CONF="$(minimal_pacman_conf)" && $PACMAN --config "$MIN_PACMAN_CONF" -Syy && EXTRA_PARAMS=("--config" "$MIN_PACMAN_CONF") || true
@@ -32,6 +31,7 @@ self_update(){
             SNIGDHAOS_UPDATER_SELFUPDATE=2 exec /usr/bin/snigdhaos-updater "$@"
         fi
     fi
+    $INT
 }
 
 INT=true
@@ -41,3 +41,21 @@ if [[ $EUID -ne 0 ]]; then
     exec sudo --preserve-env="SKIP_MIRRORLIST"
     exit 1
 fi
+
+# Remote update [shx1001]
+
+if [ -n "$PACMAN_EXE" ]; then
+    PACMAN="$PACMAN_EXE"
+else
+    PACMAN="pacman"
+fi
+
+export PACMAN
+
+DATABASE_UPDATED=false
+if [ -n "$SNIGDHAOS_UPDATER_SELFUPDATE" ]; then
+    DATABASE_UPDATED=true
+fi
+self_update "$@"
+
+source /usr/lib/snigdhaos/snigdhaos-updater/core-script

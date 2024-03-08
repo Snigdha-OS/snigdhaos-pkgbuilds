@@ -15,5 +15,40 @@ parse_pacman_log(){
 }
 
 update_mirrorlist(){
-    
+    if [[ -v SKIP_MIRRORLIST ]]; then
+        return
+    fi
+    local MIRRORLIST_TEMP MINLINES=0
+    MIRRORLIST_TEMP="$(mktemp)"
+    # Rate-Mirrors
+    if command -v rate-mirrors >/dev/null; then
+        MINLINES=10
+        echo -e "\n\033[0;96m=>\033[0;96m [Rate-Mirrors]Refreshing Mirrorlist...🛸\033[0m"
+        rate-mirrors --allow-root --save="$MIRRORLIST_TEMP" arch --max-delay=21600 >/dev/null || { rm "$MIRRORLIST_TEMP"; }
+        $INT
+    # Reflector
+    elif command -v reflector >/dev/null; then
+        MINLINES=5
+        echo -e "\n\033[0;96m=>\033[0;96m [Reflector]Refreshing Mirrorlist...🛸\033[0m"
+        reflector --latest 10 --age 2 --fastest 10 --protocol https --sort rate --save "$MIRRORLIST_TEMP" || { rm "$MIRRORLIST_TEMP"; }
+        $INT
+    else
+        return
+    fi
+
+    # What if we are not using rate-mirrors and reflector?
+    if [ ! -f "$MIRRORLIST_TEMP" ]; then
+        echo -e "\033[0;91mMirrorlist Update Failed!\033[0m"
+        return
+    fi
+
+    if COUNT="$(grep -Ec "^Server *=" "$MIRRORLIST_TEMP")" &&  [ "$COUNT" -ge "$MINLINES" ]; then
+        install -m644 "$MIRRORLIST_TEMP" /etc/pacman.d/mirrorlist
+        DATABASE_UPDATED="force"
+    else
+        echo -e "\033[0;31Mirror Count Not Satisfied!\033[0m"
+    fi
+
+    echo
+    rm "$MIRRORLIST_TEMP"
 }

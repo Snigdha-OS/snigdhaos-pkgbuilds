@@ -8,3 +8,38 @@ package-exists-fast(){
         return 1
     fi
 }
+
+update_keyrings(){
+    local packages=("snigdhaos-keyring" "archlinux-keyring" "chaotic-keyring")
+    if $PACMAN -Qq blackarch-keyring &> /dev/null; then
+        packages+=("blackarch-keyring")
+    fi
+    if [ -n "$(PACMAN -Qu "${packages[@]}" 2>&1)" ]; then
+        echo -e "Updating Keyrings..."
+        # shellcheck disable=SC1007
+        SNAPA_PAC_SKIP=y SKIP_AUTOSNAP= $PACMAN -S --needed --noconfirm "${packages[@]}" || return 0
+        return 1
+    fi
+    return 0
+}
+
+install_expect(){
+    if [ -x /usr/bin/tclsh ] && [ ! -x /usr/bin/expect ]; then
+        SKIP_AUTOSNAP=1 SNAPA_PAC_SKIP=y $PACMAN -U https://mirror.osbeck.com/archlinux/extra/os/x86_64/expect-5.45.4-4-x86_64.pkg.tar.zst --noconfirm -asdeps
+    fi
+}
+
+pre-update-routines(){
+    local exit_code=0
+    update_keyrings || exit_code=2
+    install_expect
+    return $exit_code
+}
+
+verify-core(){
+    local invaild_nvidia=()
+
+}
+
+"$@"
+# exit "$?"

@@ -76,5 +76,34 @@ update_mirrorlist(){
 }
 
 do_update(){
-
+    if [ -x /usr/bin/expect ]; then
+        local AUTOPACMAN_LOG EXIT=0 RETRY=false CUSTOM_PACMAN_CONFIG="" SUCCESS=false
+        if [ ! -v AUTOPACMAN_CONFLICTSFILE ]; then
+            local AUTOPACMAN_CONFLICTSFILE
+            AUTOPACMAN_CONFLICTSFILE="$(mktemp -u)"
+        fi
+        AUTOPACMAN_LOG="$(mktemp)"
+        LANG=C LANGUAGE=C LC_ALL=C AUTOPACMAN_LOG="$AUTOPACMAN_LOG" AUTOPACMAN_PACMAN_NOCONFIRM="$PACMAN_NOCONFIRM" AUTOPACMAN_CONFLICTSFILE="$AUTOPACMAN_CONFLICTSFILE" /usr/lib/snigdhaos/snigdhaos-updater/auto-pacman "$PACMAN" "${pacman_args[@]}" || { EXIT=$; }
+        if [ -n "$CUSTOM_PACMAN_CONFIG" ]; then rm "$CUSTOM_PACMAN_CONFIG";fi
+        if [ "$EXIT" == "134" ] || [ "$EXIT" == "0" ]; then
+            SUCCESS=true
+        fi
+        if [ "$SUCCESS" != "true" ] && [ -z "$ALREADY_RETRIED" ]; then
+            parse_pacman_log
+        fi
+        if [ "$RETRY" != "false" ]; then
+            echo -e "\n\033[0;96m=>\033[0;96m $RETRY \n\033[0m"
+            ALREADY_RETRIED=true do_update
+            return
+        fi
+        if [ -v AUTOPACMAN_CONFLICTSFILE ]; then
+            rm -f "$AUTOPACMAN_CONFLICTSFILE"
+            unset AUTOPACMAN_CONFLICTSFILE
+        fi
+        if [ "$SUCCESS" == "false" ]; then
+            false
+        fi
+    else
+        $PACMAN "${pacman_args[@]}"
+    fi
 }

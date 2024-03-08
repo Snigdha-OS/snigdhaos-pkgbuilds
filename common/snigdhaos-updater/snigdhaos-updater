@@ -1,3 +1,33 @@
 #!/bin/bash
-
+# shellcheck disable=SC2015
 set -e
+
+minimal_pacman_conf(){
+    local TEMP_CONF
+    TEMP_CONF=$(mktemp)
+    # Configuring Backup Repo
+    echo -e "[snigdhaos-core]\nServer = https://builds.snigdhaos.org/backup/snigdhaos-core/x86_64" >"$TEMP_CONF"
+    echo "$TEMP_CONF"
+}
+
+self_update(){
+    local EXTRA_PARAMS=()
+    if [ "$DATABASE_UPDATED" == "force" ]; then
+        # shellcheck disable=SC2015
+        $PACMAN -Syy && DATABASE_UPDATED=true || true
+    elif [ "$DATABASE_UPDATED" != "true" ]; then
+        # shellcheck disable=SC2015
+        $PACMAN -Syy && DATABASE_UPDATED=true || true
+    fi
+    [ "$DATABASE_UPDATED" != "true" ] && local MIN_PACMAN_CONF && MIN_PACMAN_CONF="$(minimal_pacman_conf)" && $PACMAN --config "$MIN_PACMAN_CONF" -Syy && EXTRA_PARAMS=("--config" "$MIN_PACMAN_CONF") || true
+    $INT
+    
+}
+
+INT=true
+trap "INT=false" INT
+
+if [[ $EUID -ne 0 ]]; then
+    exec sudo --preserve-env="SKIP_MIRRORLIST"
+    exit 1
+fi

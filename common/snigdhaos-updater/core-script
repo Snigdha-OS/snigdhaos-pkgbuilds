@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+init_logging(){
+    if [ ! -d /var/log/snigdhaos/ ]; then
+        mkdir -p -m 755 /var/log/snigdhaos/
+    fi
+
+    echo -e "\n>-<->-< snigdhaos-updater at $(date +"%Y-%m-%d %R %Z(%:::z)")\n" >>/var/log/snigdhaos/snigdhaos-updater
+    exec &> >(stdbuf -i0 -o0 -e0 tee >(sed '')) #incshx002
+}
+
+parse_pacman_log(){
+
+}
+
+update_mirrorlist(){}

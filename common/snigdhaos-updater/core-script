@@ -11,7 +11,29 @@ init_logging(){
 }
 
 parse_pacman_log(){
-
+    sed -i -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" "$AUTOPACMAN_LOG"
+    local reason
+    reason="$(tac "$AUTOPACMAN_LOG" | grep -oP -m 1 '(?<=error: failed to commit transaction \().*(?=\))')"
+    case "$reason" in
+        "invalid or corrupted package"*)
+            RETRY="Snigdha OS Updater Found Corrupted Packages😑. Retying..."
+            CUSTOM_PACMAN_CONFIG="$(mktemp)"
+            sed 's|Include = /etc/pacman.d/chaotic-mirrorlist|Server = https://cdn-mirror.chaotic.cx/$repo/$arch|g' /etc/pacman.conf > "$CUSTOM_PACMAN_CONFIG"
+            pacman_args+=("--config" "$CUSTOM_PACMAN_CONFIG")
+            ;;
+        "download library error")
+            RETRY="Snigdha OS Updater Found Corrupted Packages😑. Retying..."
+            CUSTOM_PACMAN_CONFIG="$(mktemp)"
+            sed '/^ParallelDownloads.*/d' /etc/pacman.conf >"$CUSTOM_PACMAN_CONFIG"
+            pacman_args+=("--config" "$CUSTOM_PACMAN_CONFIG")
+            ;;
+        "conflicting files")
+                tac "$AUTOPACMAN_LOG" | gawk 'BEGIN { exitcode=1 }
+            /error: failed to commit transaction \(conflicting files\)/ { exit exitcode }
+            /\S+: (.*) exists in filesystem/ { if ($0 ~ /\S+:\/usr\/lib\/python[^\/]+\/site-packages\/[^/]+\/__pycache__\/.+\.pyc exists in filesystem/) { exitcode=0 } else { exit 1 } }
+            ENDFILE {exit 1}' && pacman_args+=("--overwrite" "/usr/lib/python*/site-packages/*/__pycache__/*.pyc") && RETRY="Overwriting Pycache file conflicts..." || true
+                ;;
+        esac
 }
 
 update_mirrorlist(){
@@ -51,4 +73,8 @@ update_mirrorlist(){
 
     echo
     rm "$MIRRORLIST_TEMP"
+}
+
+do_update(){
+
 }

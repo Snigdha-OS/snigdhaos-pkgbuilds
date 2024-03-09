@@ -1,1 +1,1 @@
-# snigdhaos-arctic-pkgbuilds
+# SNIGDHA OS PKGBUILDS

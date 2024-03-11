@@ -68,5 +68,4 @@ verify-core(){
 	fi
 }
 
-"$@"
-# exit "$?"
+"$@" exit "$?"

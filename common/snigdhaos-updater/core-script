@@ -173,3 +173,36 @@ if grep -qE 'subvol=@/.snapshots/[0-9]+/snapshot' /proc/cmdline && [[ ! -v GARUD
 fi
 
 init_logging
+
+/usr/lib/snigdhaos/snigdhaos-updater/aux-script migrate-snigdhaos-repo && DATABASE_UPDATED=false || true
+
+update_mirrorlist
+self_update "${PARAMETERS[@]}"
+
+/usr/lib/snigdhaos/snigdhaos-updater/aux-scripts pre-update-routines || { if [ "$?" -eq 2 ]; then self_update "${PARAMETERS[@]}"; fi; }
+
+pacman_args=("-Su")
+if [ "$DATABASE_UPDATED" == false ]; then pacman_args+=("-y"); elif [ "$DATABASE_UPDATED" == "force" ]; then pacman_args+=("-yy"); fi
+while IFS= read -r line; do
+	pacman_args+=("$line")
+done < <(/usr/lib/snigdhaos/snigdhaos-updater/aux-scripts package-replaces)
+
+if [ -v PACMAN_EXTRA_OPTS ]; then
+	pacman_args+=("${PACMAN_EXTRA_OPTS[@]}")
+fi
+
+do_update
+
+if [[ -v UPDATE_AUR ]]; then
+	# Check for AUR helper
+	if [ -x /usr/bin/paru ] && [[ -n "$SUDO_UID" ]]; then
+		echo -e "\n\033[1;33m-->\033[1;34m Updating AUR packages with paru..\033[0m"
+		sudo -u "#$SUDO_UID" paru -Sua || { echo -e "\033[1;31m\nParu exited with error code $?\n\033[0m"; }
+	elif [ -x /usr/bin/yay ] && [[ -n "$SUDO_UID" ]]; then
+		echo -e "\n\033[1;33m-->\033[1;34m Updating AUR packages with yay..\033[0m"
+		sudo -u "#$SUDO_UID" yay -Sua || { echo -e "\033[1;31m\nYay exited with error code $?\n\033[0m"; }
+	else
+		echo -e "\n\033[1;33m--> UPDATE_AUR specified but no supported AUR helper found ❌\033[0m"
+	fi
+	$INT
+fi

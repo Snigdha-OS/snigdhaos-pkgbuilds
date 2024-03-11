@@ -87,13 +87,20 @@ do_update(){
         fi
         AUTOPACMAN_LOG="$(mktemp)"
         LANG=C LANGUAGE=C LC_ALL=C AUTOPACMAN_LOG="$AUTOPACMAN_LOG" AUTOPACMAN_PACMAN_NOCONFIRM="$PACMAN_NOCONFIRM" AUTOPACMAN_CONFLICTSFILE="$AUTOPACMAN_CONFLICTSFILE" /usr/lib/snigdhaos/snigdhaos-updater/auto-pacman "$PACMAN" "${pacman_args[@]}" || { EXIT=$?; }
-        if [ -n "$CUSTOM_PACMAN_CONFIG" ]; then rm "$CUSTOM_PACMAN_CONFIG";fi
+        if [ -n "$CUSTOM_PACMAN_CONFIG" ]; then 
+            rm "$CUSTOM_PACMAN_CONFIG"
+        fi
+
         if [ "$EXIT" == "134" ] || [ "$EXIT" == "0" ]; then
             SUCCESS=true
         fi
+
         if [ "$SUCCESS" != "true" ] && [ -z "$ALREADY_RETRIED" ]; then
             parse_pacman_log
         fi
+
+        rm "$AUTOPACMAN_LOG"
+
         if [ "$RETRY" != "false" ]; then
             echo -e "\n\033[0;96m=>\033[0;96m $RETRY \n\033[0m"
             ALREADY_RETRIED=true do_update
@@ -122,4 +129,8 @@ if [ -f /etc/snigdhaos/snigdhaos-updater/config ]; then
     # shellcheck disable=SC1091
     source /etc/snigdhaos/snigdhaos-updater/config
 fi
+
+PARAMETERS=("$@")
+PARSED_OPTIONS=$(getopt --options="a" --longoptions="aur,skip-mirrorlist,noconfirm" --name "$0" -- "${PARAMETERS[@]}")
+
 

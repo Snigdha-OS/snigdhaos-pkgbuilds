@@ -30,8 +30,8 @@ package() {
 	install -Dm755 snigdhaos-updater "$pkgdir"/usr/bin/snigdhaos-updater
 	ln -s /usr/bin/snigdhaos-updater "$pkgdir"/usr/bin/updater
 	install -Dm755 aux-script "$pkgdir"/usr/lib/snigdhaos/snigdhaos-updater/aux-script
-	install -Dm755 core-script "$pkgdir"/usr/lib/garuda/snigdhaos-updater/core-script
-	install -Dm755 auto-pacman "$pkgdir"/usr/lib/garuda/snigdhaos-updater/auto-pacman
+	install -Dm755 core-script "$pkgdir"/usr/lib/snigdhaos/snigdhaos-updater/core-script
+	install -Dm755 auto-pacman "$pkgdir"/usr/lib/snigdhaos/snigdhaos-updater/auto-pacman
 	install -Dm644 rotation "$pkgdir"/etc/logrotate.d/snigdhaos-updater
-	install -Dm644 config "$pkgdir"/etc/garuda/snigdhaos-updater/config
+	install -Dm644 config "$pkgdir"/etc/snigdhaos/snigdhaos-updater/config
 }

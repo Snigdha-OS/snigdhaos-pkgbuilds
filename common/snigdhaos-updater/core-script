@@ -133,4 +133,37 @@ fi
 PARAMETERS=("$@")
 PARSED_OPTIONS=$(getopt --options="a" --longoptions="aur,skip-mirrorlist,noconfirm" --name "$0" -- "${PARAMETERS[@]}")
 
+if [[ $? -ne 0 ]]; then
+	echo -e "\033[0;31m\nFailed to parse CLI options\n\033[0m"
+fi
+eval set -- "$PARSED_OPTIONS"
+while true; do
+	case "$1" in
+	-a | --aur)
+		UPDATE_AUR=1
+		shift
+		;;
+	--skip-mirrorlist)
+		SKIP_MIRRORLIST=1
+		shift
+		;;
+	--noconfirm)
+		PACMAN_NOCONFIRM=1
+		shift
+		;;
+	--)
+		shift
+
+		if [ "$SNIGDHAOS_UPDATE_SELFUPDATE" == 1 ] && [ "$#" -eq 1 ] && [ -z "$1" ]; then
+			break
+		fi
+		PACMAN_EXTRA_OPTS+=("${@}")
+		break
+		;;
+	*)
+		echo "Programming error"
+		exit 3
+		;;
+	esac
+done
 

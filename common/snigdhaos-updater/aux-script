@@ -36,6 +36,73 @@ pre-update-routines(){
     return $exit_code
 }
 
+migrate-snigdhaos-repo() {
+
+	gawk -i inplace 'BEGIN {
+        err=1
+    }
+    {
+    if (rm)
+    {
+        if ($0 ~ /^ *(Include|Server) *=/)
+        {
+            next
+        }
+        # Check for empty line
+        else if ($0 ~ /^ *$/)
+        {
+            next
+        }
+        else
+        {
+            rm=0
+        }
+    }
+    if ($0 == "[options]")
+    {
+        print
+        next
+    }
+    else if ($0 == "[snigdhaos-core]")
+    {
+      if (set) {
+        rm=1
+        next
+      }
+      set=1
+    }
+    else if ($0 == "[core-testing]")
+    {
+        print "[testing]"
+        err=0
+        next
+    }
+    else if ($0 == "[community-testing]")
+    {
+        print "[extra-testing]"
+        err=0
+        next
+    }
+    else if ($0 == "[community]")
+    {
+        rm=1
+        err=0
+        next
+    }
+  }
+  /^\[[^ \[\]]+\]/ {
+    if (!set) {
+        print "[snigdhaos-core]"
+        print "Server = https://snigdha-os.github.io/snigdhaos-core/x86_64"
+        print ""
+        set=1
+        err=0
+    }
+  }
+  END {exit err}
+  1' /etc/pacman.conf
+}
+
 verify-core(){
     local invalid_nvidia=()
 	if [ -f "/usr/lib/modprobe.d/nvidia-utils.conf" ] && [ -f "/usr/share/licenses/nvidia-dkms/LICENSE" ]; then

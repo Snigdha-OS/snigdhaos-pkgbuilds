@@ -194,7 +194,7 @@ fi
 do_update
 
 if [[ -v UPDATE_AUR ]]; then
-	# Check for AUR helper
+	
 	if [ -x /usr/bin/paru ] && [[ -n "$SUDO_UID" ]]; then
 		echo -e "\n\033[1;33m-->\033[0;34m Updating AUR packages with paru..\033[0m"
 		sudo -u "#$SUDO_UID" paru -Sua || { echo -e "\033[1;31m\nParu exited with error code $?\n\033[0m"; }

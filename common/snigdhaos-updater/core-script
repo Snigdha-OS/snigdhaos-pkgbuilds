@@ -206,3 +206,12 @@ if [[ -v UPDATE_AUR ]]; then
 	fi
 	$INT
 fi
+
+if [ -x /usr/bin/locate ]; then
+	systemctl start updatedb.service --no-block
+fi
+
+/usr/lib/snigdhaos/snigdhaos-updater/aux-scripts verify-core
+
+echo -e "\n\033[1;32m[SUCCESS]System updated ! \n\033[0m"
+show_changelog

@@ -3,11 +3,11 @@
 # shellcheck disable=SC1091
 set -e
 
-minimal_pacman_conf(){
+def_pacman_config(){
     local TEMP_CONF
     TEMP_CONF=$(mktemp)
     # Configuring Backup Repo
-    echo -e "[snigdhaos-core]\nServer = https://builds.snigdhaos.org/backup/snigdhaos-core/x86_64" >"$TEMP_CONF"
+    echo -e "[snigdhaos-core]\nServer = https://snigdhalinux.github.io/snigdhaos-core/x86_64" >"$TEMP_CONF"
     echo "$TEMP_CONF"
 }
 
@@ -18,7 +18,7 @@ self_update(){
     elif [ "$DATABASE_UPDATED" != "true" ]; then
         $PACMAN -Syy && DATABASE_UPDATED=true || true
     fi
-    [ "$DATABASE_UPDATED" != "true" ] && local MIN_PACMAN_CONF && MIN_PACMAN_CONF="$(minimal_pacman_conf)" && $PACMAN --config "$MIN_PACMAN_CONF" -Syy && EXTRA_PARAMS=("--config" "$MIN_PACMAN_CONF") || true
+    [ "$DATABASE_UPDATED" != "true" ] && local MIN_PACMAN_CONF && MIN_PACMAN_CONF="$(def_pacman_config)" && $PACMAN --config "$MIN_PACMAN_CONF" -Syy && EXTRA_PARAMS=("--config" "$MIN_PACMAN_CONF") || true
     $INT
     if $PACMAN "${EXTRA_PARAMS[@]}" -Qu snigdhaos-updater &>/dev/null; then
         local success=true

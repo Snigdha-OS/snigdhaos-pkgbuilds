@@ -11,6 +11,10 @@ def_pacman_config(){
     echo "$TEMP_CONF"
 }
 
+# Credit            : Garuda Linux
+# URL               : https://garudalinux.org/
+# Script Source     : https://gitlab.com/garuda-linux/pkgbuilds/-/blob/main/garuda-update/garuda-update
+
 self_update(){
     local EXTRA_PARAMS=()
     if [ "$DATABASE_UPDATED" == "force" ]; then

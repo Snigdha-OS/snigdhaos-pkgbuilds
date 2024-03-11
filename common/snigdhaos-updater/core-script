@@ -8,7 +8,7 @@ init_logging(){
     fi
 
     echo -e "\n>-<->-< snigdhaos-updater at $(date +"%Y-%m-%d %R %Z(%:::z)")\n" >>/var/log/snigdhaos/snigdhaos-updater
-    exec &> >(stdbuf -i0 -o0 -e0 tee >(sed '')) #incshx002
+    exec &> >(stdbuf -i0 -o0 -e0 tee >(sed '/\x1b\[[0-9][EF]/d;/\r[^\n]$/d;s,\x1B\[[0-9;]*[a-zA-Z],,g' >>/var/log/snigdhais/snigdhaos-updater)) 
 }
 
 parse_pacman_log(){
@@ -86,7 +86,7 @@ do_update(){
             AUTOPACMAN_CONFLICTSFILE="$(mktemp -u)"
         fi
         AUTOPACMAN_LOG="$(mktemp)"
-        LANG=C LANGUAGE=C LC_ALL=C AUTOPACMAN_LOG="$AUTOPACMAN_LOG" AUTOPACMAN_PACMAN_NOCONFIRM="$PACMAN_NOCONFIRM" AUTOPACMAN_CONFLICTSFILE="$AUTOPACMAN_CONFLICTSFILE" /usr/lib/snigdhaos/snigdhaos-updater/auto-pacman "$PACMAN" "${pacman_args[@]}" || { EXIT=$; }
+        LANG=C LANGUAGE=C LC_ALL=C AUTOPACMAN_LOG="$AUTOPACMAN_LOG" AUTOPACMAN_PACMAN_NOCONFIRM="$PACMAN_NOCONFIRM" AUTOPACMAN_CONFLICTSFILE="$AUTOPACMAN_CONFLICTSFILE" /usr/lib/snigdhaos/snigdhaos-updater/auto-pacman "$PACMAN" "${pacman_args[@]}" || { EXIT=$?; }
         if [ -n "$CUSTOM_PACMAN_CONFIG" ]; then rm "$CUSTOM_PACMAN_CONFIG";fi
         if [ "$EXIT" == "134" ] || [ "$EXIT" == "0" ]; then
             SUCCESS=true

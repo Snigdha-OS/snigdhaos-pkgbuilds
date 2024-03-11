@@ -38,7 +38,7 @@ elif [ "$task" == "reinstall" ]; then
     [ $yusure != "y" ] && exit 1
     internal_update=2
 elif [ "$task" == "reset-snapper" ]; then
-    exec bash -c ". <(wget -qO- https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-common-settings/-/snippets/2147440/raw/main/reset-snapper)"
+    exec bash -c ". <(wget -qO- https://raw.githubusercontent.com/Snigdha-OS/snigdhaos-pkgbuilds/master/common/snigdhaos-updater/reset-snapper)"
 elif [ "$task" == "reset-audio" ]; then
     internal_update=0
 else

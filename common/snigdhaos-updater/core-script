@@ -167,3 +167,9 @@ while true; do
 	esac
 done
 
+if grep -qE 'subvol=@/.snapshots/[0-9]+/snapshot' /proc/cmdline && [[ ! -v GARUDA_SNAPSHOT_PACMAN ]]; then
+	echo -e "\033[0;31mError: You are currently booted into a snapshot. Please restore the snapshot via btrfs-assistant or snapper-tools before updating your system.\n\033[0;34mNote: You can ignore this error by setting SNIGDHAOS_SNAPSHOT_PACMAN: SNIGDHAOS_SNAPSHOT_PACMAN=1 snigdhaos-updater\n\033[1;31mAny modifications made to this snapshot will be lost next reboot. ❌\033[0m"
+	exit 1
+fi
+
+init_logging

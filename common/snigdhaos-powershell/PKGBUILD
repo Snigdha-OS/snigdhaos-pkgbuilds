@@ -13,6 +13,7 @@ depends=(
 )
 source=(
     "$pkgname.tar.gz"
+    "${pkgname}.desktop"
 )
 sha256sums=(
     'SKIP'

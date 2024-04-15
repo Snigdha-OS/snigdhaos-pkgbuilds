@@ -4,8 +4,8 @@
 
 echo "Welcome to Git Configuration Script!"
 
-name="Eshan Roy"
-email="src.eshan@gmail.com"
+name="eshanized"
+email="m.eshanized@gmail.com"
 
 # Set user name and email
 git config --global user.name "$name"

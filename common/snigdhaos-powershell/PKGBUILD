@@ -2,3 +2,5 @@
 
 pkgname=snigdhaos-powershell
 pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS PowerShell Config!"

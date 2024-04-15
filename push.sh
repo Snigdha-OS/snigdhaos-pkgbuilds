@@ -20,7 +20,7 @@ REPO_URL="${HOST}/${ORG}/${REPO}.git"
 BRANCH="master"  # or "main" depending on your repository's default branch
 
 # Commit message
-MESSAGE="@eshanized pushed another commit via script 🔥🔥🔥"
+MESSAGE="⏳ @eshanized updated the repository 🎉 "
 
 # Add all files, commit, and push changes
 git add .

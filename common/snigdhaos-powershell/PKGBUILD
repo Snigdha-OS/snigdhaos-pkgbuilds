@@ -6,3 +6,9 @@ pkgrel=1
 pkgdesc="Snigdha OS PowerShell Config!"
 arch=('any')
 license=('MIT')
+depends=(
+    'powershell-bin'
+)
+source=(
+    "$pkgname.tar.gz"
+)

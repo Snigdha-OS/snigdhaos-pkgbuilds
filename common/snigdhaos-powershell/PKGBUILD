@@ -1,6 +1,8 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-powershell
+org="Snigdha-OS"
+branch="master"
 pkgver=1
 pkgrel=1
 pkgdesc="Snigdha OS PowerShell Config!"

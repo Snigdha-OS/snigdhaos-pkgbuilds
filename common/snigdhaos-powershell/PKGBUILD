@@ -3,7 +3,7 @@
 pkgname=snigdhaos-powershell
 org="Snigdha-OS"
 branch="master"
-pkgver=1
+pkgver=r75.ba4f5f5
 pkgrel=1
 pkgdesc="Snigdha OS PowerShell Config!"
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
     'powershell-bin'
 )
 source=(
-    "$pkgname.tar.gz"
+    "$pkgname.tar.xz"
     "${pkgname}.desktop"
 )
 sha256sums=(

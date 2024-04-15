@@ -12,3 +12,7 @@ depends=(
 source=(
     "$pkgname.tar.gz"
 )
+
+pkgver(){
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}

@@ -18,5 +18,9 @@ pkgver(){
 }
 
 package(){
-    mkdir -p 
+    mkdir -p "${pkgdir}/etc/skel"
+    cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
+
+    rm "${pkgdir}/usr/share/applications/snigdhaos-powershell.desktop"
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

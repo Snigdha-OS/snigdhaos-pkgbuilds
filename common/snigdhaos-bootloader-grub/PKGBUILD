@@ -1,5 +1,5 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
-pkgname=snigdhaos-bootloader-systemd
+pkgname=snigdhaos-bootloader-grub
 org=Snigdha-OS
 branch='master'
 _destination1="/etc/pacman.d/hooks"
@@ -15,12 +15,12 @@ license=('MIT')
 makedepends=()
 depends=()
 conflicts=(
-    'snigdhaos-bootloader-systemd-dev'
+    'snigdhaos-bootloader-grub-dev'
 )
 backup=()
 provides=(
-    '${pkgname}'
-    '${pkgname}-dev'
+    "${pkgname}"
+    "${pkgname}-dev"
 )
 options=(
     !strip

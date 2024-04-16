@@ -77,5 +77,85 @@ post_install(){
 }
 
 post_upgrade(){
-    
+    tput setaf 3;
+    echo 
+    echo "[WARNING] WARNING!"
+    echo
+    echo "If you are on Grub, please install the following package..."
+    echo "sudo pacman -S snigdhaos-bootloader-grub"
+    echo
+    echo "If you are using systemd-boot then isntall the following package..."
+    echo "sudo pacman -S snigdhaos-bootloader-systemd"
+    echo
+    echo "[WARNING] WARNING!"
+    echo
+    tput setaf 2;
+    bootloader=$(bootctl status | grep "Product" | awk '{print $2}')
+    if [ "$bootloader" = "systemd-boot" ]; then
+        echo
+        echo "systemd-bootloader found!"
+        echo "Install the following package for your safety!"
+        echo
+        echo "sudo pacman -S snigdhaos-bootloader-systemd"
+        echo "It has all the pacman-hooks which are essentials."
+        echo
+    elif [ $bootloader = "GRUB" ]; then
+        echo
+        echo "GRUB bootloader found!"
+        echo "Install the following package for your safety!"
+        echo
+        echo "sudo pacman -S snigdhaos-bootloader-grub"
+        echo "It has all the pacman-hooks which are essentials."
+        echo
+    fi
+    tput sgr0
+
+    # Confirmation for package installation
+    package_installed(){
+        if pacman -Qi "$1" &> /dev/null; then
+            return 0
+        else
+            return 1
+        fi
+    }
+
+    tput setaf 6;
+    if package_installed snigdhaos-bootloader-grub; then
+        echo
+        echo "snigdhaos-bootloader-grub found!"
+        echo "Bootloader is safe!"
+        echo
+    fi
+    tput sgr0
+
+    tput setaf 6;
+    if package_installed snigdhaos-bootloader-systemd; then
+        echo
+        echo "snigdhaos-bootloader-systemd found!"
+        echo "Bootloader is safe!"
+        echo
+    fi
+    tput sgr0
+
+    tput setaf 1;
+    if ! package_installed snigdhaos-bootloader-systemd && ! package_installed snigdhaos-bootloader-grub; then
+        echo
+        echo "snigdhaos-bootloader-systemd or snigdhaos-bootloader-grub not found!"
+        echo "[WARNING] WARNING!"
+        echo "Install the package for systemd or grub!"
+        echo
+    fi
+    tput sgr0
+
+    if systemctl --all --type service | grep -q "virtual-machine-check"; then
+        systemctl disable virtual-machine-check.service
+    fi
+    sh /usr/local/bin/snigdhaos-lsb-release
+    sh /usr/local/bin/snigdhaos-os-release
+}
+
+pre_remove(){
+    if systemctl --all --type service | grep -q "virtual-machine-check"; then
+        systemctl disable virtual-machine-check.service
+    fi
 }

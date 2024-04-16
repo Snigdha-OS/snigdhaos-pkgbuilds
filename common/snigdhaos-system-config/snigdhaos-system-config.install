@@ -49,5 +49,33 @@ post_install(){
         echo
     fi
     tput sgr0
+
+    tput setaf 6;
+    if package_installed snigdhaos-bootloader-systemd; then
+        echo
+        echo "snigdhaos-bootloader-systemd found!"
+        echo "Bootloader is safe!"
+        echo
+    fi
+    tput sgr0
+
+    tput setaf 1;
+    if ! package_installed snigdhaos-bootloader-systemd && ! package_installed snigdhaos-bootloader-grub; then
+        echo
+        echo "snigdhaos-bootloader-systemd or snigdhaos-bootloader-grub not found!"
+        echo "[WARNING] WARNING!"
+        echo "Install the package for systemd or grub!"
+        echo
+    fi
+    tput sgr0
+
+    if systemctl --all --type service | grep -q "virtual-machine-check"; then
+        systemctl disable virtual-machine-check.service
+    fi
+    sh /usr/local/bin/snigdhaos-lsb-release
+    sh /usr/local/bin/snigdhaos-os-release
+}
+
+post_upgrade(){
     
 }

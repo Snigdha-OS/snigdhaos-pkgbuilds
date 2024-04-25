@@ -1,0 +1,14 @@
+
+post_install() {
+	systemctl enable snigdhaos-graphical-target.service
+	systemctl start snigdhaos-graphical-target.service
+}
+
+post_upgrade() {
+	systemctl enable snigdhaos-graphical-target.service
+	systemctl start snigdhaos-graphical-target.service
+}
+
+pre_remove() {
+	systemctl disable snigdhaos-graphical-target.service
+}

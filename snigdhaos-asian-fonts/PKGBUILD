@@ -1,5 +1,6 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: Librewish <librewish@gmail.com>
+# Contributor: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-asian-fonts
 pkgver=3
@@ -19,6 +20,12 @@ depends=("fonts-tlwg"
 	"ttf-indic-otf"
 	"ttf-khmer"
 	"ttf-tibetan-machine")
+install="${pkgname}.install"
+
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
 	mkdir -p "$pkgdir"/etc/fonts/conf.d

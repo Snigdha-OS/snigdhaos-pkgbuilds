@@ -1,4 +1,5 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
 pkgname=('snigdhaos-grub-theme')
 org=Snigdha-OS
 branch=master

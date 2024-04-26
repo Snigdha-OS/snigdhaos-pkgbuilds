@@ -1,0 +1,18 @@
+#Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=snigdhaos-vb-dependency
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS Virtual Box Dependency"
+arch=('any')
+depends=(
+    'hyperv'
+    'xf86-video-fbdev'
+    'open-vm-tools'
+    'xf86-video-vmware'
+    'qemu-guest-agent'
+    'spice-vdagent'
+    'virtualbox-guest-utils'
+)
+conflicts=()
+replaces=()

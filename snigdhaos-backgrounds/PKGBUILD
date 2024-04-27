@@ -1,7 +1,7 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-backgrounds
-pkgver=1
+pkgver=r27.f7c2a9d
 pkgrel=1
 pkgdesc="Snigdha OS Wallpapers for GNOME"
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 package() {
 	cd "${pkgname}" || exit
 	install -d "${pkgdir}/usr/share/backgrounds/${pkgname}"
-	cp "${srcdir}/${pkgname}/src/${pkgname}"/*.{png,jpg} "${pkgdir}/usr/share/backgrounds/${pkgname}"
+	cp "${srcdir}/${pkgname}/src/${pkgname}"/* "${pkgdir}/usr/share/backgrounds/${pkgname}"
 
 	install -d "${pkgdir}/usr/share/gnome-background-properties"
 	cp "${srcdir}/${pkgname}/src/${pkgname}/${pkgname}.xml" "${pkgdir}/usr/share/gnome-background-properties/snigdhaos-backgrounds.xml"

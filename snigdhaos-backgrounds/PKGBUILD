@@ -1,7 +1,7 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-backgrounds
-pkgver=r27.f7c2a9d
+pkgver=r28.1d04059
 pkgrel=1
 pkgdesc="Snigdha OS Wallpapers for GNOME"
 arch=('any')

@@ -1,6 +1,6 @@
 #Maintainer: Eshan Roy <src.eshan@gmail.com>
 
-pkgname=snigdhaos-vb-dependency
+pkgname=snigdhaos-virtualbox
 pkgver=1
 pkgrel=1
 pkgdesc="Snigdha OS Virtual Box Dependency"

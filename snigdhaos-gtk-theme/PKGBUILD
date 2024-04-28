@@ -11,7 +11,7 @@ source=("$pkgname.zip")
 sha256sums=('SKIP')
 
 pkgver() {
-	# cd "${srcdir}"/"${pkgdir}" || exit
+	cd "${srcdir}"/"${pkgdir}" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

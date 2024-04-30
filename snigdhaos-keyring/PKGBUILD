@@ -1,0 +1,27 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+pkgname=snigdhaos-keyring
+pkgver=20240430
+pkgrel=1
+pkgdesc='Snigdha OS GPG keyring'
+arch=('any')
+url='https://snigdhaos.org'
+license=('MIT')
+install="${pkgname}.install"
+source=('Makefile'
+        'snigdhaos.gpg'
+        'snigdhaos-revoked'
+        'snigdhaos-trusted')
+validpgpkeys=(
+    '90036098D2B5C70D601D904D3EADBD4DF45A55DD'
+) # eshan
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}

@@ -1,0 +1,58 @@
+{
+	"name": "sweet-vscode-icons",
+	"displayName": "Sweet vscode Icons",
+	"description": "A colorful icon set for vscode",
+	"version": "0.0.1",
+	"icon": "icons/icon.png",
+	"galleryBanner": {
+		"color": "#191925",
+		"theme": "dark"
+	},
+	"publisher": "Letgamer",
+	"author": {
+		"name": "Alex Stephan",
+		"url": "https://github.com/Letgamer",
+		"email": "alexstephan005@@gmail.com"
+	},
+	"repository": {
+		"url": "https://github.com/Letgamer/sweet-vscode-icons"
+	},
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"license": "MIT",
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"icons",
+		"icon",
+		"theme",
+		"colorful",
+		"gradient"
+	],
+	"contributes": {
+		"iconThemes": [
+			{
+				"id": "sweet-vscode-icons",
+				"label": "Sweet vscode Icons",
+				"path": "sweet-vscode-icon-theme.json"
+			}
+		]
+	},
+	"bugs": {
+		"url": "https://github.com/Letgamer/sweet-vscode-icons/issues"
+	},
+	"__metadata": {
+		"id": "1f091719-5b80-41e0-bbca-7a128aa985b4",
+		"publisherId": "7f913399-8b80-4052-bb0e-b8e3de60458e",
+		"publisherDisplayName": "Letgamer",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1714474205421,
+		"pinned": false,
+		"source": "gallery"
+	}
+}

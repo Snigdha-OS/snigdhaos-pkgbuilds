@@ -15,7 +15,7 @@ source=('Makefile'
         'snigdhaos-trusted')
 validpgpkeys=(
     '90036098D2B5C70D601D904D3EADBD4DF45A55DD'
-) # eshan
+) 
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'

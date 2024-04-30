@@ -1,0 +1,40 @@
+name: $(Date:yyyyMMdd)$(Rev:.r)
+
+pr:
+    paths:
+        include:
+            - open-ssh-remote
+
+steps:
+    - task: NodeTool@0
+      inputs:
+          versionSpec: '18.x'
+
+    - task: AzureKeyVault@1
+      displayName: "Azure Key Vault: Get Secrets"
+      inputs:
+        azureSubscription: "vscode-builds-subscription"
+        KeyVaultName: vscode-build-secrets
+        SecretsFilter: "devdiv-packaging"
+
+    - script: |
+        npm set "//devdiv.pkgs.visualstudio.com/DevDiv/_packaging/vscode-internal/npm/:username=devdiv"
+        npm set "//devdiv.pkgs.visualstudio.com/DevDiv/_packaging/vscode-internal/npm/:email=unset"
+        npm set "//devdiv.pkgs.visualstudio.com/DevDiv/_packaging/vscode-internal/npm/:_password=$(devdiv-packaging)"
+      displayName: "Set npm registry token"
+
+    - script: yarn install --frozen-lockfile
+      displayName: Install dependencies
+      workingDirectory: open-ssh-remote
+
+    - script: yarn lint
+      displayName: yarn lint
+      workingDirectory: open-ssh-remote
+
+    - script: yarn compile
+      displayName: yarn compile
+      workingDirectory: open-ssh-remote
+
+    - script: xvfb-run -a yarn test
+      displayName: yarn test
+      workingDirectory: open-ssh-remote

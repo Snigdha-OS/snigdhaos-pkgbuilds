@@ -1,21 +1,22 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-assistant
-pkgver=1
-pkgrel=1
-pkgdesc="A setup utility for Garuda Linux which helps setting up & installing applications"
+pkgver=2.0
+_pkgver=2.0
+pkgrel=2
+pkgdesc="A setup utility for Snigdha OS which helps setting up & installing applications"
 arch=('any')
 url="https://gitlab.com/snigdhaos/snigdhaos-assistant/"
-license=('GPL3')
+license=('MIT')
 depends=('yad' 'wget' 'qt5-base')
 optdepends=('pamac')
 makedepends=('git' 'cmake')
 groups=()
-source=("https://gitlab.com/snigdhaos/snigdhaos-assistant/-/archive/1.0/snigdhaos-assistant-1.0.tar.gz")
+source=("https://gitlab.com/snigdhaos/snigdhaos-assistant/-/archive/$_pkgver/snigdhaos-assistant-$_pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cmake -B build -S "$pkgname" \
+    cmake -B build -S "$pkgname-$_pkgver" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
@@ -26,5 +27,5 @@ package() {
     make -C build DESTDIR="$pkgdir" install
 
     install -d "$pkgdir"/usr
-    cp -rf "$srcdir"/$pkgname/usr "$pkgdir"
+    cp -rf "$srcdir"/$pkgname-$_pkgver/usr "$pkgdir"
 }

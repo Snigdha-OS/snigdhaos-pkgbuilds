@@ -72,7 +72,7 @@ if [ -z "$terminal" ] || ! command -v "$terminal" &>/dev/null; then
 fi
 
 if [ -z "$terminal" ]; then
-	notify-send -t 15000 --app-name=Garuda\ Linux "No terminal installed" "No supported terminal emulator is installed. Please install a terminal emulator like Alacritty."
+	notify-send -t 15000 --app-name=Snigdha\ OS "No terminal installed" "No supported terminal emulator is installed. Please install a terminal emulator like Alacritty."
 	exit 1
 fi
 

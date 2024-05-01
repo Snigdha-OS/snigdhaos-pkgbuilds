@@ -1,0 +1,27 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-launcher
+org=Snigdha-OS
+pkgdesc="Terminal Executer for Snigdha OS"
+pkgver=1
+pkgrel=1
+arch=('any')
+license=('MIT')
+depends=(
+    'linotify'
+)
+source=(
+    "launch-terminal"
+)
+sha256sums=(
+    'SKIP'
+)
+
+pkgver(){
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    install -Dm755 launch-terminal "$pkgdir"/usr/lib/snigdhaos/launch-terminal
+    install -d "$pkgdir"/var/lib/snigdhaos/tmp
+}

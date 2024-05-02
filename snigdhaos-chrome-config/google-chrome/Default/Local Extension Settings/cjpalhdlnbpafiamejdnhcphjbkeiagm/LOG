@@ -1,0 +1,8 @@
+2024/05/02-13:25:46.061 10468 Creating DB /home/whoami/.config/google-chrome/Default/Local Extension Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm since it was missing.
+2024/05/02-13:25:46.067 10468 Reusing MANIFEST /home/whoami/.config/google-chrome/Default/Local Extension Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm/MANIFEST-000001
+2024/05/02-13:25:50.973 10474 Level-0 table #5: started
+2024/05/02-13:25:51.011 10474 Level-0 table #5: 4110579 bytes OK
+2024/05/02-13:25:51.014 10474 Delete type=0 #3
+2024/05/02-13:25:58.173 10469 Level-0 table #7: started
+2024/05/02-13:25:58.217 10469 Level-0 table #7: 4710754 bytes OK
+2024/05/02-13:25:58.220 10469 Delete type=0 #4

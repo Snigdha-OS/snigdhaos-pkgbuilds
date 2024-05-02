@@ -1,0 +1,83 @@
+/* @license
+Papa Parse
+v5.4.1
+https://github.com/mholt/PapaParse
+License: MIT
+*/
+
+/*!
+   * lunr.Builder
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.Index
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.Pipeline
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.Set
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.TokenSet
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.Vector
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.stemmer
+   * Copyright (C) 2020 Oliver Nightingale
+   * Includes code from - http://tartarus.org/~martin/PorterStemmer/js.txt
+   */
+
+/*!
+   * lunr.stopWordFilter
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.tokenizer
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.trimmer
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+   * lunr.utils
+   * Copyright (C) 2020 Oliver Nightingale
+   */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/**
+ * @license Angular v16.2.12
+ * (c) 2010-2022 Google LLC. https://angular.io/
+ * License: MIT
+ */
+
+/**
+ * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 2.3.9
+ * Copyright (C) 2020 Oliver Nightingale
+ * @license MIT
+ */

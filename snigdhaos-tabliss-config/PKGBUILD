@@ -1,7 +1,7 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-tabliss-config
-pkgver=1
+pkgver=r150.78316f7a
 pkgrel=1
 pkgdesc="Snigdha OS Tabliss Config."
 arch=('any')

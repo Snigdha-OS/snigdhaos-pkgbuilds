@@ -16,7 +16,7 @@ user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1714626342);
 user_pref("app.update.lastUpdateTime.region-update-timer", 1714626342);
 user_pref("app.update.lastUpdateTime.services-settings-poll-changes", 1714626342);
 user_pref("app.update.lastUpdateTime.xpi-signature-verification", 1714626342);
-user_pref("browser.bookmarks.addedImportButton", true);
+user_pref("browser.bookmarks.addedImportButton", false);
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
 user_pref("browser.contentblocking.category", "standard");
 user_pref("browser.ctrlTab.sortByRecentlyUsed", true);

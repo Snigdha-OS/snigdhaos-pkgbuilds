@@ -15,6 +15,9 @@ install=$pkgname.install
 provides=('snigdhaos-desktop-config')
 conflicts=('snigdhaos-desktop-config')
 
+pkgver(){
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 package() {
 	install -d "$pkgdir"/etc
 	cp -rf "$srcdir"/$pkgname-$_pkgver/etc "$pkgdir"

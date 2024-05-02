@@ -1,1 +1,17 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-tabliss
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Snigdha OS Tabliss Config."
+arch=('any')
+license=("MIT")
+source=("$pkgname.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  mkdir -p "${pkgdir}/usr/share/tabliss"
+
+  cp -rf "${srcdir}/usr/share/tabliss/tabliss.json" "${pkgdir}/usr/share/tabliss/"
+  
+}

@@ -1,2 +1,0 @@
-{"timestamp":43751149,"category":"nimbus_events","name":"unenrollment","extra":{"branch":"delivery","reason":"recipe-not-seen","experiment":"firefox-desktop-long-term-holdback-validation-release"}}
-{"timestamp":43780155,"category":"nimbus_events","name":"enrollment","extra":{"experiment_type":"nimbus","experiment":"long-term-holdback-2024-h1-velocity-desktop","branch":"delivery"}}

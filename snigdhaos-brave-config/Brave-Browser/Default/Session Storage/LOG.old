@@ -1,0 +1,26 @@
+2024/05/01-23:26:26.361 4 Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/Session Storage/MANIFEST-000001
+2024/05/01-23:26:26.364 4 Recovering log #223
+2024/05/01-23:26:26.382 4 Level-0 table #227: started
+2024/05/01-23:26:26.396 4 Level-0 table #227: 553214 bytes OK
+2024/05/01-23:26:26.406 4 Delete type=0 #223
+2024/05/01-23:27:29.135 6 Level-0 table #230: started
+2024/05/01-23:27:29.140 6 Level-0 table #230: 150714 bytes OK
+2024/05/01-23:27:29.143 6 Delete type=0 #228
+2024/05/01-23:43:01.061 6 Level-0 table #232: started
+2024/05/01-23:43:01.065 6 Level-0 table #232: 83375 bytes OK
+2024/05/01-23:43:01.070 6 Delete type=0 #229
+2024/05/01-23:43:06.364 6 Level-0 table #234: started
+2024/05/01-23:43:06.376 6 Level-0 table #234: 67224 bytes OK
+2024/05/01-23:43:06.379 6 Delete type=0 #231
+2024/05/01-23:43:06.379 6 Compacting 4@0 + 1@1 files
+2024/05/01-23:43:06.414 6 Generated table #235@0: 5553 keys, 2042293 bytes
+2024/05/01-23:43:06.414 6 Compacted 4@0 + 1@1 files => 2042293 bytes
+2024/05/01-23:43:06.418 6 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/05/01-23:43:06.420 6 Delete type=2 #225
+2024/05/01-23:43:06.420 6 Delete type=2 #227
+2024/05/01-23:43:06.420 6 Delete type=2 #230
+2024/05/01-23:43:06.420 6 Delete type=2 #232
+2024/05/01-23:43:06.420 6 Delete type=2 #234
+2024/05/01-23:43:09.540 6 Level-0 table #237: started
+2024/05/01-23:43:09.545 6 Level-0 table #237: 67247 bytes OK
+2024/05/01-23:43:09.550 6 Delete type=0 #233

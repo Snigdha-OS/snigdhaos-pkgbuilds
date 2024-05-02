@@ -1,0 +1,73 @@
+2024/04/25-17:24:59.247 969f Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/04/25-17:24:59.248 969f Recovering log #114
+2024/04/25-17:24:59.260 969f Reusing old log /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000114.log 
+2024/04/25-17:25:00.359 96a2 Level-0 table #123: started
+2024/04/25-17:25:00.373 96a2 Level-0 table #123: 187042 bytes OK
+2024/04/25-17:25:00.396 96a2 Delete type=0 #114
+2024/04/25-17:25:00.396 969f Manual compaction at level-0 from '\x00\x1c\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1d\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/04/25-17:25:01.837 96a0 Compacting 1@1 + 5@2 files
+2024/04/25-17:25:01.914 96a0 Generated table #124@1: 17137 keys, 2176789 bytes
+2024/04/25-17:25:01.966 96a0 Generated table #125@1: 3444 keys, 2159190 bytes
+2024/04/25-17:25:02.056 96a0 Generated table #126@1: 25510 keys, 2226891 bytes
+2024/04/25-17:25:02.124 96a0 Generated table #127@1: 55425 keys, 2205017 bytes
+2024/04/25-17:25:02.180 96a0 Generated table #128@1: 63529 keys, 1429588 bytes
+2024/04/25-17:25:02.180 96a0 Compacted 1@1 + 5@2 files => 10197475 bytes
+2024/04/25-17:25:02.183 96a0 compacted to: files[ 0 0 5 0 0 0 0 ]
+2024/04/25-17:25:02.183 96a0 Delete type=2 #116
+2024/04/25-17:25:02.183 96a0 Delete type=2 #117
+2024/04/25-17:25:02.183 96a0 Delete type=2 #118
+2024/04/25-17:25:02.184 96a0 Delete type=2 #119
+2024/04/25-17:25:02.184 96a0 Delete type=2 #120
+2024/04/25-17:25:02.184 96a0 Delete type=2 #123
+2024/04/25-17:25:10.274 96a0 Level-0 table #130: started
+2024/04/25-17:25:10.315 96a0 Level-0 table #130: 1200941 bytes OK
+2024/04/25-17:25:10.321 96a0 Delete type=0 #122
+2024/04/25-17:25:10.367 96a0 Compacting 1@1 + 5@2 files
+2024/04/25-17:25:10.438 96a0 Generated table #131@1: 29171 keys, 2190079 bytes
+2024/04/25-17:25:10.478 96a0 Generated table #132@1: 3124 keys, 2158811 bytes
+2024/04/25-17:25:10.587 96a0 Generated table #133@1: 19714 keys, 2206947 bytes
+2024/04/25-17:25:10.699 96a0 Generated table #134@1: 35987 keys, 2205203 bytes
+2024/04/25-17:25:10.817 96a0 Generated table #135@1: 90678 keys, 2036130 bytes
+2024/04/25-17:25:10.817 96a0 Compacted 1@1 + 5@2 files => 10797170 bytes
+2024/04/25-17:25:10.851 96a0 compacted to: files[ 0 0 5 0 0 0 0 ]
+2024/04/25-17:25:56.508 96a0 Level-0 table #137: started
+2024/04/25-17:25:56.562 96a0 Level-0 table #137: 1021514 bytes OK
+2024/04/25-17:25:56.566 96a0 Delete type=2 #124
+2024/04/25-17:25:56.566 96a0 Delete type=2 #125
+2024/04/25-17:25:56.566 96a0 Delete type=2 #126
+2024/04/25-17:25:56.566 96a0 Delete type=2 #127
+2024/04/25-17:25:56.566 96a0 Delete type=2 #128
+2024/04/25-17:25:56.566 96a0 Delete type=0 #129
+2024/04/25-17:25:56.566 96a0 Delete type=2 #130
+2024/04/25-17:26:12.044 96a0 Compacting 1@1 + 5@2 files
+2024/04/25-17:26:12.125 96a0 Generated table #138@1: 29315 keys, 2189967 bytes
+2024/04/25-17:26:12.154 96a0 Generated table #139@1: 3156 keys, 2156566 bytes
+2024/04/25-17:26:12.213 96a0 Generated table #140@1: 19080 keys, 2203268 bytes
+2024/04/25-17:26:12.265 96a0 Generated table #141@1: 32989 keys, 2203530 bytes
+2024/04/25-17:26:12.327 96a0 Generated table #142@1: 96291 keys, 2150154 bytes
+2024/04/25-17:26:12.327 96a0 Compacted 1@1 + 5@2 files => 10903485 bytes
+2024/04/25-17:26:12.329 96a0 compacted to: files[ 0 0 5 0 0 0 0 ]
+2024/04/25-17:26:12.329 96a0 Delete type=2 #131
+2024/04/25-17:26:12.329 96a0 Delete type=2 #132
+2024/04/25-17:26:12.329 96a0 Delete type=2 #133
+2024/04/25-17:26:12.329 96a0 Delete type=2 #134
+2024/04/25-17:26:12.329 96a0 Delete type=2 #135
+2024/04/25-17:26:12.330 96a0 Delete type=2 #137
+2024/04/25-17:30:36.338 96a2 Level-0 table #144: started
+2024/04/25-17:30:36.345 96a2 Level-0 table #144: 92838 bytes OK
+2024/04/25-17:30:36.347 96a2 Delete type=0 #136
+2024/04/25-17:30:36.348 969f Manual compaction at level-0 from '\x00\x1d\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1e\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/04/25-17:30:47.083 96a0 Compacting 1@1 + 5@2 files
+2024/04/25-17:30:47.160 96a0 Generated table #145@1: 28317 keys, 2190025 bytes
+2024/04/25-17:30:47.188 96a0 Generated table #146@1: 3139 keys, 2164315 bytes
+2024/04/25-17:30:47.233 96a0 Generated table #147@1: 19722 keys, 2206279 bytes
+2024/04/25-17:30:47.283 96a0 Generated table #148@1: 35232 keys, 2204557 bytes
+2024/04/25-17:30:47.349 96a0 Generated table #149@1: 93334 keys, 2092869 bytes
+2024/04/25-17:30:47.349 96a0 Compacted 1@1 + 5@2 files => 10858045 bytes
+2024/04/25-17:30:47.352 96a0 compacted to: files[ 0 0 5 0 0 0 0 ]
+2024/04/25-17:30:47.352 96a0 Delete type=2 #138
+2024/04/25-17:30:47.352 96a0 Delete type=2 #139
+2024/04/25-17:30:47.352 96a0 Delete type=2 #140
+2024/04/25-17:30:47.352 96a0 Delete type=2 #141
+2024/04/25-17:30:47.352 96a0 Delete type=2 #142
+2024/04/25-17:30:47.352 96a0 Delete type=2 #144

@@ -1,0 +1,45 @@
+2024/05/02-10:48:09.550 4 Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/MANIFEST-000001
+2024/05/02-10:48:09.552 4 Recovering log #1139
+2024/05/02-10:48:09.553 4 Reusing old log /home/whoami/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/001139.log 
+2024/05/02-11:57:22.294 5 Level-0 table #1143: started
+2024/05/02-11:57:22.298 5 Level-0 table #1143: 27842 bytes OK
+2024/05/02-11:57:22.302 5 Delete type=0 #1139
+2024/05/02-12:18:43.441 5 Level-0 table #1145: started
+2024/05/02-12:18:43.449 5 Level-0 table #1145: 116725 bytes OK
+2024/05/02-12:18:43.455 5 Delete type=0 #1142
+2024/05/02-12:22:57.779 5 Level-0 table #1147: started
+2024/05/02-12:22:57.786 5 Level-0 table #1147: 116293 bytes OK
+2024/05/02-12:22:57.790 5 Delete type=0 #1144
+2024/05/02-12:22:57.790 5 Compacting 4@0 + 1@1 files
+2024/05/02-12:22:57.838 5 Generated table #1148@0: 3516 keys, 1396926 bytes
+2024/05/02-12:22:57.838 5 Compacted 4@0 + 1@1 files => 1396926 bytes
+2024/05/02-12:22:57.841 5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/05/02-12:22:57.841 5 Delete type=2 #1138
+2024/05/02-12:22:57.842 5 Delete type=2 #1140
+2024/05/02-12:22:57.842 5 Delete type=2 #1143
+2024/05/02-12:22:57.842 5 Delete type=2 #1145
+2024/05/02-12:22:57.842 5 Delete type=2 #1147
+2024/05/02-12:31:23.400 5 Level-0 table #1150: started
+2024/05/02-12:31:23.406 5 Level-0 table #1150: 113635 bytes OK
+2024/05/02-12:31:23.409 5 Delete type=0 #1146
+2024/05/02-12:39:02.183 5 Level-0 table #1152: started
+2024/05/02-12:39:02.190 5 Level-0 table #1152: 102635 bytes OK
+2024/05/02-12:39:02.194 5 Delete type=0 #1149
+2024/05/02-12:39:08.778 5 Level-0 table #1154: started
+2024/05/02-12:39:08.784 5 Level-0 table #1154: 72104 bytes OK
+2024/05/02-12:39:08.789 5 Delete type=0 #1151
+2024/05/02-12:40:44.979 5 Level-0 table #1156: started
+2024/05/02-12:40:44.983 5 Level-0 table #1156: 37063 bytes OK
+2024/05/02-12:40:44.986 5 Delete type=0 #1153
+2024/05/02-12:40:44.987 5 Compacting 4@0 + 1@1 files
+2024/05/02-12:40:45.020 5 Generated table #1157@0: 3516 keys, 1396982 bytes
+2024/05/02-12:40:45.020 5 Compacted 4@0 + 1@1 files => 1396982 bytes
+2024/05/02-12:40:45.022 5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/05/02-12:40:45.024 5 Delete type=2 #1148
+2024/05/02-12:40:45.024 5 Delete type=2 #1150
+2024/05/02-12:40:45.024 5 Delete type=2 #1152
+2024/05/02-12:40:45.024 5 Delete type=2 #1154
+2024/05/02-12:40:45.024 5 Delete type=2 #1156
+2024/05/02-12:42:01.195 5 Level-0 table #1159: started
+2024/05/02-12:42:01.202 5 Level-0 table #1159: 105824 bytes OK
+2024/05/02-12:42:01.206 5 Delete type=0 #1155

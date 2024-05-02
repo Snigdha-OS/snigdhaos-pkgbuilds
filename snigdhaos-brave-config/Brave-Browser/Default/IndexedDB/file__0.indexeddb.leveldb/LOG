@@ -1,0 +1,3 @@
+2024/04/23-08:55:20.673 f1c Creating DB /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/file__0.indexeddb.leveldb since it was missing.
+2024/04/23-08:55:20.677 f1c Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
+2024/04/23-08:55:20.751 f20 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

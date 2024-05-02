@@ -1,0 +1,60 @@
+2024/05/02-10:48:13.399 84a9 Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings/gppongmhjkpfnbhagpmjfkannfbllamg/MANIFEST-000001
+2024/05/02-10:48:13.402 84a9 Recovering log #1435
+2024/05/02-10:48:13.414 84a9 Reusing old log /home/whoami/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings/gppongmhjkpfnbhagpmjfkannfbllamg/001435.log 
+2024/05/02-10:48:19.502 84aa Level-0 table #1439: started
+2024/05/02-10:48:19.515 84aa Level-0 table #1439: 482477 bytes OK
+2024/05/02-10:48:19.517 84aa Delete type=0 #1435
+2024/05/02-10:48:19.519 84aa Compacting 4@0 + 1@1 files
+2024/05/02-10:48:19.529 84aa Generated table #1440@0: 1 keys, 35432 bytes
+2024/05/02-10:48:19.529 84aa Compacted 4@0 + 1@1 files => 35432 bytes
+2024/05/02-10:48:19.531 84aa compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/05/02-10:48:19.532 84aa Delete type=2 #1430
+2024/05/02-10:48:19.532 84aa Delete type=2 #1432
+2024/05/02-10:48:19.532 84aa Delete type=2 #1434
+2024/05/02-10:48:19.532 84aa Delete type=2 #1436
+2024/05/02-10:48:19.532 84aa Delete type=2 #1439
+2024/05/02-11:42:10.141 84aa Level-0 table #1442: started
+2024/05/02-11:42:10.155 84aa Level-0 table #1442: 453386 bytes OK
+2024/05/02-11:42:10.158 84aa Delete type=0 #1438
+2024/05/02-12:17:29.620 84aa Level-0 table #1444: started
+2024/05/02-12:17:29.651 84aa Level-0 table #1444: 454024 bytes OK
+2024/05/02-12:17:29.654 84aa Delete type=0 #1441
+2024/05/02-12:17:48.163 84aa Level-0 table #1446: started
+2024/05/02-12:17:48.177 84aa Level-0 table #1446: 460007 bytes OK
+2024/05/02-12:17:48.180 84aa Delete type=0 #1443
+2024/05/02-12:19:02.729 84aa Level-0 table #1448: started
+2024/05/02-12:19:02.740 84aa Level-0 table #1448: 462215 bytes OK
+2024/05/02-12:19:02.743 84aa Delete type=0 #1445
+2024/05/02-12:19:02.744 84aa Compacting 4@0 + 1@1 files
+2024/05/02-12:19:02.754 84aa Generated table #1449@0: 1 keys, 35782 bytes
+2024/05/02-12:19:02.754 84aa Compacted 4@0 + 1@1 files => 35782 bytes
+2024/05/02-12:19:02.756 84aa compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/05/02-12:19:02.756 84aa Delete type=2 #1440
+2024/05/02-12:19:02.756 84aa Delete type=2 #1442
+2024/05/02-12:19:02.756 84aa Delete type=2 #1444
+2024/05/02-12:19:02.756 84aa Delete type=2 #1446
+2024/05/02-12:19:02.756 84aa Delete type=2 #1448
+2024/05/02-12:23:06.164 84aa Level-0 table #1451: started
+2024/05/02-12:23:06.177 84aa Level-0 table #1451: 532895 bytes OK
+2024/05/02-12:23:06.180 84aa Delete type=0 #1447
+2024/05/02-12:24:25.118 84aa Level-0 table #1453: started
+2024/05/02-12:24:25.126 84aa Level-0 table #1453: 443237 bytes OK
+2024/05/02-12:24:25.129 84aa Delete type=0 #1450
+2024/05/02-12:39:05.742 84aa Level-0 table #1455: started
+2024/05/02-12:39:05.752 84aa Level-0 table #1455: 487161 bytes OK
+2024/05/02-12:39:05.755 84aa Delete type=0 #1452
+2024/05/02-12:39:48.934 84aa Level-0 table #1457: started
+2024/05/02-12:39:48.946 84aa Level-0 table #1457: 443162 bytes OK
+2024/05/02-12:39:48.949 84aa Delete type=0 #1454
+2024/05/02-12:39:48.952 84aa Compacting 4@0 + 1@1 files
+2024/05/02-12:39:48.965 84aa Generated table #1458@0: 1 keys, 49393 bytes
+2024/05/02-12:39:48.965 84aa Compacted 4@0 + 1@1 files => 49393 bytes
+2024/05/02-12:39:48.968 84aa compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/05/02-12:39:48.968 84aa Delete type=2 #1449
+2024/05/02-12:39:48.968 84aa Delete type=2 #1451
+2024/05/02-12:39:48.968 84aa Delete type=2 #1453
+2024/05/02-12:39:48.968 84aa Delete type=2 #1455
+2024/05/02-12:39:48.968 84aa Delete type=2 #1457
+2024/05/02-12:45:38.971 84aa Level-0 table #1460: started
+2024/05/02-12:45:38.981 84aa Level-0 table #1460: 486252 bytes OK
+2024/05/02-12:45:38.984 84aa Delete type=0 #1456

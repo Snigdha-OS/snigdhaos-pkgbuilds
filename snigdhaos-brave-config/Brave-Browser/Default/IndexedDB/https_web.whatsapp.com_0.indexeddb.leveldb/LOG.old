@@ -1,0 +1,4 @@
+2024/04/22-16:31:41.543 4d3f Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/04/22-16:31:41.544 4d3f Recovering log #114
+2024/04/22-16:31:41.544 4d3f Reusing old log /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000114.log 
+2024/04/22-16:31:42.258 4d41 Manual compaction at level-0 from '\x00\x1b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1c\x00\x00\x00' @ 0 : 0; will stop at (end)

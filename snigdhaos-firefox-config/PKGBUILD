@@ -1,2 +1,24 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-firefox-config
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS FireFox Config."
+arch=('any')
+license=("MIT")
+depends=('snigdhaos-tabliss-config' 'firefox' 'profile-sync-daemon')
+source=("psd.conf"
+        "$pkgname.tar.gz")
+install="${pkgname}.install"
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.mozilla"
+  install -dm 755 "${pkgdir}/etc/skel/.config/psd"
+
+  cp -rf "${srcdir}/firefox" "${pkgdir}/etc/skel/.mozilla"
+  install -Dm644 "${srcdir}/psd.conf" "${pkgdir}/etc/skel/.config/psd/"
+}
+sha512sums=('SKIP'
+            'SKIP')

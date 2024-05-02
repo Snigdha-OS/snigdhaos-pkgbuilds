@@ -1,0 +1,30 @@
+name: Snigdha OS Commitizen Check On Pull
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  commitizen_check:
+    name: Check Commitizen Commit on Pull Request
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install Commitizen
+        run: npm install -g commitizen
+
+      - name: Verify Commitizen Commit
+        run: |
+          if git log --format='%s' ${{ github.event.before }}..${{ github.sha }} | grep -v '^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: .+'; then
+            echo "Invalid commit message found. Please use Commitizen convention."
+            exit 1
+          fi

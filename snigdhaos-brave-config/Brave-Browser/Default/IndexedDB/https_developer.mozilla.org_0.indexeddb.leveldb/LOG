@@ -1,6 +1,0 @@
-2024/04/29-12:37:27.726 5646 Creating DB /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_developer.mozilla.org_0.indexeddb.leveldb since it was missing.
-2024/04/29-12:37:27.735 5646 Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_developer.mozilla.org_0.indexeddb.leveldb/MANIFEST-000001
-2024/04/29-12:37:31.954 5647 Level-0 table #5: started
-2024/04/29-12:37:31.955 5647 Level-0 table #5: 381 bytes OK
-2024/04/29-12:37:31.958 5647 Delete type=0 #3
-2024/04/29-12:37:31.958 5647 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

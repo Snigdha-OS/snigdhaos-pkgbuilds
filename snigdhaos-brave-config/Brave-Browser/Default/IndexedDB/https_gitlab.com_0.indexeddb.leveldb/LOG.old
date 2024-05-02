@@ -1,6 +1,0 @@
-2024/04/29-13:40:14.739 5646 Creating DB /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_gitlab.com_0.indexeddb.leveldb since it was missing.
-2024/04/29-13:40:14.743 5646 Reusing MANIFEST /home/whoami/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_gitlab.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/04/29-13:43:09.135 5647 Level-0 table #5: started
-2024/04/29-13:43:09.142 5647 Level-0 table #5: 159894 bytes OK
-2024/04/29-13:43:09.145 5647 Delete type=0 #3
-2024/04/29-13:43:09.146 5647 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

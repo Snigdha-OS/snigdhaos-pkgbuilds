@@ -1,13 +1,18 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-tabliss
-pkgver=1.0.0
+pkgver=1
 pkgrel=1
 pkgdesc="Snigdha OS Tabliss Config."
 arch=('any')
 license=("MIT")
 source=("$pkgname.tar.gz")
 sha256sums=('SKIP')
+
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   mkdir -p "${pkgdir}/usr/share/tabliss"

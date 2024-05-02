@@ -9,6 +9,7 @@ license=("MIT")
 depends=('snigdhaos-tabliss-config' 'waterfox-bin' 'profile-sync-daemon')
 source=("psd.conf"
         "$pkgname.tar.gz")
+install="${pkgname}.install"
 
 package() {
   install -dm 755 "${pkgdir}/etc/skel"

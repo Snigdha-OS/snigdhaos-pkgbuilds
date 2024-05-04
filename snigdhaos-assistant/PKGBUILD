@@ -2,7 +2,7 @@
 
 pkgname=snigdhaos-assistant
 pkgver=2.0
-_pkgver=2.0
+_pkgver=a1.0.0
 pkgrel=2
 pkgdesc="A setup utility for Snigdha OS which helps setting up & installing applications"
 arch=('any')

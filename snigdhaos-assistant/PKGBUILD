@@ -12,7 +12,7 @@ depends=('yad' 'wget' 'qt5-base')
 optdepends=('pamac')
 makedepends=('git' 'cmake')
 groups=()
-source=("https://gitlab.com/snigdhaos/snigdhaos-assistant/-/archive/$_pkgver/snigdhaos-assistant-$_pkgver.tar.gz")
+source=("https://github.com/Snigdha-OS/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {

@@ -1,3 +1,2 @@
 # Worldwide
 Server = https://snosmirror.github.io/$repo/$arch
-Server = https://gitlab.com/snigdhaos/$repo/-/tree/master/$arch

@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Install Snigdha OS
-Comment=Installer for Snigdha OS
+Name=Install Snigdha OS Debug
+Comment=Installer for Snigdha OS debug
 GenericName=System Installer
 Keywords=calamares;system;installer;
-TryExec=/usr/bin/calamares_polkit %f -style breeze
-Exec=/usr/bin/calamares_polkit %f -style breeze
+TryExec=/usr/bin/calamares_polkit %f -d -style breeze
+Exec=/usr/bin/calamares_polkit %f -d -style breeze
 Icon=snigdhaos-calamares
 Terminal=false
 Type=Application

@@ -18,6 +18,12 @@ options=(!strip !emptydirs)
 source=(${_pkgname}::"git+$url")
 sha256sums=('SKIP')
 install="${_pkgname}.install"
+
+pkgver() {
+	cd "$srcdir/$pkgname" || exit
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
 	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
 	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"

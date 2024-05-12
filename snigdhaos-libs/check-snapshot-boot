@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if grep -qE 'subvol=@/.snapshots/[0-9]+/snapshot' /proc/cmdline; then
-    exit 0
-fi
-exit 1

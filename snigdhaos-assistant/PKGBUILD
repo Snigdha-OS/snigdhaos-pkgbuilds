@@ -1,0 +1,36 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-assistant
+pkgver=2.0
+_pkgver=a1.0.0
+pkgrel=2
+pkgdesc="A setup utility for Snigdha OS which helps setting up & installing applications"
+arch=('any')
+url="https://gitlab.com/snigdhaos/snigdhaos-assistant/"
+license=('MIT')
+depends=('yad' 'wget' 'qt5-base')
+optdepends=('pamac')
+makedepends=('git' 'cmake')
+groups=()
+source=("https://github.com/Snigdha-OS/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname" || exit
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cmake -B build -S "$pkgname-$_pkgver" \
+        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    make -C build
+}
+
+package() {
+    make -C build DESTDIR="$pkgdir" install
+
+    install -d "$pkgdir"/usr
+    cp -rf "$srcdir"/$pkgname-$_pkgver/usr "$pkgdir"
+}

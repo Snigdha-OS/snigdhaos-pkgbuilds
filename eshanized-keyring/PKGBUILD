@@ -1,0 +1,25 @@
+# Based on the file created for Arch Linux by:
+# Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=eshanized-keyring
+pkgver=20240430
+pkgrel=1
+pkgdesc='Eshanized GPG keyring'
+arch=('any')
+url='https://snigdhaos.org'
+license=('MIT')
+install="${pkgname}.install"
+source=('Makefile'
+        'eshanized.gpg'
+        'eshanized-revoked'
+        'eshanized-trusted')
+validpgpkeys=('90036098D2B5C70D601D904D3EADBD4DF45A55DD') # eshan
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}

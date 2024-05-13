@@ -1,0 +1,3 @@
+from typing import Any
+
+def deconstructible(*args: Any, path: Any | None = ...) -> Any: ...

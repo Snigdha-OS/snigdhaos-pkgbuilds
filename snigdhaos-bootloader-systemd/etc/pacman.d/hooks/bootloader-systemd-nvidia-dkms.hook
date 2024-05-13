@@ -1,0 +1,15 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/src/*/dkms.conf
+Target = usr/lib/modules/*/build/include/
+Target = usr/lib/modules/*/modules.alias
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/modules/*/extramodules/*
+
+[Action]
+Description = Check for NVIDIA Config
+When = PostTransaction
+Exec = /usr/local/bin/snigdhaos-nvidia-dkms-check 

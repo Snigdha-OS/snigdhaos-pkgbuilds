@@ -1,0 +1,23 @@
+#Maintainer: Eshan Roy <src.eshan@gmail.com>
+
+pkgname=snigdhaos-virtualbox
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS Virtual Box Dependency"
+arch=('any')
+depends=(
+    'hyperv'
+    'xf86-video-fbdev'
+    'open-vm-tools'
+    'xf86-video-vmware'
+    'qemu-guest-agent'
+    'spice-vdagent'
+    'virtualbox-guest-utils'
+)
+conflicts=()
+replaces=()
+
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}

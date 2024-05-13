@@ -1,0 +1,29 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-gnome-config
+pkgver=1
+_pkgver=1.0.0
+pkgrel=1
+arch=('any')
+url="https://github.com/Snigdha-OS/$pkgname"
+license=('MIT')
+makedepends=('coreutils')
+source=("https://github.com/Snigdha-OS/$pkgname/archive/refs/tags/{$_pkgver}.tar.gz")
+sha256sums=('SKIP')
+pkgdesc='Snigdha OS Gnome Config'
+install=$pkgname.install
+provides=('snigdhaos-desktop-config')
+conflicts=('snigdhaos-desktop-config')
+
+pkgver(){
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+package() {
+	install -d "$pkgdir"/etc
+	cp -rf "$srcdir"/$pkgname-$_pkgver/etc "$pkgdir"
+	depends=('snigdhaos-backgrounds'
+		'gnome-themes-extra'
+		'kvantum'
+		'kvantum-qt5'
+		'ttf-overpass')
+}

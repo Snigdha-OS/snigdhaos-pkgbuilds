@@ -1,0 +1,69 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+    "base_keymap": "VSCode",
+    // "theme": "Atelier Heath Dark",
+    "ui_font_size": 16,
+    "buffer_font_size": 16,
+    "autosave": "on_window_change",
+    "auto_update": true,
+    "buffer_font_family": "Overpass",
+    "cursor_blink": true,
+    "scrollbar": {
+        "show": "system"
+    },
+    "toolbar": {
+        "breadcrumbs": true,
+        "quick_actions": true
+    },
+    "use_autoclose": true,
+    "git": {
+        "git_gutter": "tracked_files",
+        "inline_blame": {
+            "enabled": true
+        }
+    },
+    "inlay_hints": {
+        "enabled": false,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true,
+        "edit_debounce_ms": 700,
+        "scroll_debounce_ms": 50
+    },
+    "hour_format": "hour12",
+    "show_completion_documentation": true,
+    "tab_size": 4,
+    "terminal": {
+        "alternate_scroll": "off",
+        "blinking": "terminal_controlled",
+        "copy_on_select": false,
+        "env": {},
+        "font_family": "Overpass",
+        "font_features": 14,
+        "font_size": 16,
+        "option_as_meta": false,
+        "button": false,
+        "shell": "system",
+        "toolbar": {
+            "title": true
+        },
+        "working_directory": "current_project_directory"
+    },
+    "theme": {
+        "mode": "dark",
+        "dark": "One Dark",
+        "light": "One Light"
+    },
+    "project_panel": {
+        "dock": "left",
+        "git_status": true,
+        "default_width": 300
+    }
+}

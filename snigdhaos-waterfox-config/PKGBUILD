@@ -1,0 +1,22 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-waterfox-config
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS WaterFox Config."
+arch=('any')
+license=("MIT")
+depends=('snigdhaos-tabliss-config' 'waterfox-bin' 'profile-sync-daemon')
+source=("psd.conf"
+        "$pkgname.tar.gz")
+install="${pkgname}.install"
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel"
+  install -dm 755 "${pkgdir}/etc/skel/.config/psd"
+
+  cp -rf "${srcdir}/.waterfox" "${pkgdir}/etc/skel/"
+  install -Dm644 "${srcdir}/psd.conf" "${pkgdir}/etc/skel/.config/psd/"
+}
+sha512sums=('SKIP'
+            'SKIP')

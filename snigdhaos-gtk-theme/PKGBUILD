@@ -1,0 +1,22 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-gtk-theme
+pkgver=1
+pkgrel=1
+pkgdesc='An Flat Gtk+ theme based on Material Design'
+arch=('any')
+license=('GPL3')
+url='https://github.com/Snigdha-OS/snigdhaos-gtk-theme'
+source=("$pkgname.zip")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}"/"${pkgdir}" || exit
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	install -d "$pkgdir/usr/share/themes/"
+	cp -r -a --no-preserve=ownership \
+    * "$pkgdir/usr/share/themes"
+}

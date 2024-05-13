@@ -1,0 +1,42 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-libs
+org=Snigdha-OS
+pkgdesc="Libs for Snigdha OS"
+pkgver=1
+pkgrel=1
+arch=('any')
+license=('MIT')
+depends=(
+    'libnotify' 
+    'expect'
+    )
+source=(
+    "exec-termianl" 
+    "snigdhaos.shlib" 
+    "check-snpashot-boot" 
+    "install-package" 
+    "org.snigdhaos.libs.pkexec.policy" 
+    "pkexec-gui"
+    )
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    )
+pkgver(){
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    install -Dm755 exec-terminal "$pkgdir"/usr/lib/snigdhaos/exec-terminal
+    install -Dm755 install-package "$pkgdir"/usr/lib/snigdhaos/install-package
+    install -Dm755 check-snpashot-boot "$pkgdir"/usr/lib/snigdhaos/check-snpashot-boot
+    install -Dm755 pkexec-gui "$pkgdir"/usr/lib/snigdhaos/pkexec-gui
+    install -Dm644 snigdhaos.shlib "$pkgdir"/usr/lib/snigdhaos/snigdhaos.shlib
+    install -d "$pkgdir"/var/lib/snigdhaos/tmp
+
+    install -Dm0644 org.snigdhaos.libs.pkexec.policy "$pkgdir/usr/share/polkit-1/actions/org.snigdhaos.libs.pkexec.policy"
+}

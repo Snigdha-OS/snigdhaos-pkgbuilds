@@ -1,0 +1,41 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-system-installation
+org=Snigdha-OS
+_pkgname=snigdhaos-system-installation
+_destname1="/etc/"
+_destname2="/usr/local/bin/"
+_destname3="/usr/lib/systemd/system/"
+_licensedir="/usr/share/snigdhaos/licenses/"
+pkgver=1
+pkgrel=1
+pkgdesc="Installation files for Snigdha OS"
+arch=('any')
+url="https://github.com/${org}/${pkgname}"
+license=('MIT')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+https://github.com/${org}/${_pkgname}")
+sha256sums=('SKIP')
+install="${pkgname}.install"
+
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+  install -dm755 "$pkgdir$_destname1"
+  cp -r "$srcdir/$pkgname/$_destname1/"* "$pkgdir/$_destname1"
+
+  install -dm755 "$pkgdir$_destname2"
+  cp -r "$srcdir/$pkgname/$_destname2/"* "$pkgdir/$_destname2"
+
+  install -dm755 "$pkgdir$_destname3"
+  cp -r "$srcdir/$pkgname/$_destname3/"* "$pkgdir/$_destname3"
+}

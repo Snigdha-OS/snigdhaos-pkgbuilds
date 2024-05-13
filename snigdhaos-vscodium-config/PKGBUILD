@@ -1,0 +1,23 @@
+pkgname=snigdhaos-vscodium-config
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS VS Codium Config."
+arch=('any')
+license=("MIT")
+depends=('vscodium')
+source=("$pkgname.tar.gz")
+install="${pkgname}.install"
+
+pkgver() {
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel/.vscode-oss"
+  mkdir -p "${pkgdir}/etc/skel/.config/VSCodium/User"
+  
+  cp -rf "${srcdir}/etc/skel/.config/VSCodium/User/settings.json" "${pkgdir}/etc/skel/.config/VSCodium/User/"
+
+  cp -rf "${srcdir}/etc/skel/.vscode-oss/extensions" "${pkgdir}/etc/skel/.vscode-oss/"
+}
+sha512sums=('SKIP')

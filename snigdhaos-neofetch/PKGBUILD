@@ -1,0 +1,32 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-neofetch
+org=Snigdha-OS
+branch=master
+_pkgname=snigdhaos-neofetch
+_destname1="/etc/skel/.config/neofetch/"
+_licensedir="/usr/share/snigdhaos/licenses/"
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS Neofetch Config!"
+arch=('any')
+url="https://github.com/$org/$pkgname"
+license=('MIT')
+makedepends=('git')
+depends=('neofetch' 'bash' 'python')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/$org/${_pkgname}.git")
+sha256sums=('SKIP')
+install=$pkgname.install
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

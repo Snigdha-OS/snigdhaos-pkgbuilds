@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+SNIGDHAOSLIB_GUI="${SNIGDHAOSLIB_GUI:-true}"
+
+if [ -z "$DISPLAY" ]; then
+    SNIGDHAOSLIB_GUI=false
+fi
+
+if [[ $EUID -ne 0 ]] && [ "$SNIGDHAOSLIB_GUI" == "true" ]; then
+    exec pkexec /usr/lib/snigdhaos/install-package "$@"
+    exit 1
+fi
+
+sudo pacman -S --noconfirm "$@"

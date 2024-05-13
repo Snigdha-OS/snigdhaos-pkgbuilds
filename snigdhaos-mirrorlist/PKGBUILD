@@ -1,0 +1,21 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-mirrorlist
+pkgver=r125.c1334295
+pkgrel=1
+pkgdesc="Snigdha OS mirrorlist."
+arch=('any')
+license=("MIT")
+backup=('etc/pacman.d/snigdhaos-mirrorlist')
+source=("snigdhaos-mirrorlist")
+sha512sums=('SKIP')
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  mkdir -p "$pkgdir/etc/pacman.d"
+  
+  install -Dm 644 -t "$pkgdir/etc/pacman.d/" $pkgname
+}

@@ -1,0 +1,23 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-brave-config
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS Brave Config!."
+arch=('any')
+license=("MIT")
+depends=('snigdhaos-tabliss-config' 'brave-bin' 'gnome-keyring' 'profile-sync-daemon-brave')
+source=("psd.conf"
+        "$pkgname.tar.gz")
+install="${pkgname}.install"
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/.config/BraveSoftware"
+  install -dm 755 "${pkgdir}/etc/skel/.config/psd"
+
+  cp -rf "${srcdir}/Brave-Browser" "${pkgdir}/etc/skel/.config/BraveSoftware/"
+  cp -rf "${srcdir}/psd.conf" "${pkgdir}/etc/skel/.config/psd/"  
+  
+}
+sha512sums=('SKIP'
+            'SKIP')

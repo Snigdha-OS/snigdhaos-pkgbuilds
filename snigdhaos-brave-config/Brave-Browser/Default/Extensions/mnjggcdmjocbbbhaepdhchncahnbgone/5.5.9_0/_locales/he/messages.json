@@ -1,0 +1,743 @@
+{
+   "400": {
+      "message": "השרת אמר שהבקשה הזו לא בתוקף"
+   },
+   "409": {
+      "message": "זה כבר הוגש בעבר"
+   },
+   "502": {
+      "message": "נראה שהשרת עמוס יתר על המידה. יש לנסות שוב בעוד מספר שניות."
+   },
+   "ChangeCategoryTooltip": {
+      "message": "זה מיידית ישפיע על כל המקטעים שלך"
+   },
+   "Chapters": {
+      "message": "פרקים"
+   },
+   "ContinueVoting": {
+      "message": "המשך הצבעה"
+   },
+   "CopiedExclamation": {
+      "description": "Used after something has been copied to the clipboard. Example: 'Copied!'",
+      "message": "הועתק!"
+   },
+   "CopyAndDownvote": {
+      "message": "העתקה ודירוג שלילי"
+   },
+   "CopyDownvoteButtonInfo": {
+      "message": "הצבעה שלילית ויצירת עותק מקומי שניתן לשלוח מחדש"
+   },
+   "Credits": {
+      "message": "קרדיטים"
+   },
+   "Description": {
+      "description": "Description of the extension.",
+      "message": "דלג על החסויות, ההתחננויות לעשות מנוי ועוד בסרטוני יוטיוב. דווח על ספונסרים בסרטונים שאתה צופה בהם כדי לחסוך לאחרים זמן."
+   },
+   "Dismiss": {
+      "message": "סגור"
+   },
+   "Donate": {
+      "message": "תרומה"
+   },
+   "Editing": {
+      "message": "עריכה"
+   },
+   "End": {
+      "description": "Button that skips to the end of a segment",
+      "message": "סוף"
+   },
+   "FullDetails": {
+      "message": "פרטים מלאים"
+   },
+   "GotIt": {
+      "description": "Used as the button to dismiss a tooltip",
+      "message": "הבנתי"
+   },
+   "Hide": {
+      "message": "אל תציג אף פעם"
+   },
+   "Import": {
+      "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data",
+      "message": "ייבוא"
+   },
+   "LearnMore": {
+      "message": "למידע נוסף"
+   },
+   "Loading": {
+      "message": "טוען..."
+   },
+   "OpenCategoryWikiPage": {
+      "message": "פתיחת דף הוויקי של קטגוריה זו."
+   },
+   "OpenSubmissionMenu": {
+      "message": "פתיחת תפריט הגשה"
+   },
+   "Options": {
+      "message": "אפשרויות"
+   },
+   "Segment": {
+      "message": "מקטע"
+   },
+   "Segments": {
+      "message": "מקטעים"
+   },
+   "SegmentsCap": {
+      "message": "קטעים"
+   },
+   "SponsorTimeEditScrollNewFeature": {
+      "message": "השתמש בגלגלת בזמן שהעכבר מעל הזמן בשלב העריכה על מנת לשנות את הזמן יותר מהר. שילוב של הלחצן Ctrl/Shift יכולים לשנות את מהירות השינוי."
+   },
+   "Submissions": {
+      "message": "הזנות"
+   },
+   "Submitting": {
+      "message": "שולח"
+   },
+   "Unknown": {
+      "message": "אירעה שגיאה בדיווח הזמנים, נסה שוב מאוחר יותר."
+   },
+   "Username": {
+      "message": "שם משתמש"
+   },
+   "actions": {
+      "description": "Header of the unsubmitted segments list",
+      "message": "פעולות"
+   },
+   "add": {
+      "message": "הוסף"
+   },
+   "audioNotification": {
+      "message": "הודעת שמע בעת דילוג"
+   },
+   "autoHideInfoButton": {
+      "message": "הסתרה אוטומטית של כפתורי אינפורמציה"
+   },
+   "autoSkip": {
+      "message": "דילוג אוטומטי"
+   },
+   "betaServerWarning": {
+      "message": "שרת ביטא מופעל!"
+   },
+   "bracketEnd": {
+      "message": "(סוף)"
+   },
+   "bracketNow": {
+      "message": "(עכשיו)"
+   },
+   "cancel": {
+      "message": "ביטול"
+   },
+   "category": {
+      "message": "קטגוריה"
+   },
+   "categoryPillNewFeature": {
+      "message": "חדש! ראה מתי וידאו בשלמותו הוא פרסומת או פרסום עצמי"
+   },
+   "categoryUpdate1": {
+      "message": "קטגוריות נמצאות כאן!"
+   },
+   "category_chapter": {
+      "message": "פרק"
+   },
+   "category_exclusive_access": {
+      "message": "גישה אקסקלוסיבית"
+   },
+   "category_filler_short": {
+      "message": "מסנן"
+   },
+   "category_music_offtopic": {
+      "message": "מוזיקה: קטעים ללא מוזיקה"
+   },
+   "category_music_offtopic_short": {
+      "message": "ללא מוזיקה"
+   },
+   "category_poi_highlight": {
+      "message": "קטע חשוב"
+   },
+   "category_sponsor": {
+      "message": "נותן חסות"
+   },
+   "change": {
+      "message": "שנה"
+   },
+   "channelWhitelisted": {
+      "message": "הערוץ הורשה!"
+   },
+   "chooseACategory": {
+      "message": "בחירת קטגוריה"
+   },
+   "clearThis": {
+      "message": "אתה בטוח שאתה רוצה לנקות את זה?\n\n"
+   },
+   "clearTimes": {
+      "message": "נקה מקטעים"
+   },
+   "clearTimesButton": {
+      "message": "ניקוי זמנים"
+   },
+   "clearUnsubmittedSegments": {
+      "description": "Label for a button in settings",
+      "message": "ניקוי כל המקטעים"
+   },
+   "clearUnsubmittedSegmentsConfirm": {
+      "description": "Confirmation message for the Clear unsubmitted segments button",
+      "message": "האם בוודאות ברצונך למחוק את כל המקטעים שלא הוגשוו?"
+   },
+   "closeIcon": {
+      "message": "סגירת סמליל"
+   },
+   "closePopup": {
+      "message": "סגור חלון"
+   },
+   "confirmMSG": {
+      "message": "כדי לערוך או למחוק קטעים יחידים, לחץ על כפתור המידע או פתח את החלונית של ההרחבה בדפדפן ע\"י לחיצה על הסמליל בצד ימין למעלה (יכול להיות ששמאל למעלה בדפדפנים בעברית)."
+   },
+   "confirmNoticeTitle": {
+      "message": "הגשת מקטע"
+   },
+   "confirmResetToDefault": {
+      "message": "האם בוודאות ברצונך לאפס את כל ההגדרות לערכי ברירת המחדל שלהן? אי אפשר לבטל את זה."
+   },
+   "connectionError": {
+      "message": "התקבלה שגיאת חיבור. קוד השגיאה: "
+   },
+   "considerDonating": {
+      "message": "עזרו לממן את הפיתוח"
+   },
+   "copyPublicID": {
+      "message": "העתקת מזהה משתמש פומבי"
+   },
+   "copySegmentID": {
+      "message": "העתקת מזהה מקטע"
+   },
+   "createdBy": {
+      "message": "נוצר על ידי"
+   },
+   "darkModeOptionsPage": {
+      "message": "מצב כהה בדף האפשרויות"
+   },
+   "dayAbbreviation": {
+      "description": "100d",
+      "message": "י"
+   },
+   "delete": {
+      "message": "מחיקה"
+   },
+   "disable": {
+      "message": "מושבת"
+   },
+   "disableAutoSkip": {
+      "message": "השבתת דילוג אוטומטי"
+   },
+   "disableSkipping": {
+      "message": "דילוג מופעל"
+   },
+   "downvote": {
+      "message": "דירוג שלילי"
+   },
+   "downvoteDescription": {
+      "message": "זמן שגוי/לא נכון"
+   },
+   "edit": {
+      "message": "עריכה"
+   },
+   "enableAutoSkip": {
+      "message": "הפעלת דילוג אוטומטי"
+   },
+   "enableRefetchWhenNotFound": {
+      "message": "השג מקטעים של סרטונים חדשים"
+   },
+   "enableShowCategoryWithoutPermission": {
+      "message": "הצג קטגוריה בתפריט ההגשה גם ללא הרשאת הגשה"
+   },
+   "enableSkipping": {
+      "message": "דילוג מושבת"
+   },
+   "enableTrackDownvotes": {
+      "message": "שמור דירוג קטעים"
+   },
+   "enableViewTracking": {
+      "message": "אפשר מעקב ספירת דילוגים"
+   },
+   "enableViewTrackingInPrivate": {
+      "message": "אפשר מעקב ספירת דילוגים בכרטיסיות גלישה פרטית/גלישה בסתר"
+   },
+   "enterLicenseKey": {
+      "message": "הזנת מפתח רישיון"
+   },
+   "errorCode": {
+      "message": "קוד שגיאה: "
+   },
+   "experiementOptOut": {
+      "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private.",
+      "message": "לא מעוניין להשתתף בניסויים עתידיים"
+   },
+   "exportOptionsCopy": {
+      "message": "עריכה/העתקה"
+   },
+   "exportOptionsDownload": {
+      "message": "שמירה לקובץ"
+   },
+   "exportOptionsUpload": {
+      "message": "טעינה מקובץ"
+   },
+   "exportSegments": {
+      "message": "ייצוא מקטעים"
+   },
+   "exportSegmentsAsURL": {
+      "message": "שיתוף כקישור"
+   },
+   "full": {
+      "description": "Used for the name of the option to label an entire video as sponsor or self promotion.",
+      "message": "וידיאו מלא"
+   },
+   "fullName": {
+      "description": "Name of the extension.",
+      "message": "חוסם פרסומות ליוטיוב - דלג על החסויות"
+   },
+   "guidelines": {
+      "message": "הנחיות"
+   },
+   "help": {
+      "message": "עזרה"
+   },
+   "helpPageCopyOfDatabase2": {
+      "message": "קוד המקור זמין באופן חופשי ובחינם. אז, אפילו אם משהו יקרה לי, המקטעים שהגשתם לא יאבדו."
+   },
+   "helpPageHowSkippingWorks": {
+      "message": "כיצד דילוג עובד"
+   },
+   "helpPageNews": {
+      "message": "חדשות וכיצד זה נעשה"
+   },
+   "helpPageReviewOptions": {
+      "message": "נא לסקור את האפשרויות הבאות"
+   },
+   "helpPageSourceCode": {
+      "message": "היכן אוכל להשיג את קוד המקור?"
+   },
+   "helpPageThanksForInstalling": {
+      "message": "תודה שהתקנת את ספונסרבלוק."
+   },
+   "helpPageTooSlow": {
+      "message": "הקצב איטי מדי"
+   },
+   "hideButtons": {
+      "message": "הסתרת כפתורים על הנגן של יוטיוב"
+   },
+   "hideButtonsDescription": {
+      "message": "זה מחביא את הכפתורים שמופיעים בנגן YouTube להגיש מקטעי דילוג."
+   },
+   "hideDeleteButton": {
+      "message": "הסתרת כפתור מחיקה על הנגן של יוטיוב"
+   },
+   "hideDonationLink": {
+      "message": "הסתרת כפתור תרומה"
+   },
+   "hideForever": {
+      "message": "הסתרה לעד"
+   },
+   "hideInfoButton": {
+      "message": "החבא כפתור מידע בנגן YouTube"
+   },
+   "hideSegment": {
+      "message": "הסתרת מקטע"
+   },
+   "hideThis": {
+      "message": "להסתיר את זה"
+   },
+   "hideUnsubmittedSegments": {
+      "description": "Show/hide button for the unsubmitted segments list",
+      "message": "הסתרת מקטעים"
+   },
+   "hideUpsells": {
+      "message": "הסתרת אפשרויות שאינן זמינות ללא תשלום נוסף"
+   },
+   "hitGoBack": {
+      "message": "לחץ על דלג אחורה כדי להגיע מאיפה שבאת."
+   },
+   "hourAbbreviation": {
+      "description": "100h",
+      "message": "ש'"
+   },
+   "hourLower": {
+      "message": "שעה"
+   },
+   "hoursLower": {
+      "message": "שעות"
+   },
+   "importSegments": {
+      "message": "ייבוא מקטעים"
+   },
+   "incorrectCategory": {
+      "message": "שינוי קטגוריה"
+   },
+   "incorrectVote": {
+      "message": "שגוי"
+   },
+   "inspect": {
+      "message": "סקירה"
+   },
+   "manualPaused": {
+      "message": "טיימר נעצר"
+   },
+   "manualSkip": {
+      "message": "דילוג ידני"
+   },
+   "minLower": {
+      "message": "דקה"
+   },
+   "minsLower": {
+      "message": "דקות"
+   },
+   "moreCategories": {
+      "message": "עוד קטגוריות"
+   },
+   "multipleSegments": {
+      "message": "מספר מקטעים"
+   },
+   "mute": {
+      "message": "השתקה"
+   },
+   "mute_category": {
+      "message": "השתק {0}?"
+   },
+   "muted": {
+      "description": "Example: Sponsor Muted",
+      "message": "{0} מושתק"
+   },
+   "nextChapterKeybind": {
+      "description": "Keybind label",
+      "message": "הפרק הבא"
+   },
+   "noVideoID": {
+      "message": "לא נמצא סרטון יוטיוב.\nאם זה לא נכון, רענן את הכרטיסייה."
+   },
+   "notSet": {
+      "message": "לא הוגדר"
+   },
+   "noticeVisibilityLabel": {
+      "description": "Option label",
+      "message": "דילוג על הופעת הודעה"
+   },
+   "openOptionsPage": {
+      "message": "פתיחת דף האפשרויות"
+   },
+   "openPopup": {
+      "message": "פתח חלונית SponsorBlock"
+   },
+   "optionsTabAdvanced": {
+      "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width).",
+      "message": "שונות"
+   },
+   "optionsTabBackup": {
+      "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width).",
+      "message": "גיבוי/שחזור"
+   },
+   "optionsTabBehavior": {
+      "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width).",
+      "message": "התנהגות"
+   },
+   "optionsTabInterface": {
+      "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width).",
+      "message": "ממשק"
+   },
+   "optionsTabKeyBinds": {
+      "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width).",
+      "message": "קיצורי מקלדת"
+   },
+   "paused": {
+      "message": "מושהה"
+   },
+   "playChapter": {
+      "message": "הפעלת פרק"
+   },
+   "popupHint": {
+      "message": "רמז: אתה יכול להגדיר קיצורים מהמקלדת דרך תפריט אפשרויות כדי להזין זמנים"
+   },
+   "preview": {
+      "message": "תצוגה מקדימה"
+   },
+   "questionButton": {
+      "message": "יש לי שאלה נוספת"
+   },
+   "readTheGuidelines": {
+      "description": "Show the first time they submit or if they are \"high risk\"",
+      "message": "קראו את ההנחיות!!"
+   },
+   "recordTimesDescription": {
+      "message": "הגש"
+   },
+   "redeem": {
+      "message": "מימוש"
+   },
+   "redeemFailed": {
+      "message": "רשיון מפתח שגוי"
+   },
+   "redeemSuccess": {
+      "message": "המימוש הצליח!"
+   },
+   "refreshSegments": {
+      "message": "ריענון קטעים"
+   },
+   "removeFromWhitelist": {
+      "message": "הסר ערוץ מרשימת ערוצים מורשים"
+   },
+   "renderAsChapters": {
+      "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system",
+      "message": "עיבוד קטעים כפרקים"
+   },
+   "reportButtonInfo": {
+      "message": "דווח על הדיווח הזה כלא נכון."
+   },
+   "reportButtonTitle": {
+      "message": "דווח"
+   },
+   "reset": {
+      "message": "איתחול"
+   },
+   "resetToDefault": {
+      "message": "איפוס הגדרות לברירת המחדל"
+   },
+   "reskip": {
+      "message": "דלג קדימה"
+   },
+   "save": {
+      "message": "שמירה"
+   },
+   "savedPeopleFrom": {
+      "message": "הצלת אנשים מ "
+   },
+   "segmentCount": {
+      "description": "Header of the unsubmitted segments list",
+      "message": "ספירת מקטעים"
+   },
+   "segmentsStillLoading": {
+      "message": "קטעים עדיין נטענים..."
+   },
+   "serverDown": {
+      "message": "נראה שהשרת נפל. צור קשר עם המפתח מיד."
+   },
+   "setOptions": {
+      "message": "הגדרת אפשרויות"
+   },
+   "setUsername": {
+      "message": "הגדרת שם משתמש"
+   },
+   "showButtons": {
+      "message": "הצגת כפתורים על הנגן של יוטיוב"
+   },
+   "showCategoryGuidelines": {
+      "message": "הצג עזרה לקטגוריה"
+   },
+   "showDeleteButton": {
+      "message": "הצגת כפתור מחיקה על הנגן של יוטיוב"
+   },
+   "showInfoButton": {
+      "message": "הראה כפתור מידע בנגן YouTube"
+   },
+   "showNotice": {
+      "message": "הראה הודעה שוב"
+   },
+   "showOverlay": {
+      "message": "הראה בשורת חיפוש"
+   },
+   "showOverlay_POI": {
+      "message": "הראה בשורת חיפוש"
+   },
+   "showOverlay_chapter": {
+      "message": "הצגת פרקים"
+   },
+   "showOverlay_full": {
+      "message": "הצגת תוית"
+   },
+   "showSegmentNameInChapterBar": {
+      "message": "הצגת קטע נוכחי לצד זמן וידאו"
+   },
+   "showSkipButton": {
+      "message": "השארת כפתור הדילוג להדגשה על הנגן"
+   },
+   "showSkipNotice": {
+      "message": "הצג הודעה לאחר דילוג על מקטע"
+   },
+   "showUnsubmittedSegments": {
+      "description": "Show/hide button for the unsubmitted segments list",
+      "message": "הצגת מקטעים"
+   },
+   "showUploadButton": {
+      "message": "הצגת כפתור העלאה"
+   },
+   "skip": {
+      "message": "דילוג"
+   },
+   "skipOption": {
+      "description": "Used on the options page to describe the ways to skip the segment (auto skip, manual, etc.)",
+      "message": "אפשרות דילוג"
+   },
+   "skipSegment": {
+      "message": "דילוכ מקטע"
+   },
+   "skip_category": {
+      "message": "דילוג {0}?"
+   },
+   "skip_to_category": {
+      "description": "Used for skipping to things (Skip to Highlight)",
+      "message": "דילוג אל {0}?"
+   },
+   "skipped": {
+      "description": "Example: Sponsor Skipped",
+      "message": "{0} דולג"
+   },
+   "skipped_to_category": {
+      "description": "Used for skipping to things (Skipped to Highlight)",
+      "message": "דילוג אל {0}"
+   },
+   "sortSegments": {
+      "message": "מיון מקטעים"
+   },
+   "sourceCode": {
+      "description": "Used on Firefox Store Page",
+      "message": "קוד מקור"
+   },
+   "sponsor404": {
+      "message": "לא נמצאו מקטעים"
+   },
+   "sponsorCancel": {
+      "message": "ביטול יצירת קטע"
+   },
+   "sponsorEnd": {
+      "message": "מקטע נגמר עכשיו"
+   },
+   "sponsorFound": {
+      "message": "לסרטון הזה יש קטעים במאגר הנתונים!"
+   },
+   "sponsorStart": {
+      "message": "מקטע מתחיל עכשיו"
+   },
+   "submissionEditHint": {
+      "description": "Appears in the popup to inform them that editing has been moved to the video player.",
+      "message": "עריכת מקטע תופיע אחרי שתלחץ הגש"
+   },
+   "submit": {
+      "message": "הגשה"
+   },
+   "submitCheck": {
+      "message": "אתה בטוח שאתה רוצה להזין את זה?"
+   },
+   "success": {
+      "message": "הצלחה!"
+   },
+   "supportedSites": {
+      "message": "אתרים נתמכים: "
+   },
+   "to": {
+      "description": "Used between segments. Example: 1:20 to 1:30",
+      "message": "עד ל"
+   },
+   "trackDownvotesWarning": {
+      "message": "אזהרה: ביטול השמירה ימחק את הדירוגים שנשמרו"
+   },
+   "unbind": {
+      "description": "Unbind keyboard shortcut",
+      "message": "ביטול איגוד"
+   },
+   "unmute": {
+      "message": "ביטול השתקה"
+   },
+   "unskip": {
+      "message": "דלג אחורה"
+   },
+   "unsubmitted": {
+      "message": "לא מוגש"
+   },
+   "unsubmittedSegmentCounts": {
+      "description": "Example: You currently have 12 unsubmitted segments on 5 videos",
+      "message": "כרגע יש לך {0} ב-{1}"
+   },
+   "unsubmittedSegmentCountsZero": {
+      "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments",
+      "message": "אין לך כרגע מקטעים שלא הוגשו"
+   },
+   "unsubmittedSegmentsPlural": {
+      "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos",
+      "message": "מקטעים שלא הוגשו"
+   },
+   "unsubmittedSegmentsSingular": {
+      "description": "Example: You currently have 1 *unsubmitted segment* on 1 video",
+      "message": "מקטע שלא הוגש"
+   },
+   "upvote": {
+      "message": "דירוג חיובי"
+   },
+   "upvoteButtonInfo": {
+      "message": "הצבע לדיווח הזה"
+   },
+   "videoID": {
+      "description": "Header of the unsubmitted segments list",
+      "message": "מזהה סרטון"
+   },
+   "videosPlural": {
+      "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*",
+      "message": "סרטונים"
+   },
+   "videosSingular": {
+      "description": "Example: You currently have 3 unsubmitted segments on 1 *video*",
+      "message": "סרטון"
+   },
+   "viewLeaderboard": {
+      "message": "לוח מובילים"
+   },
+   "voteOnTime": {
+      "message": "הצבע על מקטע"
+   },
+   "voted": {
+      "message": "הצבעת!"
+   },
+   "warningConfirmButton": {
+      "message": "הבנתי את הסיכונים"
+   },
+   "warningError": {
+      "message": "שגיאה בעת ניסיון לאשר אזהרה:"
+   },
+   "website": {
+      "description": "Used on Firefox Store Page",
+      "message": "אתר"
+   },
+   "whatQueryByHashPrefix": {
+      "message": "במקום לבקש מקטעים מהשרת לפי מזהה סרטון, נשלחים ארבעת התווים הראשונים של ה-hash של מזהה הסרטון. שרת זה ישלח בחזרה נתונים לכל הסרטונים עם hash מתאים."
+   },
+   "whatRefetchWhenNotFound": {
+      "message": "אם הסרטון חדש, ואין בו אף מקטע, הוא יחפש מחדש מקטעים כל כמה דקות בהן תצפה/י בסרטון."
+   },
+   "whatShowCategoryWithoutPermission": {
+      "message": "ישנן קטגוריות שדורשות הרשאת הגשה בגלל דרישות מינימום נקודות רפוטציה"
+   },
+   "whatTrackDownvotes": {
+      "message": "כל קטע שידורג על ידך יישאר חבוי, גם לאחר רענון"
+   },
+   "whatViewTracking": {
+      "message": "תכונה זו עוקבת אחר אילו מקטעים דילגת כדי לאפשר למשתמשים לדעת עד כמה ההגשה שלהם עזרה לאחרים והשתמשה כמדד יחד עם הצבעות בעד כדי להבטיח שספאם לא ייכנס למסד הנתונים. התוסף שולח הודעה לשרת בכל פעם שאתה מדלג על קטע. אני מקווה שרוב האנשים לא ישנו את ההגדרה הזו כדי שמספרי התצוגה יהיו מדויקים. :)"
+   },
+   "whitelistChannel": {
+      "message": "הרשה ערוץ"
+   },
+   "youHaveSavedTime": {
+      "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives).",
+      "message": "חסכת לאנשים"
+   },
+   "youHaveSavedTimeEnd": {
+      "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives).",
+      "message": " מחייהם"
+   },
+   "youHaveSkipped": {
+      "message": "דילגת "
+   },
+   "yourWork": {
+      "description": "Used to describe the section that will show you the statistics from your submissions.",
+      "message": "העבודה שלך"
+   },
+   "youtubeKeybindWarning": {
+      "message": "זה הוא קיצור דרך מובנה ביוטיוב. האם אתה בטוח שאתה רוצה להשתמש בו?"
+   }
+}

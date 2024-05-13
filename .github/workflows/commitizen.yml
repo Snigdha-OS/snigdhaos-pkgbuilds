@@ -1,7 +1,10 @@
-name: Snigdha OS Commitizen Check on Push
+name: Commitizen Check on Push and Pull
 
 on:
   push:
+    branches:
+      - master
+  pull_request:
     branches:
       - master
 
@@ -13,11 +16,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: Install Commitizen
         run: npm install -g commitizen

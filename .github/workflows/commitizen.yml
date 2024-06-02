@@ -1,4 +1,4 @@
-name: Commitizen Check on Push and Pull
+name: EZCommits Check on Push and Pull
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   commitizen_check:
-    name: Check Commitizen Commit on Push
+    name: Check EZCommits Commit on Push
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Verify Commitizen Commit
         run: |
-          if git log --format='%s' ${{ github.event.before }}..${{ github.sha }} | grep -v '^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: .+'; then
+          if git log --format='%s' ${{ github.event.before }}..${{ github.sha }} | grep -v '^(feat|fix|docs|style|refactor|perf|test|chore|wip|ci)(\(.+\))?: .+'; then
             echo "Invalid commit message found. Please use Commitizen convention."
             exit 1
           fi

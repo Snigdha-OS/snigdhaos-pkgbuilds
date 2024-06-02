@@ -1,1 +1,1 @@
-# SNIGDHA OS PKGBUILDS
+<h1 align="center"> SNIGDHA OS PKGBUILD </h1>

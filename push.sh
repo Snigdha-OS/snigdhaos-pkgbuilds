@@ -9,6 +9,10 @@
 # to install commitizen. I have written this script only for *Arch Linux.
 
 # Function to check if Commitizen is installed
+pull_from_github(){
+    git pull
+}
+
 check_commitizen() {
     if ! pacman -Qq commitizen-go &> /dev/null; then
         echo "Commitizen is not installed. Please install it using 'yay -S commitizen-go'." >&2
@@ -25,6 +29,7 @@ push_to_github() {
 
 # Main Function
 main() {
+    pull_from_github
     check_commitizen
     push_to_github
 }

@@ -1,0 +1,12 @@
+pkgbase = snigdhaos-vscodium-config
+	pkgdesc = Snigdha OS VS Codium Config.
+	pkgver = 1
+	pkgrel = 1
+	install = snigdhaos-vscodium-config.install
+	arch = any
+	license = MIT
+	depends = vscodium
+	source = snigdhaos-vscodium-config.tar.gz
+	sha512sums = SKIP
+
+pkgname = snigdhaos-vscodium-config

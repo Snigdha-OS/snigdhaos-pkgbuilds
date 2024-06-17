@@ -1,4 +1,4 @@
-name: EZCommits Check on Push and Pull
+name: Check Conventional Commit
 
 on:
   push:
@@ -9,25 +9,30 @@ on:
       - master
 
 jobs:
-  commitizen_check:
-    name: Check EZCommits Commit on Push
+  check-commit-message:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "14"
+    - name: Check Conventional Commit
+      run: |
+        # Define the conventional commit types with emojis
+        TYPES=("🎉 feat" "🐞 fix" "📚 docs" "💅 style" "🔨 refactor" "⚡️ perf" "🧪 test" "🛠️ build" "🤖 ci" "🧹 chore" "⏪️ revert")
 
-      - name: Install Commitizen
-        run: npm install -g commitizen
-
-      - name: Verify Commitizen Commit
-        run: |
-          if git log --format='%s' ${{ github.event.before }}..${{ github.sha }} | grep -v '^(feat|fix|docs|style|refactor|perf|test|chore|wip|ci)(\(.+\))?: .+'; then
-            echo "Invalid commit message found. Please use Commitizen convention."
-            exit 1
+        # Extract the commit type and emoji from the commit message
+        COMMIT_MSG=$(git log --format=%B -n 1)
+        for type in "${TYPES[@]}"; do
+          type_emoji=${type}
+          type=${type_emoji#* }
+          emoji=${type_emoji% *}
+          if [[ $COMMIT_MSG == $emoji* ]]; then
+            echo "Commit message is a conventional commit"
+            exit 0
           fi
+        done
+
+        # If we reach here, the commit message is not a conventional commit
+        echo "Commit message is not a conventional commit"
+        exit 1

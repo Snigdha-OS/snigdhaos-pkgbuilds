@@ -8,7 +8,7 @@ pkgdesc=""
 arch=(
     'any'
 )
-url=""
+url="https://snigdhaos.org/"
 license=(
     'MIT'
 )

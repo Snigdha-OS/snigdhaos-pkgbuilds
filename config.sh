@@ -1,47 +1,53 @@
 #!/bin/bash
 
-# Author        : ESHAN ROY
-# Author URI    : https://eshanized.github.io
+# Author: Eshan Roy <eshan@snigdhaos.org>
+# Author URI : https://eshanized.github.io
 
-# NOTE : Run at your own Risk!
+set -e
 
-# Function to print GitHub credential configuration options
-print_options() {
-  echo "🔒 Configure GitHub Credentials:"
-  echo "1. 📝 Enter GitHub username and password"
-  echo "2. 🔑 Enter GitHub personal access token"
-  echo "3. 📁 Use existing GitHub credentials from ~/.gitconfig"
+usage() {
+    echo "Usage: ${0##*/} [--email <email>] [--username <username>] [-h]"
+    echo "   --email <email>            Set the GitHub user email"
+    echo "   --username <email>         Set the GitHub username"
+    echo "   -h                         Display the help message"
+    exit 1
 }
 
-# Print options and prompt user to select
-print_options
-echo "Enter the number of your chosen option:"
-read -r OPTION
+while [[ "$#" -gt 0 ]]; do
+    case "$1" in 
+        --email)
+            EMAIL="$2"
+            shift 2
+            ;;
+        --username)
+            USERNAME="$2"
+            shift 2
+            ;;
+        -h|--help)
+            usage
+            ;;
+        *)
+            echo "Unknown argument found: $1"
+            usage
+            ;;
+    esac
+done
 
-# Handle user selection
-case $OPTION in
-  1) 
-    echo "Enter your GitHub username:"
-    read -r USERNAME
-    echo "Enter your GitHub password:"
-    read -s PASSWORD
-    git config --global credential.helper store
-    git config --global credential.username $USERNAME
-    git config --global credential.password $PASSWORD
-    ;;
-  2) 
-    echo "Enter your GitHub personal access token:"
-    read -r TOKEN
-    git config --global credential.helper store
-    git config --global credential.username "your-github-username"
-    git config --global credential.password $TOKEN
-    ;;
-  3) 
-    echo "Using existing GitHub credentials from ~/.gitconfig"
-    ;;
-  *) 
-    echo "Invalid option. Exiting."
-    exit 1;;
-esac
+# We will ask prompt for email address if not entered by the user
+if [ -z "$EMAIL" ]; then
+    read -p "Enter your GitHub Email: " EMAIL
+fi
 
-echo "GitHub credentials configured successfully! 👍"
+# We will ask prompt for username if not entered by the user
+if [ -z "$USERNAME" ]; then
+    read -p "Enter your GitHub Username: " USERNAME
+fi
+
+# Setting up github config
+git config --global user.email "$EMAIL"
+git config --global user.name "$USERNAME"
+
+# Get a confirmation message on successful update!
+echo "GitHub Configuration setup successfull!"
+echo "  User Email: $EMAIL"
+echo "  Username: $USERNAME"

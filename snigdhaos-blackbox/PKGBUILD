@@ -1,0 +1,45 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-assistant
+pkgver=1.0
+_pkgver=v1.0.0
+pkgrel=1
+pkgdesc=""
+arch=(
+    'any'
+)
+url=""
+license=(
+    'MIT'
+)
+depends=(
+    'yad'
+    'wget'
+    'qt5-base'
+)
+optdepends=(
+    'pacmac'
+)
+makedepends=(
+    'git'
+    'cmake'
+)
+groups=()
+
+pkgver() {
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cmake -B build -S "$pkgname-$_pkgver" \
+        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Who-dev
+    make -C build
+}
+
+package() {
+    make -C build DESTDIR="$pkgdir" install
+    install -d "$pkgdir"/usr
+    cp -rf "$srcdir"/$pkgname-$_pkgver/usr "$pkgdir"
+}

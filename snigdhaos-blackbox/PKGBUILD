@@ -1,6 +1,7 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-assistant
+org=Snigdha-OS
 pkgver=1.0
 _pkgver=v1.0.0
 pkgrel=1
@@ -25,6 +26,12 @@ makedepends=(
     'cmake'
 )
 groups=()
+source=(
+    "https://github.com/${org}/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz"
+)
+sha256sums=(
+    'SKIP'
+)
 
 pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

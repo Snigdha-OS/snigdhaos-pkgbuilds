@@ -1,13 +1,13 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
-pkgname=snigdhaos-assistant
+pkgname=snigdhaos-blackbox
 org=Snigdha-OS
-pkgver=1.0
-_pkgver=v1.0.0
+pkgver=1
+_pkgver=1.0.7
 pkgrel=1
-pkgdesc=""
+pkgdesc="A tools installer utility for Snigdha OS"
 arch=(
-    'any'
+    'x86_64'
 )
 url="https://snigdhaos.org/"
 license=(
@@ -23,20 +23,20 @@ optdepends=(
 )
 makedepends=(
     'git'
-    'cmake'
+    'cmake'eshan
 )
 groups=()
 source=(
-    "https://github.com/${org}/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz"
+    "https://github.com/${org}/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz"
 )
 sha256sums=(
     'SKIP'
 )
 
-pkgver() {
-    cd "$srcdir/$pkgname" || exit
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+# pkgver() {
+#     cd "${srcdir}/${pkgname}-${_pkgver}" || exit 1
+#     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# }
 
 build() {
     cmake -B build -S "$pkgname-$_pkgver" \

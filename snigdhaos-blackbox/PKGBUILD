@@ -2,8 +2,8 @@
 
 pkgname=snigdhaos-blackbox
 org=Snigdha-OS
-pkgver=1
-_pkgver=1.0.8
+pkgver=r250.57935ce4
+_pkgver=1.0.9
 pkgrel=1
 pkgdesc=""
 arch=(

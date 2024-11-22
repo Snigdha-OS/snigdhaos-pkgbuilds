@@ -3,7 +3,7 @@
 pkgname=snigdhaos-launcher
 org=Snigdha-OS
 pkgdesc="Terminal Executer for Snigdha OS"
-pkgver=1
+pkgver=r248.d48766b8
 pkgrel=1
 arch=('any')
 license=('MIT')

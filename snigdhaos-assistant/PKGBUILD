@@ -1,9 +1,9 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-assistant
-pkgver=2.0
+pkgver=r251.f2df36f4
 _pkgver=a1.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A setup utility for Snigdha OS which helps setting up & installing applications"
 arch=('any')
 url="https://gitlab.com/snigdhaos/snigdhaos-assistant/"
@@ -16,7 +16,7 @@ source=("https://github.com/Snigdha-OS/${pkgname}/archive/refs/tags/${_pkgver}.t
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname" || exit
+	# cd "$srcdir/$pkgname" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

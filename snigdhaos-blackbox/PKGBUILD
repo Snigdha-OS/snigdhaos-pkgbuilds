@@ -3,11 +3,11 @@
 pkgname=snigdhaos-blackbox
 org=Snigdha-OS
 pkgver=1
-_pkgver=1.0.7
+_pkgver=1.0.8
 pkgrel=1
-pkgdesc="A tools installer utility for Snigdha OS"
+pkgdesc=""
 arch=(
-    'x86_64'
+    'any'
 )
 url="https://snigdhaos.org/"
 license=(
@@ -23,7 +23,7 @@ optdepends=(
 )
 makedepends=(
     'git'
-    'cmake'eshan
+    'cmake'
 )
 groups=()
 source=(
@@ -33,10 +33,10 @@ sha256sums=(
     'SKIP'
 )
 
-# pkgver() {
+pkgver() {
 #     cd "${srcdir}/${pkgname}-${_pkgver}" || exit 1
-#     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-# }
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cmake -B build -S "$pkgname-$_pkgver" \

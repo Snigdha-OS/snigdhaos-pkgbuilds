@@ -3,7 +3,7 @@
 # Contributor: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-asian-fonts
-pkgver=3
+pkgver=r252.86e783b4
 pkgrel=1
 arch=("any")
 url="https://wiki.archlinux.org/index.php/Fonts"

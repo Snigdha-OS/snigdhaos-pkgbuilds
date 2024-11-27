@@ -1,5 +1,15 @@
 #!/bin/bash
-snigdhaoslib_add_update_notice(){
+
+snigdhaoslib_add_update_notice() {
+    # Ensure the directory exists
     mkdir -p /var/lib/snigdhaos/tmp
-    echo "$(date +%F)   ${1//   /   }" >>/var/lib/snigdhaos/tmp/update_notices
+    
+    # Get the current date
+    current_date=$(date +%F)
+    
+    # Replace multiple spaces with a single space in the input string
+    message="${1//[[:space:]]+/ }"
+    
+    # Append the message to the file with the current date
+    echo "$current_date   $message" >> /var/lib/snigdhaos/tmp/update_notices
 }

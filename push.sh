@@ -5,8 +5,8 @@
 
 # NOTE : Run at your own risk!
 
-# Define the conventional commit types with emojis
-TYPES=("🎉 feat" "🐞 fix" "📚 docs" "💅 style" "🔨 refactor" "⚡️ perf" "🧪 test" "🛠️ build" "🤖 ci" "🧹 chore" "⏪️ revert")
+# Define the conventional commit types with new emojis
+TYPES=("🚀 feat" "🐛 fix" "📝 docs" "✨ style" "🛠 refactor" "⚡️ perf" "🔬 test" "🔧 build" "🤖 ci" "🧹 chore" "⏪ revert")
 
 # Function to display an error and exit
 error_exit() {

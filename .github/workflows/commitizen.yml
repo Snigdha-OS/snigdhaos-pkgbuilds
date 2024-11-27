@@ -19,7 +19,7 @@ jobs:
     - name: Check Conventional Commit
       run: |
         # Define the conventional commit types with emojis
-        TYPES=("🎉 feat" "🐞 fix" "📚 docs" "💅 style" "🔨 refactor" "⚡️ perf" "🧪 test" "🛠️ build" "🤖 ci" "🧹 chore" "⏪️ revert")
+        TYPES=("🚀 feat" "🐛 fix" "📝 docs" "✨ style" "🛠 refactor" "⚡️ perf" "🔬 test" "🔧 build" "🤖 ci" "🧹 chore" "⏪ revert")
 
         # Extract the commit type and emoji from the commit message
         COMMIT_MSG=$(git log --format=%B -n 1)

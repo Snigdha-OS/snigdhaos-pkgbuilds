@@ -1,0 +1,37 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-kernel-manager-cli
+pkgver=1.0
+pkgrel=1
+pkgdesc="A script to manage Linux kernels on Snigdha OS"
+arch=(
+    'any'
+    )
+url="https://snigdhaos.org"
+license=(
+    'MIT'
+    )
+depends=(
+    'bash' 
+    'sudo' 
+    'pacman'
+    )
+optdepends=(
+    'xterm: for terminal UI if launched from a GUI'
+    )
+source=(
+    "snigdhaos-kernel-manager-cli.sh"
+    "snigdhaos-kernel-manager-cli.desktop"
+    )
+sha256sums=(
+    'SKIP'  
+    'SKIP'
+    ) 
+
+package() {
+    # Install the script
+    install -Dm755 "snigdhaos-kernel-manager-cli.sh" "${pkgdir}/usr/local/bin/snigdhaos-kernel-manager-cli.sh"
+
+    # Install the desktop entry
+    install -Dm644 "snigdhaos-kernel-manager-cli.desktop" "${pkgdir}/usr/share/applications/snigdhaos-kernel-manager-cli.desktop"
+}

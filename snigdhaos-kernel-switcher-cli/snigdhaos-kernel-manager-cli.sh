@@ -8,12 +8,60 @@ BLUE='\033[1;34m'
 CYAN='\033[1;36m'
 RESET='\033[0m'
 
+# Define script version
+SCRIPT_VERSION="1.0.0"
+GITHUB_REPO="https://raw.githubusercontent.com/Snigdha-OS/snigdhaos-pkgbuilds/refs/heads/master/snigdhaos-kernel-switcher-cli/snigdhaos-kernel-manager-cli.sh"
+
 # Function to check if the script is run as root
 check_root() {
     if [[ $EUID -ne 0 ]]; then
         echo -e "${RED}This script must be run as root. Please use sudo or switch to root.${RESET}"
         exit 1
     fi
+}
+
+# Function to check for updates
+check_for_updates() {
+    echo -e "${BLUE}Checking for script updates...${RESET}"
+
+    # Fetch the latest script version from the GitHub repository
+    latest_version=$(curl -s https://raw.githubusercontent.com/Snigdha-OS/snigdhaos-pkgbuilds/refs/heads/master/snigdhaos-kernel-switcher-cli/version.txt)
+
+    if [[ -z "$latest_version" ]]; then
+        echo -e "${RED}Failed to fetch the latest version. Please check your internet connection.${RESET}"
+        return
+    fi
+
+    echo -e "${CYAN}Current version:${RESET} $SCRIPT_VERSION"
+    echo -e "${CYAN}Latest version:${RESET} $latest_version"
+
+    # Compare the versions
+    if [[ "$SCRIPT_VERSION" != "$latest_version" ]]; then
+        echo -e "${YELLOW}An update is available!${RESET}"
+        echo -e "${YELLOW}Do you want to update to the latest version? (y/N):${RESET}"
+        read -r update_choice
+        if [[ "$update_choice" =~ ^[Yy]$ ]]; then
+            update_script
+        else
+            echo -e "${GREEN}Skipping update.${RESET}"
+        fi
+    else
+        echo -e "${GREEN}You are using the latest version of the script.${RESET}"
+    fi
+}
+
+# Function to update the script
+update_script() {
+    echo -e "${CYAN}Updating the script...${RESET}"
+    
+    # Download the latest version of the script
+    curl -s -o "$0" "$GITHUB_REPO" && {
+        echo -e "${GREEN}Script updated successfully! Please re-run the script.${RESET}"
+        exit 0
+    } || {
+        echo -e "${RED}Failed to update the script. Please try again later.${RESET}"
+        exit 1
+    }
 }
 
 # Function to list installed kernels with descriptions
@@ -129,95 +177,47 @@ install_community_kernel() {
                     pacman -S --needed --noconfirm yay && echo -e "${GREEN}yay installed successfully.${RESET}" || echo -e "${RED}Failed to install yay.${RESET}"
                     ;;
                 3)
-                    echo -e "${YELLOW}Returning to the main menu...${RESET}"
                     return
                     ;;
                 *)
-                    echo -e "${RED}Invalid choice. Returning to the main menu...${RESET}"
-                    return
+                    echo -e "${RED}Invalid option.${RESET}"
+                    continue
                     ;;
             esac
         fi
 
-        # Install the chosen kernel from AUR
-        aur_helper=$(command -v paru || command -v yay)
         echo -e "${CYAN}Installing $aur_kernel from AUR...${RESET}"
-        $aur_helper -S --needed "$aur_kernel" "$aur_kernel-headers" && {
-            echo -e "${GREEN}Successfully installed $aur_kernel and $aur_kernel-headers.${RESET}"
-        } || {
-            echo -e "${RED}Failed to install $aur_kernel. Check the kernel name or your AUR helper.${RESET}"
-        }
+        aur_helper=$(command -v paru || command -v yay)
+        $aur_helper -S --needed --noconfirm "$aur_kernel" && echo -e "${GREEN}$aur_kernel installed successfully.${RESET}" || echo -e "${RED}Failed to install $aur_kernel.${RESET}"
         return
     done
 }
 
-# Function to uninstall a kernel
-uninstall_kernel() {
-    while true; do
-        echo -e "${BLUE}List of installed kernels:${RESET}"
-        kernels=$(pacman -Q | grep -E '^linux(-lts|-zen|-hardened)?($|-headers)' | awk '{print $1}')
-
-        if [[ -z "$kernels" ]]; then
-            echo -e "${YELLOW}No kernels installed to uninstall.${RESET}"
-            return
-        fi
-
-        options=($kernels "Go back")
-        select kernel in "${options[@]}"; do
-            if [[ "$kernel" == "Go back" ]]; then
-                echo -e "${YELLOW}Returning to the main menu...${RESET}"
-                return
-            elif [[ -n "$kernel" ]]; then
-                echo -e "${CYAN}You selected $kernel for uninstallation.${RESET}"
-                break
-            else
-                echo -e "${RED}Invalid choice. Please select a valid kernel or choose 'Go back'.${RESET}"
-            fi
-        done
-
-        echo -e "${RED}Warning:${RESET} Removing kernels could make your system unbootable if not handled properly."
-        echo -e "${YELLOW}Are you sure you want to uninstall $kernel? (y/N):${RESET}"
-        read -r choice
-        if [[ "$confirm" =~ ^[Yy]$ ]]; then
-            pacman -Rns --noconfirm "$kernel" "$kernel-headers" && {
-                echo -e "${GREEN}Successfully uninstalled $kernel and $kernel-headers.${RESET}"
-            } || {
-                echo -e "${RED}Failed to uninstall $kernel or its headers. They may not be installed.${RESET}"
-            }
-        else
-            echo -e "${YELLOW}Uninstallation cancelled.${RESET}"
-        fi
-    done
-}
-
-# Main menu loop
+# Main Menu
 main_menu() {
     while true; do
-        echo -e "\n${BLUE}Kernel Manager${RESET}"
+        echo -e "${GREEN}Kernel Manager Script${RESET}"
         echo -e "1) ${CYAN}List installed kernels${RESET}"
         echo -e "2) ${CYAN}Install a kernel from official repositories${RESET}"
         echo -e "3) ${CYAN}Install a community kernel from AUR${RESET}"
         echo -e "4) ${CYAN}Uninstall a kernel${RESET}"
-        echo -e "5) ${YELLOW}Exit${RESET}"
+        echo -e "5) ${CYAN}Check for updates${RESET}"
+        echo -e "6) ${RED}Exit${RESET}"
 
-        echo -e "${YELLOW}Choose an option (1-5):${RESET} "
+        echo -e "${YELLOW}Choose an option (1-6):${RESET}"
         read -r option
         case $option in
             1) list_installed_kernels ;;
             2) install_official_kernel ;;
             3) install_community_kernel ;;
             4) uninstall_kernel ;;
-            5)
-                echo -e "${GREEN}Exiting. Goodbye!${RESET}"
-                break
-                ;;
-            *)
-                echo -e "${RED}Invalid option. Please choose a valid option.${RESET}"
-                ;;
+            5) check_for_updates ;;
+            6) exit 0 ;;
+            *) echo -e "${RED}Invalid option. Please choose a valid option.${RESET}" ;;
         esac
     done
 }
 
-# Check for root privileges and start the menu
+# Run the main menu
 check_root
 main_menu

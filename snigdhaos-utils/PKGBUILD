@@ -14,11 +14,13 @@ source=(
     'snigdhaos-update.sh'
     'snigdhaos-backup.sh'
     'pacman'
+    'README.install'
 )  # Add the pacman file source URL here
 sha256sums=(
     'SKIP' 
     'SKIP' 
     'SKIP' 
+    'SKIP'
     'SKIP'
 )
 
@@ -32,7 +34,12 @@ package() {
     install -Dm755 "$srcdir/snigdhaos-cleanup.sh" "$pkgdir$install_dir/snigdhaos-cleanup.sh"
     # Install the uninstaller script
     install -Dm755 "$srcdir/snigdhaos-uinstall-package.sh" "$pkgdir$install_dir/snigdhaos-uinstall-package.sh"
+    # Install the backup script
+    install -Dm755 "$srcdir/snigdhaos-backup.sh" "$pkgdir$install_dir/snigdhaos-backup.sh"
 
     # Install the pacman file
     install -Dm755 "$srcdir/pacman" "$pkgdir$install_dir/pacman"
+
+    # Install the README.install file
+    install -Dm644 "$srcdir/README.install" "$pkgdir/usr/share/doc/$pkgname/README.install"
 }

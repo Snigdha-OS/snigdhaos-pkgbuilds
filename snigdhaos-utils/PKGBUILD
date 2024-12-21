@@ -1,0 +1,38 @@
+# Maintainer: Eshan Roy <m.eshanized@gmail.com>
+
+pkgname=snigdhaos-utils
+pkgver=1
+pkgrel=1
+pkgdesc="A set of utility scripts for Snigdha OS"
+arch=('any')
+url="https://snigdhaos.org/"
+license=('MIT')
+depends=('bash')
+source=(
+    'snigdhaos-cleanup.sh'
+    'snigdhaos-uninstall-package.sh'
+    'snigdhaos-update.sh'
+    'snigdhaos-backup.sh'
+    'pacman'
+)  # Add the pacman file source URL here
+sha256sums=(
+    'SKIP' 
+    'SKIP' 
+    'SKIP' 
+    'SKIP'
+)
+
+# The package installation directory
+install_dir="/usr/local/bin"
+
+package() {
+    # Install the update script
+    install -Dm755 "$srcdir/snigdhaos-update.sh" "$pkgdir$install_dir/snigdhaos-update.sh"
+    # Install the cleanup script
+    install -Dm755 "$srcdir/snigdhaos-cleanup.sh" "$pkgdir$install_dir/snigdhaos-cleanup.sh"
+    # Install the uninstaller script
+    install -Dm755 "$srcdir/snigdhaos-uinstall-package.sh" "$pkgdir$install_dir/snigdhaos-uinstall-package.sh"
+
+    # Install the pacman file
+    install -Dm755 "$srcdir/pacman" "$pkgdir$install_dir/pacman"
+}

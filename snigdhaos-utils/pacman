@@ -1,0 +1,10 @@
+#!/bin/bash
+# Custom pacman wrapper to run snigdhaos-update.sh
+
+# Check if the user wants to update the system
+if [[ "$@" == "-Syyu" ]]; then
+    sudo /usr/local/bin/snigdhaos-update.sh  # Run your custom update script
+else
+    # Call the real pacman for other operations
+    /usr/bin/pacman "$@"
+fi

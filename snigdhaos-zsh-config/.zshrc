@@ -8,6 +8,17 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Snigdha OS Specified
+export PAGER='most'
+export HISTCONTROL=ignoreboth:erasedups
+export EDITOR='nano'
+export VISUAL='nano'
+
+# Z Shell Specified
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
 zstyle ':vcs_info:git:*' formats '%b '
 
 setopt PROMPT_SUBST

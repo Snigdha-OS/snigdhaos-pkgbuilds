@@ -37,6 +37,7 @@ show_help() {
     echo -e "  ${GREEN}-v, --verbose${RESET}       enable verbose output."
     echo -e "  ${GREEN}-d, --dry-run${RESET}       show what would be done without making changes."
     echo -e "  ${GREEN}-b, --backup${RESET}        backup important configuration files before updating."
+    echo -e "  ${GREEN}-u, --upgrade${RESET}       upgrade the system."
     echo -e ""
     # provide usage examples for the user
     echo -e "${YELLOW}example usage:${RESET}"
@@ -44,12 +45,14 @@ show_help() {
     echo -e "  $0 -v                      # run in verbose mode."
     echo -e "  $0 -d                      # dry run (preview only)."
     echo -e "  $0 -b                      # backup configuration files before updating."
+    echo -e "  $0 -u                      # upgrade the system."
 }
 
 # parse command line options for verbose, dry-run, and backup flags
 VERBOSE=false  # default to false, verbose output is off
 DRY_RUN=false  # default to false, dry-run mode is off
 BACKUP=false   # default to false, backup is not done by default
+UPGRADE=false  # default to false, upgrade is off
 
 while [[ "$1" != "" ]]; do  # loop through each command-line argument
     case $1 in
@@ -57,6 +60,7 @@ while [[ "$1" != "" ]]; do  # loop through each command-line argument
         -v|--verbose) VERBOSE=true ;;          # if -v or --verbose is passed, enable verbose mode
         -d|--dry-run) DRY_RUN=true ;;          # if -d or --dry-run is passed, enable dry-run mode
         -b|--backup) BACKUP=true ;;            # if -b or --backup is passed, enable backup option
+        -u|--upgrade) UPGRADE=true ;;          # if -u or --upgrade is passed, enable upgrade option
         *) echo -e "${RED}❌ invalid option: $1${RESET}"; show_help; exit 1 ;;  # handle invalid options
     esac
     shift  # move to the next argument
@@ -110,23 +114,26 @@ backup_config_files() {
 # log the start of the script
 echo -e "$(date) - starting update process" >> $LOG_FILE  # log the start with timestamp
 
-# update the package database and upgrade packages
-echo -e "${BLUE}🔄 updating the package database...${RESET}"
-if $VERBOSE; then  # if verbose mode is enabled
-    sudo pacman -Sy --verbose || error_handler $LINENO  # run with verbose output
-else
-    sudo pacman -Sy || error_handler $LINENO  # run normally
-fi
-
-echo -e "${BLUE}📦 upgrading installed packages...${RESET}"
-if $DRY_RUN; then  # if dry-run mode is enabled
-    echo -e "${YELLOW}⚠️ dry run mode: the following commands would be executed but won't make changes.${RESET}"
-    echo -e "  sudo pacman -Su --noconfirm"  # show the dry-run commands
-else
+# if the user chooses to upgrade the system
+if $UPGRADE; then
+    # update the package database and upgrade packages
+    echo -e "${BLUE}🔄 updating the package database...${RESET}"
     if $VERBOSE; then  # if verbose mode is enabled
-        sudo pacman -Su --noconfirm --verbose || error_handler $LINENO  # upgrade with verbose
+        sudo pacman -Sy --verbose || error_handler $LINENO  # run with verbose output
     else
-        sudo pacman -Su --noconfirm || error_handler $LINENO  # upgrade normally
+        sudo pacman -Sy || error_handler $LINENO  # run normally
+    fi
+
+    echo -e "${BLUE}📦 upgrading installed packages...${RESET}"
+    if $DRY_RUN; then  # if dry-run mode is enabled
+        echo -e "${YELLOW}⚠️ dry run mode: the following commands would be executed but won't make changes.${RESET}"
+        echo -e "  sudo pacman -Su --noconfirm"  # show the dry-run commands
+    else
+        if $VERBOSE; then  # if verbose mode is enabled
+            sudo pacman -Su --noconfirm --verbose || error_handler $LINENO  # upgrade with verbose
+        else
+            sudo pacman -Su --noconfirm || error_handler $LINENO  # upgrade normally
+        fi
     fi
 fi
 

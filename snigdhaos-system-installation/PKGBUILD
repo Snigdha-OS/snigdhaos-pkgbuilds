@@ -1,4 +1,5 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Contributor: [Contributor Name] <[Contributor Email]>
 
 pkgname=snigdhaos-system-installation
 org=Snigdha-OS
@@ -22,8 +23,8 @@ sha256sums=('SKIP')
 install="${pkgname}.install"
 
 pkgver() {
-	# cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

@@ -1,5 +1,5 @@
-
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Contributor: RiO <d3v1l0n@outlook.in>
 
 pkgname=snigdhaos-welcome
 _pkgname=snigdhaos-welcome
@@ -24,19 +24,29 @@ provides=("${pkgname}")
 conflicts=('snigdhaos-welcome-dev')
 install=$pkgname.install
 options=(!strip !emptydirs)
-source=(${_pkgname}::"git+${url}")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    # Retrieve the version based on Git commits
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
-	install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
-	mkdir -p "${pkgdir}${_destname1}"
-	cp -r "${srcdir}/${_pkgname}/${_destname1}/"* "${pkgdir}${_destname1}"
-	mkdir -p "${pkgdir}${_destname2}"
-	cp -r "${srcdir}/${_pkgname}/${_destname2}/"* "${pkgdir}${_destname2}"
+    # Create directories for the license and app data
+    install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+    install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+    
+    # Install configuration files to the user's default skeleton directory
+    mkdir -p "${pkgdir}${_destname1}"
+    cp -r "${srcdir}/${_pkgname}/${_destname1}/"* "${pkgdir}${_destname1}"
+    
+    # Install the main application files to /usr
+    mkdir -p "${pkgdir}${_destname2}"
+    cp -r "${srcdir}/${_pkgname}/${_destname2}/"* "${pkgdir}${_destname2}"
+
+    # Optionally clean up any unnecessary files (e.g., .git, build files, etc.)
+    # This ensures the final package only contains the necessary files
+    find "$pkgdir" -type f -name "*.git*" -exec rm -f {} \;
 }

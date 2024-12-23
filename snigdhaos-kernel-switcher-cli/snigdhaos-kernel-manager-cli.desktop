@@ -1,8 +1,18 @@
 [Desktop Entry]
 Name=Snigdha OS Kernel Manager CLI
 Comment=Manage Linux kernels on Snigdha OS
-Exec=sudo /usr/local/bin/snigdhaos-kernel-manager-cli.sh
-Icon=package-x-generic
+Exec=sh -c "/usr/local/bin/snigdhaos-kernel-manager-cli.sh"
+Icon=utilities-terminal
 Terminal=true
 Type=Application
-Categories=System;Settings;
+Categories=System;Settings;Utility;Development;
+StartupNotify=true
+Actions=CheckForUpdates;ListKernels;
+
+[Desktop Action CheckForUpdates]
+Name=Check for Kernel Manager CLI Updates
+Exec=sh -c "/usr/local/bin/snigdhaos-kernel-manager-cli.sh check-for-updates"
+
+[Desktop Action ListKernels]
+Name=List Installed Kernels
+Exec=sh -c "/usr/local/bin/snigdhaos-kernel-manager-cli.sh list-installed-kernels"

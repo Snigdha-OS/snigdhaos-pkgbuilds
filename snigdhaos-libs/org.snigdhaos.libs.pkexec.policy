@@ -7,9 +7,9 @@
   <vendor_url>https://snigdhaos.org</vendor_url>
 
   <action id="org.snigdhaos.libs.install-package.pkexec.policy.run">
-    <description>Install software with pacman</description>
-    <message>Authentication is required to install software.</message>
-    <icon_name>snigdha-os</icon_name>
+    <description>Install software using the pacman package manager</description>
+    <message>Authentication is required to install software with pacman.</message>
+    <icon_name>snigdhaos-pacman</icon_name>
     <defaults>
       <allow_any>no</allow_any>
       <allow_inactive>no</allow_inactive>
@@ -18,9 +18,11 @@
     <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/snigdhaos/install-package</annotate>
     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
   </action>
+
   <action id="org.garuda.libs.pkexec-gui.pkexec.policy.run">
-    <description>Run GUI program as root</description>
-    <message>Authentication is required to run a GUI program as root.</message>
+    <description>Run a graphical program as root</description>
+    <message>Authentication is required to run a graphical program with elevated privileges.</message>
+    <icon_name>gnome-session</icon_name>
     <defaults>
       <allow_any>no</allow_any>
       <allow_inactive>no</allow_inactive>

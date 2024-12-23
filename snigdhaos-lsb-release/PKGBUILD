@@ -1,7 +1,7 @@
 # Maintainer : RiO <d3v1l0n@outlook.in>
 
 pkgname=snigdhaos-lsb-release
-pkgver=1
+pkgver=2.0.r55.a25a4fc
 _commit=a25a4fcd73c79bd5af0dd8d948a7c96dcbfd2d07
 pkgrel=1
 pkgdesc='LSB version query program for Snigdha OS'

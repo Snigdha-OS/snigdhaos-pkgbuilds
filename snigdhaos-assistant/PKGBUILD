@@ -1,14 +1,15 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Contributor: d3v1l0n <d3v1l0n@outlook.in>
 
 pkgname=snigdhaos-assistant
 pkgver=r251.f2df36f4
-_pkgver=a1.0.0
+_pkgver=$(curl -s https://api.github.com/repos/Snigdha-OS/snigdhaos-assistant/releases/latest | jq -r .tag_name)
 pkgrel=1
 pkgdesc="A setup utility for Snigdha OS which helps setting up & installing applications"
 arch=('any')
 url="https://gitlab.com/snigdhaos/snigdhaos-assistant/"
 license=('MIT')
-depends=('yad' 'wget' 'qt5-base')
+depends=('yad' 'wget' 'qt5-base' 'curl' 'jq')
 optdepends=('pamac')
 makedepends=('git' 'cmake')
 groups=()
@@ -16,8 +17,8 @@ source=("https://github.com/Snigdha-OS/${pkgname}/archive/refs/tags/${_pkgver}.t
 sha256sums=('SKIP')
 
 pkgver() {
-	# cd "$srcdir/$pkgname" || exit
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Print package version as 'rX.XXXX'
+    printf "%s" "${_pkgver#v}"
 }
 
 build() {

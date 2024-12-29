@@ -1,6 +1,14 @@
 #!/bin/bash
 
-if grep -qE 'subvol=@/.snapshots/[0-9]+/snapshot' /proc/cmdline; then
-    exit 0
+if [[ -f /proc/cmdline ]]; then
+    if grep -qE 'subvol=@/.snapshots/[0-9]+/snapshot' /proc/cmdline; then
+        echo "Booting from a Btrfs snapshot."
+        exit 0
+    else
+        echo "Not booting from a Btrfs snapshot."
+        exit 1
+    fi
+else
+    echo "/proc/cmdline not found."
+    exit 2
 fi
-exit 1

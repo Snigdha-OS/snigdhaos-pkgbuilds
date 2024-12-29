@@ -1,4 +1,5 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Contributor: d3v1l0n <d3v1l0n@outlook.in>
 
 pkgname=snigdhaos-libs
 org=Snigdha-OS
@@ -10,7 +11,7 @@ license=('MIT')
 depends=(
     'libnotify' 
     'expect'
-    )
+)
 source=(
     "exec-termianl" 
     "snigdhaos.shlib" 
@@ -18,14 +19,15 @@ source=(
     "install-package" 
     "org.snigdhaos.libs.pkexec.policy" 
     "pkexec-gui"
-    )
+)
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
-    )
+)
+
 pkgver(){
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

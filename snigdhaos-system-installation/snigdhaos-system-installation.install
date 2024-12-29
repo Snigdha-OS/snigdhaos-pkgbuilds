@@ -1,14 +1,71 @@
+# Function to display a warning message
+warn() {
+    tput setaf 3
+    echo "[WARNING] $1"
+    tput sgr0
+}
 
+# Function to display an informational message
+info() {
+    tput setaf 2
+    echo "$1"
+    tput sgr0
+}
+
+# Function to display a success message
+success() {
+    tput setaf 6
+    echo "$1"
+    tput sgr0
+}
+
+# Function to display an error message
+error() {
+    tput setaf 1
+    echo "[ERROR] $1"
+    tput sgr0
+}
+
+# Function to handle enabling/disabling a service
+manage_service() {
+    local service=$1
+    local action=$2
+
+    if systemctl $action $service; then
+        success "Service $service ${action}d successfully."
+    else
+        error "Failed to ${action} service $service."
+    fi
+}
+
+# Function to handle starting/stopping a service
+manage_service_start() {
+    local service=$1
+    local action=$2
+
+    if systemctl $action $service; then
+        success "Service $service ${action}ed successfully."
+    else
+        error "Failed to ${action} service $service."
+    fi
+}
+
+# Function to handle post-install tasks
 post_install() {
-	systemctl enable snigdhaos-graphical-target.service
-	systemctl start snigdhaos-graphical-target.service
+    info "Enabling and starting snigdhaos-graphical-target.service..."
+    manage_service "snigdhaos-graphical-target.service" "enable"
+    manage_service_start "snigdhaos-graphical-target.service" "start"
 }
 
+# Function to handle post-upgrade tasks
 post_upgrade() {
-	systemctl enable snigdhaos-graphical-target.service
-	systemctl start snigdhaos-graphical-target.service
+    info "Enabling and starting snigdhaos-graphical-target.service..."
+    manage_service "snigdhaos-graphical-target.service" "enable"
+    manage_service_start "snigdhaos-graphical-target.service" "start"
 }
 
+# Function to handle pre-remove tasks
 pre_remove() {
-	systemctl disable snigdhaos-graphical-target.service
+    info "Disabling snigdhaos-graphical-target.service..."
+    manage_service "snigdhaos-graphical-target.service" "disable"
 }

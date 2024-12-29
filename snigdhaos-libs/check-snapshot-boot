@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# Check if /proc/cmdline exists
 if [[ -f /proc/cmdline ]]; then
+    # Check if booting from a Btrfs snapshot
     if grep -qE 'subvol=@/.snapshots/[0-9]+/snapshot' /proc/cmdline; then
         echo "Booting from a Btrfs snapshot."
         exit 0
@@ -9,6 +11,7 @@ if [[ -f /proc/cmdline ]]; then
         exit 1
     fi
 else
-    echo "/proc/cmdline not found."
+    # Handle the case where /proc/cmdline is missing
+    echo "Error: /proc/cmdline not found."
     exit 2
 fi

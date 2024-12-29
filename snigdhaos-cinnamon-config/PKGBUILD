@@ -1,0 +1,26 @@
+# Maintainer: Eshan Roy <m.eshanized@gmail.com>
+
+pkgname=snigdhaos-cinnamon-config
+pkgdesc=
+pkgver="1"
+pkgrel=1
+arch=('any')
+url=""
+license=('MIT')
+makedepends=('coreutils')
+source=("")
+sha256sums=('SKIP')
+install=$pkgname.install
+provides=('snigdhaos-desktop')
+conflicts=('snigdhaos-desktop')
+
+package() {
+  depends=('kvantum-qt5'
+    'noto-fonts'
+    'snigdhaos-default-config')
+
+  install -d "$pkgdir"/etc
+  cp -rf "$srcdir"/$pkgname-$_commit/etc "$pkgdir"
+  install -d "$pkgdir"/usr
+  cp -rf "$srcdir"/$pkgname-$_commit/usr "$pkgdir"
+}

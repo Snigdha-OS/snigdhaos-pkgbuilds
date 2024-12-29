@@ -2,30 +2,32 @@
 
 # Ensure pkexec is available
 if ! command -v pkexec &>/dev/null; then
-    echo "Error: pkexec is not installed. Please install PolicyKit."
+    echo "Error: 'pkexec' is not installed. Please install PolicyKit to proceed."
     exit 1
 fi
 
-# Check if running as root
+# Check if the script is being run as root
 if [[ $EUID -ne 0 ]]; then
-    # Attempt to execute the script as root via pkexec
+    # Attempt to elevate privileges and rerun the script with pkexec
     exec pkexec /usr/lib/snigdhaos/pkexec-gui "$@"
     exit 1
 fi
 
-# Shellcheck disable: Read environment variables from parent process
+# Export environment variables from the parent process
+# ShellCheck Directive: Allow environment variables to be read and exported from /proc
 # shellcheck disable=SC2163
-# Read the necessary environment variables from the parent process
 while IFS= read -rd '' var; do
     export "$var"
-done < <(grep --null-data -ae "^\($XDG_CURRENT_DESKTOP\|WAYLAND_DISPLAY\|XDG_RUNTIME_DIR\|XDG_SESSION_TYPE\|XCURSOR_SIZE\|LC_*\|LANG\|LANGUAGE\|QT_WAYLAND_FORCE_DPI\|QT_QPA_PLATFORMTHEME\|QT_STYLE-OVERRIDE\|\)=.*\$" /proc/$PPID/environ)
+done < <(
+    grep --null-data -ae "^\($XDG_CURRENT_DESKTOP\|WAYLAND_DISPLAY\|XDG_RUNTIME_DIR\|XDG_SESSION_TYPE\|XCURSOR_SIZE\|LC_.*\|LANG\|LANGUAGE\|QT_WAYLAND_FORCE_DPI\|QT_QPA_PLATFORMTHEME\|QT_STYLE_OVERRIDE\)=" /proc/$PPID/environ
+)
 
 # Adjust WAYLAND_DISPLAY if running on Wayland
 if [[ -n "$WAYLAND_DISPLAY" ]]; then
     export WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
 fi
 
-# Set the root user's XDG_RUNTIME_DIR
+# Set the root user's runtime directory
 export XDG_RUNTIME_DIR="/run/user/0"
 
 # Execute the provided command with root privileges

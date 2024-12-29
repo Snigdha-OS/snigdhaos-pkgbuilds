@@ -3,12 +3,14 @@
 "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
 <policyconfig>
 
+  <!-- Vendor Information -->
   <vendor>Snigdha OS</vendor>
   <vendor_url>https://snigdhaos.org</vendor_url>
 
-  <action id="org.snigdhaos.libs.install-package.pkexec.policy.run">
+  <!-- Policy for Installing Packages -->
+  <action id="org.snigdhaos.package.install">
     <description>Install software using the pacman package manager</description>
-    <message>Authentication is required to install software with pacman.</message>
+    <message>Administrator authentication is required to install software using pacman.</message>
     <icon_name>snigdhaos-pacman</icon_name>
     <defaults>
       <allow_any>no</allow_any>
@@ -19,10 +21,11 @@
     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
   </action>
 
-  <action id="org.garuda.libs.pkexec-gui.pkexec.policy.run">
-    <description>Run a graphical program as root</description>
-    <message>Authentication is required to run a graphical program with elevated privileges.</message>
-    <icon_name>gnome-session</icon_name>
+  <!-- Policy for Running Graphical Programs with Elevated Privileges -->
+  <action id="org.snigdhaos.graphical.run-as-root">
+    <description>Run graphical applications with administrative privileges</description>
+    <message>Administrator authentication is required to run this graphical application with elevated privileges.</message>
+    <icon_name>snigdhaos-root-gui</icon_name>
     <defaults>
       <allow_any>no</allow_any>
       <allow_inactive>no</allow_inactive>

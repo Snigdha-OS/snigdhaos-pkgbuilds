@@ -5,4 +5,4 @@
 ######################################################
 
 # Worldwide
-Server = https://snmirror.github.io/$repo/$arch
+Server = https://snigdha-os.github.io/$repo/$arch

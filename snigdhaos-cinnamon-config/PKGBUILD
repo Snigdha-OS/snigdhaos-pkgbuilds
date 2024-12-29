@@ -1,26 +1,29 @@
 # Maintainer: Eshan Roy <m.eshanized@gmail.com>
 
 pkgname=snigdhaos-cinnamon-config
-pkgdesc=
-pkgver="1"
+pkgver=1
 pkgrel=1
 arch=('any')
-url=""
+pkgdesc="SnigdhaOS Cinnamon Desktop configuration files"
+url="https://snigdha-os.github.io"
 license=('MIT')
+depends=('kvantum-qt5' 'noto-fonts' 'snigdhaos-default-config')
 makedepends=('coreutils')
-source=("")
-sha256sums=('SKIP')
+source=("https://github.com/snigdha-os/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('SKIP') 
 install=$pkgname.install
 provides=('snigdhaos-desktop')
 conflicts=('snigdhaos-desktop')
 
-package() {
-  depends=('kvantum-qt5'
-    'noto-fonts'
-    'snigdhaos-default-config')
+pkgver() {
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
-  install -d "$pkgdir"/etc
-  cp -rf "$srcdir"/$pkgname-$_commit/etc "$pkgdir"
-  install -d "$pkgdir"/usr
-  cp -rf "$srcdir"/$pkgname-$_commit/usr "$pkgdir"
+package() {
+  # Create required directories
+  install -d "$pkgdir/etc" "$pkgdir/usr"
+  
+  # Copy configuration files from the extracted tarball
+  cp -rf "$srcdir/${pkgname}-${pkgver}/etc" "$pkgdir/etc"
+  cp -rf "$srcdir/${pkgname}-${pkgver}/usr" "$pkgdir/usr"
 }

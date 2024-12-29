@@ -1,7 +1,11 @@
 post_install() {
-    echo -e "\n** The files have been installed in /etc/calamares **\n"
+    echo -e "\n** The configuration files for Calamares have been installed in /etc/calamares. **"
+    echo -e "** Please review and adjust these files as needed for your system configuration. **"
+    echo -e "** Documentation: https://calamares.io/docs/ **\n"
 }
 
 post_upgrade() {
+    echo -e "\n** The package has been upgraded successfully. **"
+    echo -e "** Re-applying the configuration to /etc/calamares if necessary. **"
     post_install
 }

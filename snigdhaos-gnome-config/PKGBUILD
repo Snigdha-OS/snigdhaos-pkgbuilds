@@ -12,8 +12,8 @@ source=("https://github.com/Snigdha-OS/$pkgname/archive/refs/tags/{$_pkgver}.tar
 sha256sums=('SKIP')
 pkgdesc='Snigdha OS Gnome Config'
 install=$pkgname.install
-provides=('snigdhaos-desktop-config')
-conflicts=('snigdhaos-desktop-config')
+provides=('snigdhaos-desktop')
+conflicts=('snigdhaos-desktop')
 
 pkgver(){
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

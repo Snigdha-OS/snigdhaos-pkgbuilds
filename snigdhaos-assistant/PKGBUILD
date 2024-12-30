@@ -3,35 +3,39 @@
 
 pkgname=snigdhaos-assistant
 pkgver=r251.f2df36f4
-_pkgver=$(curl -s https://api.github.com/repos/Snigdha-OS/snigdhaos-assistant/releases/latest | jq -r .tag_name)
+_pkgver=$(curl -fsSL https://api.github.com/repos/Snigdha-OS/snigdhaos-assistant/releases/latest | jq -r .tag_name)
 pkgrel=1
 pkgdesc="A setup utility for Snigdha OS which helps setting up & installing applications"
 arch=('any')
 url="https://gitlab.com/snigdhaos/snigdhaos-assistant/"
 license=('MIT')
 depends=('yad' 'wget' 'qt5-base' 'curl' 'jq')
-optdepends=('pamac')
+optdepends=('pamac: For managing packages')
 makedepends=('git' 'cmake')
 groups=()
 source=("https://github.com/Snigdha-OS/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz")
 sha256sums=('SKIP')
+install=${pkgname}.install
 
 pkgver() {
-    # Print package version as 'rX.XXXX'
+    # Extract the version from the tag name, removing the 'v' prefix if present.
     printf "%s" "${_pkgver#v}"
 }
 
 build() {
+    # Ensure the build directory exists
     cmake -B build -S "$pkgname-$_pkgver" \
-        -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
     make -C build
 }
 
 package() {
+    # Install built files to the package directory
     make -C build DESTDIR="$pkgdir" install
 
-    install -d "$pkgdir"/usr
-    cp -rf "$srcdir"/$pkgname-$_pkgver/usr "$pkgdir"
+    # Ensure proper directory structure
+    install -d "$pkgdir/usr"
+    cp -rf "$srcdir/$pkgname-$_pkgver/usr" "$pkgdir"
 }

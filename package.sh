@@ -9,7 +9,7 @@
 #-----------------------------------------------------------
 
 # Mirror URL
-mirror_url="https://github.com/SnMirror/snigdhaos-core/tree/master/x86_64"
+mirror_url="https://github.com/Snigdha-OS/snigdhaos-core/tree/master/x86_64"
 
 # Output file
 output_file="packages.txt"

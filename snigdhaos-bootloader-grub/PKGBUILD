@@ -7,19 +7,15 @@ _licensedir="/usr/share/snigdhaos/licenses/"
 pkgver=1
 pkgrel=1
 pkgdesc="Snigdha OS Config File"
-arch=(
-    'any'
-)
+arch=('any')
 url="https://snigdhaos.org/"
 license=('MIT')
 makedepends=()
-depends=()
-conflicts=(
-    'snigdhaos-bootloader-grub-dev'
-)
+depends=('grub') # Example dependency
+conflicts=('snigdhaos-bootloader-grub-dev')
 backup=()
 provides=(
-    "${pkgname}"
+    "$pkgname"
     "${pkgname}-dev"
 )
 options=(
@@ -27,19 +23,18 @@ options=(
     !emptydirs
 )
 source=("$pkgname.tar.gz")
-sha256sums=(
-    'SKIP'
-)
+sha256sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD 2>/dev/null || echo 0)" \
+           "$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 }
 
-package(){
+package() {
     install -dm755 "$pkgdir/$_licensedir/$pkgname"
-    install -m644 "$srcdir/$pkgname/LICENSE" "$pkdir/$_licensedir/$pkgname"
+    install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$pkgname"
 
     install -dm755 "$pkgdir/$_destination1"
-    cp -r ${srcdir}/${pkgname}/${_destination1}/* ${pkgdir}/${_destination1}
+    cp -r "$srcdir/$pkgname/hooks/"* "$pkgdir/$_destination1/"
 }

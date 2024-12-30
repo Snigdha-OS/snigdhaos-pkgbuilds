@@ -1,7 +1,14 @@
-post_install(){
-    echo -e "\n All the files has been installed on /etc/pacman.d/hooks/ \n"
+post_install() {
+    echo -e "\nAll the files have been successfully installed in /etc/pacman.d/hooks/\n"
+    echo -e "To verify the installed hooks, you can use the following command:\n"
+    echo -e "  ls -l /etc/pacman.d/hooks/\n"
+    echo -e "Make sure your pacman hooks are functioning as expected for optimal performance.\n"
 }
 
-post_upgrade(){
+post_upgrade() {
+    echo -e "\nUpgrade successful.\n"
     post_install
+    echo -e "If you have customized configurations, ensure they are up-to-date. You can use:\n"
+    echo -e "  pacdiff\n"
+    echo -e "To review and merge configuration changes.\n"
 }

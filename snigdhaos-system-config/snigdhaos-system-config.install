@@ -30,11 +30,7 @@ error() {
 
 # Function to check if a package is installed
 package_installed() {
-    if pacman -Qi "$1" &> /dev/null; then
-        return 0
-    else
-        return 1
-    fi
+    pacman -Qi "$1" &> /dev/null
 }
 
 # Function to handle package installation confirmation
@@ -56,19 +52,25 @@ post_install() {
     warn "If you are using systemd-boot then install the following package..."
     info "sudo pacman -S snigdhaos-bootloader-systemd"
 
-    bootloader=$(bootctl status | grep "Product" | awk '{print $2}')
+    local bootloader=$(bootctl status | grep -Eo "(GRUB|systemd-boot)")
 
-    if [ "$bootloader" = "systemd-boot" ]; then
-        info "systemd-bootloader found!"
-        info "Install the following package for your safety!"
-        info "sudo pacman -S snigdhaos-bootloader-systemd"
-        info "It has all the pacman-hooks which are essentials."
-    elif [ "$bootloader" = "GRUB" ]; then
-        info "GRUB bootloader found!"
-        info "Install the following package for your safety!"
-        info "sudo pacman -S snigdhaos-bootloader-grub"
-        info "It has all the pacman-hooks which are essentials."
-    fi
+    case "$bootloader" in
+        "systemd-boot")
+            info "systemd-bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-systemd"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        "GRUB")
+            info "GRUB bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-grub"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        *)
+            warn "Unknown bootloader detected!"
+            ;;
+    esac
 
     confirm_package_installed "snigdhaos-bootloader-grub"
     confirm_package_installed "snigdhaos-bootloader-systemd"
@@ -82,8 +84,8 @@ post_install() {
         systemctl disable virtual-machine-check.service
     fi
 
-    sh /usr/local/bin/snigdhaos-lsb-release
-    sh /usr/local/bin/snigdhaos-os-release
+    bash /usr/local/bin/snigdhaos-lsb-release
+    bash /usr/local/bin/snigdhaos-os-release
 }
 
 # Function to handle post-upgrade tasks
@@ -93,19 +95,25 @@ post_upgrade() {
     warn "If you are using systemd-boot then install the following package..."
     info "sudo pacman -S snigdhaos-bootloader-systemd"
 
-    bootloader=$(bootctl status | grep "Product" | awk '{print $2}')
+    local bootloader=$(bootctl status | grep -Eo "(GRUB|systemd-boot)")
 
-    if [ "$bootloader" = "systemd-boot" ]; then
-        info "systemd-bootloader found!"
-        info "Install the following package for your safety!"
-        info "sudo pacman -S snigdhaos-bootloader-systemd"
-        info "It has all the pacman-hooks which are essentials."
-    elif [ "$bootloader" = "GRUB" ]; then
-        info "GRUB bootloader found!"
-        info "Install the following package for your safety!"
-        info "sudo pacman -S snigdhaos-bootloader-grub"
-        info "It has all the pacman-hooks which are essentials."
-    fi
+    case "$bootloader" in
+        "systemd-boot")
+            info "systemd-bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-systemd"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        "GRUB")
+            info "GRUB bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-grub"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        *)
+            warn "Unknown bootloader detected!"
+            ;;
+    esac
 
     confirm_package_installed "snigdhaos-bootloader-grub"
     confirm_package_installed "snigdhaos-bootloader-systemd"
@@ -119,8 +127,8 @@ post_upgrade() {
         systemctl disable virtual-machine-check.service
     fi
 
-    sh /usr/local/bin/snigdhaos-lsb-release
-    sh /usr/local/bin/snigdhaos-os-release
+    bash /usr/local/bin/snigdhaos-lsb-release
+    bash /usr/local/bin/snigdhaos-os-release
 }
 
 # Function to handle pre-remove tasks

@@ -4,9 +4,7 @@
 pkgname=snigdhaos-system-installation
 org=Snigdha-OS
 _pkgname=snigdhaos-system-installation
-_destname1="/etc/"
-_destname2="/usr/local/bin/"
-_destname3="/usr/lib/systemd/system/"
+_destdirs=("/etc/" "/usr/local/bin/" "/usr/lib/systemd/system/")
 _licensedir="/usr/share/snigdhaos/licenses/"
 pkgver=1
 pkgrel=1
@@ -23,20 +21,20 @@ sha256sums=('SKIP')
 install="${pkgname}.install"
 
 pkgver() {
-    # cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || exit
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  install -dm755 "$pkgdir/$_licensedir/$_pkgname"
-  install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+    # License installation
+    install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+    install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
 
-  install -dm755 "$pkgdir$_destname1"
-  cp -r "$srcdir/$pkgname/$_destname1/"* "$pkgdir/$_destname1"
-
-  install -dm755 "$pkgdir$_destname2"
-  cp -r "$srcdir/$pkgname/$_destname2/"* "$pkgdir/$_destname2"
-
-  install -dm755 "$pkgdir$_destname3"
-  cp -r "$srcdir/$pkgname/$_destname3/"* "$pkgdir/$_destname3"
+    # Install directories and files
+    for dir in "${_destdirs[@]}"; do
+        if [ -d "$srcdir/$pkgname/$dir" ]; then
+            install -dm755 "$pkgdir/$dir"
+            find "$srcdir/$pkgname/$dir" -type f -exec install -Dm644 {} "$pkgdir/$dir" \;
+        fi
+    done
 }

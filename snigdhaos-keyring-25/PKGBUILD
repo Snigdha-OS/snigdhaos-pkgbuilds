@@ -1,0 +1,17 @@
+pkgname=snigdhaos-keyring
+pkgver=r332.68a02606
+pkgrel=1
+pkgdesc="Keyring for Snigdha OS."
+arch=('any')
+license=("MIT")
+source=("$pkgname.tar.gz")
+sha512sums=('SKIP')
+
+pkgver(){
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  mkdir -p "${pkgdir}/usr/share/pacman/keyrings"
+  cp -rf "${srcdir}"/usr/share/pacman/keyrings/* "${pkgdir}/usr/share/pacman/keyrings/"
+}

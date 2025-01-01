@@ -1,7 +1,7 @@
 # Maintainer: Eshan Roy <eshan@snigdhaos.org>
 
 pkgname=snigdhaos-mirrorlist
-pkgver=r125.c1334295
+pkgver=r331.bdb761c5
 pkgrel=1
 pkgdesc="Snigdha OS mirrorlist."
 arch=('any')

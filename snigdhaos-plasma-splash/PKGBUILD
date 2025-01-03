@@ -1,0 +1,25 @@
+# Maintainer: Eshan Roy <m.eshanized@gmail.com>
+
+pkgname="snigdhaos-plasma-splash"
+_theme="SnigdhaOS"
+pkgver=1.0  # Initial value, updated dynamically
+pkgrel=1
+pkgdesc="A Moe themed arch splash screen for Snigdha OS KDE Plasma."
+arch=("any")
+url="https://github.com/Snigdha-OS/$pkgname"
+license=("MIT")
+depends=("plasma-desktop")
+source=("$pkgname::git+https://github.com/Snigdha-OS/${pkgname}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
+
+pkgver() {
+    # Fetch the latest tag from GitHub
+    cd "$srcdir/$pkgname"
+    git describe --tags $(git rev-list --tags --max-count=1) | tr -d 'v'
+}
+
+package() {
+    cd "$srcdir/$pkgname"
+    mkdir -p "${pkgdir}/usr/share/plasma/look-and-feel/"
+    cp -dr --no-preserve=ownership "$_theme" "${pkgdir}/usr/share/plasma/look-and-feel/"
+}

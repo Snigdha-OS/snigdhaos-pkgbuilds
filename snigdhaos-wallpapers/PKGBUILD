@@ -1,7 +1,7 @@
 # Maintainer: Eshan Roy <m.eshanized@gmail.com>
 
 pkgname=snigdhaos-wallpapers
-pkgver=1
+pkgver=r3.1363b76
 pkgrel=1
 pkgdesc="Snigdha OS Wallpapers 2025"
 arch=('any')

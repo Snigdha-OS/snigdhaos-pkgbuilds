@@ -6,7 +6,7 @@
 # Define the conventional commit types with new emojis
 TYPES=("🚀 feat" "🐛 fix" "📝 docs" "✨ style" "🛠 refactor" "⚡️ perf" "🔬 test" "🔧 build" "🤖 ci" "🧹 chore" "⏪ revert")
 
-# Function to display an error and exit and
+# Function to display an error and exit
 error_exit() {
     echo -e "\033[1;31m[ERROR]\033[0m $1"
     exit 1
@@ -21,6 +21,11 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 # Pull the latest changes from the remote repository
 echo "Pulling latest changes from remote branch '$branch'..."
 git pull origin "$branch" || error_exit "Failed to pull changes from the remote repository. Please resolve any conflicts manually."
+
+# Check if there are changes to commit
+if git diff --quiet && git diff --cached --quiet; then
+    error_exit "No changes detected to commit."
+fi
 
 # Prompt the user to select a commit type
 echo "Select a commit type:"
@@ -65,7 +70,7 @@ git add .
 if git commit -m "$commit_msg"; then
     echo -e "\033[1;32mCommit successful!\033[0m"
 else
-    error_exit "Commit failed."
+    error_exit "Commit failed. Please check your changes and try again."
 fi
 
 # Push the changes to the remote repository

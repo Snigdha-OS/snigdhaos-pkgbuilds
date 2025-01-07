@@ -4,7 +4,7 @@
 pkgname=snigdhaos-libs
 org=Snigdha-OS
 pkgdesc="Libs for Snigdha OS"
-pkgver=1
+pkgver=r345.8a191fb0
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -13,14 +13,15 @@ depends=(
     'expect'
 )
 source=(
-    "exec-termianl" 
+    "launch-terminal" 
     "snigdhaos.shlib" 
-    "check-snpashot-boot" 
+    "check-snapshot-boot" 
     "install-package" 
     "org.snigdhaos.libs.pkexec.policy" 
     "pkexec-gui"
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -33,9 +34,9 @@ pkgver(){
 }
 
 package() {
-    install -Dm755 exec-terminal "$pkgdir"/usr/lib/snigdhaos/exec-terminal
+    install -Dm755 launch-terminal "$pkgdir"/usr/lib/snigdhaos/launch-terminal
     install -Dm755 install-package "$pkgdir"/usr/lib/snigdhaos/install-package
-    install -Dm755 check-snpashot-boot "$pkgdir"/usr/lib/snigdhaos/check-snpashot-boot
+    install -Dm755 check-snapshot-boot "$pkgdir"/usr/lib/snigdhaos/check-snapshot-boot
     install -Dm755 pkexec-gui "$pkgdir"/usr/lib/snigdhaos/pkexec-gui
     install -Dm644 snigdhaos.shlib "$pkgdir"/usr/lib/snigdhaos/snigdhaos.shlib
     install -d "$pkgdir"/var/lib/snigdhaos/tmp

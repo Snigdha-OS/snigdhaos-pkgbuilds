@@ -2,7 +2,7 @@
 # Contributor: d3v1l0n <d3v1l0n@outlook.in>
 
 pkgname=snigdhaos-assistant
-pkgver=r251.f2df36f4
+pkgver=2.0
 _pkgver=$(curl -fsSL https://api.github.com/repos/Snigdha-OS/snigdhaos-assistant/releases/latest | jq -r .tag_name)
 pkgrel=1
 pkgdesc="A setup utility for Snigdha OS which helps setting up & installing applications"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     # Ensure the build directory exists
-    cmake -B build -S "$pkgname-$_pkgver" \
+    cmake -B build -S "$pkgname-$pkgver" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
@@ -37,5 +37,5 @@ package() {
 
     # Ensure proper directory structure
     install -d "$pkgdir/usr"
-    cp -rf "$srcdir/$pkgname-$_pkgver/usr" "$pkgdir"
+    cp -rf "$srcdir/$pkgname-$pkgver/usr" "$pkgdir"
 }

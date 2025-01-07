@@ -10,7 +10,7 @@ makedepends=('coreutils')
 source=("#")
 sha256sums=('SKIP')
 pkgdesc='Hyprland Config for Snigdha OS'
-depends=('beautyline'
+depends=('#'
   '#' # Base
   'gtk-engine-murrine'
   '#' # Theme

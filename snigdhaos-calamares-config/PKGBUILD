@@ -15,18 +15,30 @@ depends=()
 conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=(${_pkgname}::"git+$url")
+source=("git+$url")
 sha256sums=('SKIP')
 install="${_pkgname}.install"
 
+# Set package version based on git commit count and short hash
 pkgver() {
-	cd "$srcdir/$pkgname" || exit
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname" || return 1  # Avoid `exit`, use return for errors
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+# Package creation
 package() {
-	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
-	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
-	mkdir -p "${pkgdir}${_destname}"
-	cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}"
+  # Create the necessary directories
+  mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+  mkdir -p "${pkgdir}${_destname}"
+
+  # Move LICENSE file with correct permissions
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+
+  # Copy the configuration files, preserve permissions and ownership
+  cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}/"
+
+  # Optionally, ensure the files are owned by root (as the package will typically be installed by root)
+  chown -R root:root "${pkgdir}${_destname}"
+  chmod -R 755 "${pkgdir}${_destname}"
 }
+

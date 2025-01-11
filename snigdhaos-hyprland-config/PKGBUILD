@@ -1,32 +1,31 @@
 # Maintainer: Eshan Roy <m.eshanized@gmail.com>
 
 pkgname=snigdhaos-hyprland-config
-pkgver=1
+pkgver=1.0.0
 pkgrel=1
 arch=('any')
-url="#"
+url="https://github.com/Snigdha-OS/snigdhaos-hyprland-config"
 license=('MIT')
 makedepends=('coreutils')
-source=("#")
+source=("")
 sha256sums=('SKIP')
-pkgdesc='Hyprland Config for Snigdha OS'
-depends=('#'
-  '#' # Base
+pkgdesc='Custom Hyprland configuration for Snigdha OS, optimized for performance and aesthetics.'
+depends=(
   'gtk-engine-murrine'
-  '#' # Theme
   'waybar'
   'hyprland'
   'kvantum-qt5'
   'kvantum'
   'snigdhaos-asiant-fonts'
-  'qt5ct')
+  'qt5ct'
+)
 conflicts=()
 provides=()
 install=$pkgname.install
 
 package() {
   install -d "$pkgdir"/etc
-  cp -rf "$srcdir"/$pkgname-$_commit/etc "$pkgdir"
+  cp -rf "$srcdir"/$pkgname/etc "$pkgdir/etc"
   install -d "$pkgdir"/usr
-  cp -rf "$srcdir"/$pkgname-$_commit/usr "$pkgdir"
+  cp -rf "$srcdir"/$pkgname/usr "$pkgdir/usr"
 }

@@ -1,0 +1,16 @@
+pkgname=lynxfetch
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="Super fast, versatile, and customizable command-line fetcher."
+arch=("any")
+makedepends=("cargo")
+
+source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=("c352adf09c7d7507a03b72143dfde428045dfa2fc075bdb9e09c393effd8d4b772465bd27f5e75f8c5181308a90ba2366b32d6e27c395bdc36237050cd34d9e5")
+
+package() {
+    cd "${pkgname}-${pkgver}"
+
+    cargo build -r -F linux
+    install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+}

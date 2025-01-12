@@ -1,5 +1,13 @@
 # Snigdha OS PKGBUILDs 🚀
 
+<p align="center">  
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT"></a>  
+  <a href="https://github.com/Snigdha-OS/snigdhaos-pkgbuilds/releases"><img src="https://img.shields.io/github/v/release/Snigdha-OS/snigdhaos-pkgbuilds?style=for-the-badge" alt="Latest Release"></a>  
+  <a href="https://github.com/Snigdha-OS/snigdhaos-pkgbuilds/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge" alt="Contributions Welcome"></a>  
+  <a href="https://github.com/Snigdha-OS/snigdhaos-pkgbuilds/actions"><img src="https://img.shields.io/github/actions/workflow/status/Snigdha-OS/snigdhaos-pkgbuilds/cz.yml?branch=master&style=for-the-badge" alt="Build Status"></a>  
+  <a href="https://snigdha-os.github.io"><img src="https://img.shields.io/website?url=https%3A%2F%2Fsnigdha-os.github.io&style=for-the-badge" alt="Website Status"></a>  
+</p>  
+
 Welcome to the Snigdha OS PKGBUILDs repository! This repository contains the PKGBUILD scripts used to create and package software for Snigdha OS, a lightweight and customizable Arch-based Linux distribution.
 
 ## Table of Contents 📑

@@ -133,52 +133,6 @@ We welcome contributions to Snigdha OS PKGBUILDs! If you want to contribute, ple
 
 If you have any ideas, suggestions, or issues, feel free to open an issue or start a discussion! 🗣️
 
-## Developers 
-
-<!-- Developer Section -->
-<h2 align="center" style="font-family: 'Arial', sans-serif; color: #6495ed; margin-top: 40px;">💻 Meet the Developers 💻</h2>
-
-<div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
-
-  <!-- Developer 1 -->
-  <div style="text-align: center; width: 200px;">
-    <img src="https://avatars.githubusercontent.com/u/148610067?v=4" alt="Developer 1 Image" width="120" height="120" style="border-radius: 50%; margin-bottom: 10px;">
-    <h4 style="margin: 0;">
-      <a href="https://github.com/eshanized" style="color: #6495ed; text-decoration: none;">@eshanized</a>
-    </h4>
-    <p style="font-size: 14px; color: #555;">Location: Bangladesh 🇧🇩</p>
-  </div>
-
-  <!-- Developer 2 -->
-  <div style="text-align: center; width: 200px;">
-    <img src="https://avatars.githubusercontent.com/u/167227445?v=4" alt="Developer 2 Image" width="120" height="120" style="border-radius: 50%; margin-bottom: 10px;">
-    <h4 style="margin: 0;">
-      <a href="https://github.com/d3v1l0n" style="color: #6495ed; text-decoration: none;">@RiO</a>
-    </h4>
-    <p style="font-size: 14px; color: #555;">Location: Bangladesh 🇧🇩</p>
-  </div>
-
-  <!-- Developer 4 -->
-  <div style="text-align: center; width: 200px;">
-    <img src="https://avatars.githubusercontent.com/u/157954129?v=4" alt="Developer 4 Image" width="120" height="120" style="border-radius: 50%; margin-bottom: 10px;">
-    <h4 style="margin: 0;">
-      <a href="https://github.com/iconized" style="color: #6495ed; text-decoration: none;">@iconized</a>
-    </h4>
-    <p style="font-size: 14px; color: #555;">Location: India 🇮🇳</p>
-  </div>
-
-  <!-- Developer 5 -->
-  <div style="text-align: center; width: 200px;">
-    <img src="https://avatars.githubusercontent.com/u/96723939?v=4" alt="Developer 5 Image" width="120" height="120" style="border-radius: 50%; margin-bottom: 10px;">
-    <h4 style="margin: 0;">
-      <a href="https://github.com/XlebyllleK" style="color: #6495ed; text-decoration: none;">@XlebyllleK</a>
-    </h4>
-    <p style="font-size: 14px; color: #555;">Location: Ukraine 🇺🇦</p>
-  </div>
-
-</div>
-
-
 ## License 📜
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.

@@ -3,7 +3,7 @@
 
 _color=dracula
 pkgname=snigdhaos-tela-icon-theme-$_color-git
-pkgver=2024.09.04.r23.g4af4e7c4
+pkgver=2024.09.04.r24.gba635453
 pkgrel=1
 pkgdesc="A flat colorful design icon theme (only $_color variant)"
 arch=('any')

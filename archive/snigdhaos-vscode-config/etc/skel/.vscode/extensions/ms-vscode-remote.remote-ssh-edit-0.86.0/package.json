@@ -1,0 +1,100 @@
+{
+	"name": "remote-ssh-edit",
+	"displayName": "Remote - SSH: Editing Configuration Files",
+	"description": "%description%",
+	"version": "0.86.0",
+	"preview": true,
+	"publisher": "ms-vscode-remote",
+	"icon": "resources/remote-ssh.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-remote-release.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Microsoft/vscode-remote-release/issues"
+	},
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"extensionKind": [
+		"ui"
+	],
+	"activationEvents": [],
+	"categories": [
+		"Programming Languages",
+		"Snippets"
+	],
+	"keywords": [
+		"remote development",
+		"remote",
+		"ssh"
+	],
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"main": "./out/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "ssh_config",
+				"aliases": [
+					"SSH Config",
+					"ssh_config"
+				],
+				"filenamePatterns": [
+					"**/.ssh/config",
+					"/etc/ssh/ssh_config"
+				],
+				"filenames": [
+					"ssh.config"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "ssh_config",
+				"scopeName": "source.config.ssh",
+				"path": "./syntaxes/ssh_config.tmLanguage.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"compile": "webpack --mode none",
+		"watch": "webpack --mode none --watch",
+		"package": "vsce package --yarn"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.7",
+		"@types/vscode": "^1.65.0",
+		"@types/webpack": "^5.28.0",
+		"copy-webpack-plugin": "^9.0.1",
+		"ts-loader": "^9.2.3",
+		"typescript": "^4.0.5",
+		"vsce": "^2.6.4",
+		"vscode-nls-dev": "^4.0.0",
+		"vscode-test": "^1.6.1",
+		"webpack": "^5.44.0",
+		"webpack-cli": "^4.7.2"
+	},
+	"dependencies": {
+		"jsonc-parser": "^3.2.0",
+		"vscode-nls": "^5.0.1"
+	},
+	"__metadata": {
+		"id": "bfeaf631-bcff-4908-93ed-fda4ef9a0c5c",
+		"publisherId": "ac9410a2-0d75-40ec-90de-b59bb705801d",
+		"publisherDisplayName": "Microsoft",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1713756686248,
+		"pinned": false,
+		"source": "gallery"
+	}
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD polkit Policy Configuration 1.0//EN" "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
+<policyconfig>
+    <!-- Vendor Information -->
+    <vendor>Snigdha OS</vendor>
+    <vendor_url>https://snigdhaos.org</vendor_url>
+
+    <!-- Policy for Installing Packages -->
+    <action id="org.snigdhaos.package.install">
+        <description>Install software using the pacman package manager</description>
+        <message>Administrator authentication is required to install software using pacman.</message>
+        <icon_name>snigdhaos-pacman</icon_name>
+
+        <defaults>
+            <allow_any>no</allow_any>
+            <allow_inactive>no</allow_inactive>
+            <allow_active>auth_admin</allow_active>
+        </defaults>
+
+        <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/snigdhaos/install-package</annotate>
+        <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+    </action>
+
+    <!-- Policy for Running Graphical Programs with Elevated Privileges -->
+    <action id="org.snigdhaos.graphical.run-as-root">
+        <description>Run graphical applications with administrative privileges</description>
+        <message>Administrator authentication is required to run this graphical application with elevated privileges.</message>
+        <icon_name>snigdhaos-root-gui</icon_name>
+
+        <defaults>
+            <allow_any>no</allow_any>
+            <allow_inactive>no</allow_inactive>
+            <allow_active>auth_admin</allow_active>
+        </defaults>
+
+        <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/snigdhaos/pkexec-gui</annotate>
+        <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+    </action>
+</policyconfig>

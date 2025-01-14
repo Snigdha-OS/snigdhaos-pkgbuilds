@@ -1,0 +1,67 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="lohit-fonts"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Indic TrueType fonts from Fedora Project"
+arch=("any")
+license=("GPL-3.0-or-later")
+depends=("fontconfig")
+url="https://releases.pagure.org/lohit/"
+
+source=("${url}/lohit-assamese-ttf-2.91.5.tar.gz"
+    "${url}/lohit-bengali-ttf-2.91.5.tar.gz"
+    "${url}/lohit-devanagari-ttf-2.95.4.tar.gz"
+    "${url}/lohit-gujarati-ttf-2.92.4.tar.gz"
+    "${url}/lohit-gurmukhi-ttf-2.91.2.tar.gz"
+    "${url}/lohit-hindi-ttf-2.4.3.tar.gz"
+    "${url}/lohit-kannada-ttf-2.5.4.tar.gz"
+    "${url}/lohit-kashmiri-ttf-2.4.3.tar.gz"
+    "${url}/lohit-konkani-ttf-2.4.3.tar.gz"
+    "${url}/lohit-maithili-ttf-2.4.3.tar.gz"
+    "${url}/lohit-malayalam-ttf-2.92.2.tar.gz"
+    "${url}/lohit-marathi-ttf-2.94.2.tar.gz"
+    "${url}/lohit-nepali-ttf-2.94.2.tar.gz"
+    "${url}/lohit-oriya-ttf-2.5.4.1.tar.gz"
+    "${url}/lohit-odia-ttf-2.91.2.tar.gz"
+    "${url}/lohit-punjabi-ttf-2.5.3.tar.gz"
+    "${url}/lohit-sindhi-ttf-2.4.3.tar.gz"
+    "${url}/lohit-tamil-ttf-2.91.3.tar.gz"
+    "${url}/lohit-tamil-classical-ttf-2.5.4.tar.gz"
+    "${url}/lohit-telugu-ttf-2.5.5.tar.gz")
+
+sha512sums=("beee1d5bff35bf53dd8386c373e8655572a393eee5e0c7e413764caff63536fbedc02880413e83880155af629a7c2240cdbd6c13e608c90ba1bf6e6d91be4e81"
+    "f3c2b2856604e82e2d745ec0a9262f7385039543639526634586189d6cd0240473c3195276923151ecb4e793bc56d3bc1824bf7c60fc533fd8c2ade2bfe85430"
+    "b637c11e0c7c48d9cf67c265ee0df79029c20cd523748ee00b406b62c11f80842a1d58eb2e5a5f03c2457de08a6e73d4eb4997e3b524994eb32e76b63ed69b73"
+    "e84af3d32d2947886e8d2bf3757ee2bda1003bca683a965cb9e484b549f656061d6fd01110600f468d4f4f00ed895caf3a85806ef93b2caa26b5cd4c1433c8d6"
+    "714ed72d201e7f8956d24e9d9f1526207beb91a604e88c02a8b0d145f19d9bfe1408ca290d1665ebef462ab3854365dcd9850529803277738e2585addf3e280a"
+    "6742011370f42929ca65e7a9a39f4b07c33b09339110a1b1e1784d0d57b4f6d56af1bebc34d548ad3076c8880adb25994367677c48ce3bc86fec74cdc8861663"
+    "a9468454ecb90bfbd43b326aca0a675762dd6cecaf5d9b130812d8ca3b19cbd3552df9ac92cb035585112387fb2e422e6e6a87510d0436d73537a8ccc4c5fc99"
+    "833496d5810caff036943ccd32b6b7ceb116b6631da1ff5e6e3293bcce50fd105608770f82eaca25b822eb1001edd24bbb1a9f9480be501f579d7563ec81618f"
+    "f3a1bbbf78d3e7841151bfe52be652833672b99602f9c93e109b2cbac9ad6f2cc983813b12e01c8d21bf780a07268a6a6e0e4c714eb12f86f83503bab3150ebc"
+    "9b69e29feed8d0b06ecaea35c944f0c3cd4502e47896966c8d6a3599b87f9cec1173f48104084df7f573319f00a73ff4d78a7f3019806740625712fc2b2a1df6"
+    "82a5ca34da6a91c4a6b32a0b170d88c2b5a0e92896c5acbd3acf9526d76a16bc4b6078f0fcb5f96793b4552ad990a8b7ba6224c28d963f7765da2654652ebab8"
+    "2fa8d431db5fb93a17df16c02b89039cb56f78208a1a077f6d42631dd69b2f58ea19aceb88fe32753e38f53fc1a277c48d0aab1191875acba2bb1cce200f2a04"
+    "9ad9b5c393a1e622738d2a17dd3821b2c18840bfe2da023bfc818b5244a79037bde00b0659c9601b2fc6eedc33d765d55d7831f535cdc03bbcb4f54cc9ab38a4"
+    "d49cfffd3df997e63c535f4240f8d20f269d993d17eabb1afa5f68a3c3a23fea903f4c4900551e5a90857656aa69c15271283be19fb4f83536d2e4b6a05b1b6a"
+    "170350be1005e0eacf51a3c89fcdc897e6e36fe543dd5ca8d876c22c14df8b3fd8c58608969a0b3cd4b1c74445082f2ab5476ea72888fed5871d3987430ff2a8"
+    "589255cc24ba2feef307758bac17e78c42205e2a0302639aefe7c20a00acc539c3e02b802bc91a76a57326653d3f8f372e129a31ba8ca65e3a2a5f4d1d7f3d92"
+    "5145e5e36e5349e6d6099b5af73034f8cb4a2dbffa490e4297991f7d8181dbc1d425ab0f5759a1b47b0479bf684cef602760371d2807049dc0f9fa4344d0efcd"
+    "935ca653e033820e9189544444fc36663ef712226bf96d69a05f13161c5ad874ee6baa12d06695110c113d7185f60a8af287989e4630f9f6b4e66ab079b6f8ef"
+    "f934d5e9d2aa5a76e9a709c0df5d33eb378095d8d3d45bd53d5cdd5345348722467aed22e8e0c0f0be5c72cf1bec2e70533df8932ac903f20da7aa770e7a3b62"
+    "9a02da13a5ef511f11623d245cede6a0414d8d62f0038fef4b4fc395a2ae2dfc927e28f3a445c61b416bc03cda21d53699a93657dd14b21fe4a7ada0250693e0")
+
+package() {
+    install -d "${pkgdir}/usr/share/fonts/TTF"
+    install -d "${pkgdir}/etc/fonts/conf.avail"
+    install -d "${pkgdir}/etc/fonts/conf.d"
+
+    install -m644 "${srcdir}"/*/*.conf "${pkgdir}/etc/fonts/conf.avail/"
+    install -m644 "${srcdir}"/*/*.ttf  "${pkgdir}/usr/share/fonts/TTF/"
+
+    cd "${pkgdir}/etc/fonts/conf.d"
+
+    for config in ../conf.avail/*.conf; do
+        ln -s "${config}" .
+    done
+}

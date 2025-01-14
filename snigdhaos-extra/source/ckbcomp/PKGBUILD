@@ -1,0 +1,32 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="ckbcomp"
+pkgver=1.233
+pkgrel=1
+pkgdesc="Compile a XKB keyboard description to a keymap suitable for loadkeys or kbdcontrol"
+arch=("any")
+url="http://anonscm.debian.org/cgit/d-i/console-setup.git/"
+license=('GPL-3.0-or-later')
+depends=('perl')
+packager="CELESTIFYX"
+source=("http://ftp.debian.org/debian/pool/main/c/console-setup/console-setup_1.233.tar.xz")
+sha512sums=('a52551fe6cbc53e8e572a2c4a9f95e1b4048c65a504cc4612762964a1488363e02244056313ecb184d48d0e74af6b88858c569bbf0b0a092dd2feb26ed4cd6a1')
+
+package() {
+    if [[ -d "${srcdir}/console-setup" ]]; then
+        cd "console-setup"
+    elif [[ -d "${srcdir}/console-setup-${pkgver}" ]]; then 
+        cd "console-setup-${pkgver}"
+    elif [[ -d "${srcdir}/work" ]]; then
+        cd "work"
+    else
+        echo "Source directory not found.";
+	    exit 1
+    fi
+
+    if [[ "${?}" != 0 ]]; then
+        cd "console-setup-${pkgver}"
+    fi
+
+    install -Dm755 "Keyboard/ckbcomp" -t "${pkgdir}/usr/bin/"
+}

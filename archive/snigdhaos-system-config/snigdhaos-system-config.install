@@ -1,0 +1,139 @@
+#!/bin/bash
+
+# Function to display a warning message
+warn() {
+    tput setaf 3
+    echo "[WARNING] $1"
+    tput sgr0
+}
+
+# Function to display an informational message
+info() {
+    tput setaf 2
+    echo "$1"
+    tput sgr0
+}
+
+# Function to display a success message
+success() {
+    tput setaf 6
+    echo "$1"
+    tput sgr0
+}
+
+# Function to display an error message
+error() {
+    tput setaf 1
+    echo "[ERROR] $1"
+    tput sgr0
+}
+
+# Function to check if a package is installed
+package_installed() {
+    pacman -Qi "$1" &> /dev/null
+}
+
+# Function to handle package installation confirmation
+confirm_package_installed() {
+    local package=$1
+    if package_installed "$package"; then
+        success "$package found!"
+        info "Bootloader is safe!"
+    else
+        error "$package not found!"
+        warn "Install the package for your safety!"
+    fi
+}
+
+# Function to handle post-install tasks
+post_install() {
+    warn "If you are on Grub, please install the following package..."
+    info "sudo pacman -S snigdhaos-bootloader-grub"
+    warn "If you are using systemd-boot then install the following package..."
+    info "sudo pacman -S snigdhaos-bootloader-systemd"
+
+    local bootloader=$(bootctl status | grep -Eo "(GRUB|systemd-boot)")
+
+    case "$bootloader" in
+        "systemd-boot")
+            info "systemd-bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-systemd"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        "GRUB")
+            info "GRUB bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-grub"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        *)
+            warn "Unknown bootloader detected!"
+            ;;
+    esac
+
+    confirm_package_installed "snigdhaos-bootloader-grub"
+    confirm_package_installed "snigdhaos-bootloader-systemd"
+
+    if ! package_installed "snigdhaos-bootloader-systemd" && ! package_installed "snigdhaos-bootloader-grub"; then
+        error "snigdhaos-bootloader-systemd or snigdhaos-bootloader-grub not found!"
+        warn "Install the package for systemd or grub!"
+    fi
+
+    if systemctl --all --type service | grep -q "virtual-machine-check"; then
+        systemctl disable virtual-machine-check.service
+    fi
+
+    bash /usr/local/bin/snigdhaos-lsb-release
+    bash /usr/local/bin/snigdhaos-os-release
+}
+
+# Function to handle post-upgrade tasks
+post_upgrade() {
+    warn "If you are on Grub, please install the following package..."
+    info "sudo pacman -S snigdhaos-bootloader-grub"
+    warn "If you are using systemd-boot then install the following package..."
+    info "sudo pacman -S snigdhaos-bootloader-systemd"
+
+    local bootloader=$(bootctl status | grep -Eo "(GRUB|systemd-boot)")
+
+    case "$bootloader" in
+        "systemd-boot")
+            info "systemd-bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-systemd"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        "GRUB")
+            info "GRUB bootloader found!"
+            info "Install the following package for your safety!"
+            info "sudo pacman -S snigdhaos-bootloader-grub"
+            info "It has all the pacman-hooks which are essential."
+            ;;
+        *)
+            warn "Unknown bootloader detected!"
+            ;;
+    esac
+
+    confirm_package_installed "snigdhaos-bootloader-grub"
+    confirm_package_installed "snigdhaos-bootloader-systemd"
+
+    if ! package_installed "snigdhaos-bootloader-systemd" && ! package_installed "snigdhaos-bootloader-grub"; then
+        error "snigdhaos-bootloader-systemd or snigdhaos-bootloader-grub not found!"
+        warn "Install the package for systemd or grub!"
+    fi
+
+    if systemctl --all --type service | grep -q "virtual-machine-check"; then
+        systemctl disable virtual-machine-check.service
+    fi
+
+    bash /usr/local/bin/snigdhaos-lsb-release
+    bash /usr/local/bin/snigdhaos-os-release
+}
+
+# Function to handle pre-remove tasks
+pre_remove() {
+    if systemctl --all --type service | grep -q "virtual-machine-check"; then
+        systemctl disable virtual-machine-check.service
+    fi
+}

@@ -1,0 +1,38 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Maintainer: CELESTIFYX Team <celestifyx@celestifyx.com>
+# Contributor: d3v1l0n <d3v1l0n@outlook.in>
+
+pkgname="snigdhaos-libs"
+pkgdesc="Libs for Snigdha OS"
+pkgver=1.0.0
+pkgrel=1
+arch=("any")
+license=("GPL-3.0-or-later")
+
+depends=("libnotify" 
+    "expect")
+
+source=("launch-terminal" 
+    "snigdhaos.shlib" 
+    "check-snapshot-boot" 
+    "install-package" 
+    "org.snigdhaos.libs.pkexec.policy" 
+    "pkexec-gui")
+
+sha512sums=("2fec0c2f15a5ebddf6ece386c8e8f82cb5cd8c1bc733d36fb7acfbe02c7c64cfc50e8af0177b9ad0473b5fbf838f27b8eac76d761f312d0c1deba4edf22a9d5e"
+    "2f774655c434968e3026a80a7628cd4a65f3bf3f26c4aa23388e0fe333ed27891610b08608efc9185e029b70732dbeb35a9f813df15147b2d9b7d2fb7222f2c9"
+    "11a7b18824976bbb1a7990ed4bbe23c30b7604fa67c311765ecd284a657ca84c2589bb088f432b9969c377bb3e98f96a5ee55bdefaac9925c283635bc890364f"
+    "b7f63febaa7ff9bd5a3bd44e7b055c230bd742bcd6da8adde86fedd055115181811338e642dfc4cd2466df599a48d58d3527bcd01764203043485148e5f239e0"
+    "db1a46ea1415144cf7c0b4c8136c16507ac658d9d661ae2d15f0366cfed2c047522f040f9c21d5f9172d64c6a547c0bd0eb0bb41b0805827cb122cd4d8b5ab74"
+    "e43c1733654cd31b6f26cb41c063ad4b87aca2e3d92e29d4533c41c3369c3e602824fe70a2556b2d5707dd16e66e7586470e44281a79510b38dfa129c6323bdc")
+
+package() {
+    install -Dm755 "launch-terminal"     "${pkgdir}"/usr/lib/snigdhaos/launch-terminal
+    install -Dm755 "install-package"     "${pkgdir}"/usr/lib/snigdhaos/install-package
+    install -Dm755 "check-snapshot-boot" "${pkgdir}"/usr/lib/snigdhaos/check-snapshot-boot
+    install -Dm755 "pkexec-gui"          "${pkgdir}"/usr/lib/snigdhaos/pkexec-gui
+    install -Dm644 "snigdhaos.shlib"     "${pkgdir}"/usr/lib/snigdhaos/snigdhaos.shlib
+
+    install -d "${pkgdir}/var/lib/snigdhaos/tmp"
+    install -Dm0644 "org.snigdhaos.libs.pkexec.policy" "${pkgdir}/usr/share/polkit-1/actions/org.snigdhaos.libs.pkexec.policy"
+}

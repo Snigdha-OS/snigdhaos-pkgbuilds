@@ -1,0 +1,29 @@
+# Maintainer: Eshan Roy <m.eshanized@gmail.com>
+
+pkgname=snigdhaos-cinnamon-config
+pkgver=1
+pkgrel=1
+arch=('any')
+pkgdesc="SnigdhaOS Cinnamon Desktop configuration files"
+url="https://Snigdha-OS.github.io"
+license=('MIT')
+depends=('kvantum-qt5' 'noto-fonts' 'snigdhaos-default-config')
+makedepends=('coreutils')
+source=("https://github.com/Snigdha-OS/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('SKIP') 
+install=$pkgname.install
+provides=('snigdhaos-desktop')
+conflicts=('snigdhaos-desktop')
+
+pkgver() {
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  # Create required directories
+  install -d "$pkgdir/etc" "$pkgdir/usr"
+  
+  # Copy configuration files from the extracted tarball
+  cp -rf "$srcdir/${pkgname}-${pkgver}/etc" "$pkgdir/etc"
+  cp -rf "$srcdir/${pkgname}-${pkgver}/usr" "$pkgdir/usr"
+}

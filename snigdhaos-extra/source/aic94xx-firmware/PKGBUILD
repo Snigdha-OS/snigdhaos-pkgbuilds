@@ -1,0 +1,20 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="aic94xx-firmware"
+_pkgname="${pkgname%-*}"
+pkgver=30
+pkgrel=1
+pkgdesc="Adaptec SAS 44300, 48300, 58300 Sequencer Firmware for AIC94xx driver"
+url="https://storage.microsemi.com/en-us/speed/scsi/linux/aic94xx-seq-30-1_tar_gz.php"
+license=("GPL-3.0-or-later")
+arch=("any")
+
+source=("https://download.adaptec.com/scsi/linux/${_pkgname}-seq-${pkgver}-1.tar.gz")
+sha512sums=("3794185a3a76d7cca63bea6d9e39b0411b73a94b18528deccc125020ddf8c6d62b8a4ec9634f9777da1f7e96528363272426c46f19b23492406479c0e7f9f832")
+
+package() {
+    bsdtar xvf "${_pkgname}_seq-${pkgver}-1.noarch.rpm"
+
+    chmod 644 "${srcdir}/lib/firmware/${_pkgname}-seq.fw"
+    install -Dm644 "${srcdir}/lib/firmware/${_pkgname}-seq.fw" -t "${pkgdir}/usr/lib/firmware/"
+}

@@ -1,6 +1,11 @@
 # Removing non essentails to git ignore
 
-*.zst
-*.sig
-*pkg
-*src
+/*/x86_64/*
+/*/source/*/src
+/*/source/*/pkg
+/*/source/*/*.gz
+/*/source/*/*.zst
+/*/source/*/*.bz2
+/*/source/*/*.zip
+/*/source/*/*.xz
+/*/source/*/*.rar

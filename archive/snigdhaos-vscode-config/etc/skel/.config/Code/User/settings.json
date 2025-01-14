@@ -1,0 +1,11 @@
+{
+    "workbench.iconTheme": "a-file-icon-vscode",
+    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+    "workbench.startupEditor": "none",
+    "git.autofetch": true,
+    "explorer.confirmDelete": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.fontFamily": "'Overpass Mono', 'monospace', monospace",
+    "editor.fontSize": 16
+}

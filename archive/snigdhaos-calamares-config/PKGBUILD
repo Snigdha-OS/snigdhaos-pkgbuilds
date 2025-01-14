@@ -1,0 +1,44 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-calamares-config
+_pkgname=snigdhaos-calamares-config
+_destname="/etc/calamares"
+_licensedir="/usr/share/snigdhaos/licenses/"
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS calamares Config"
+arch=('any')
+url="https://github.com/Snigdha-OS/${_pkgname}"
+license=('MIT')
+makedepends=('git')
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url")
+sha256sums=('SKIP')
+install="${_pkgname}.install"
+
+# Set package version based on git commit count and short hash
+pkgver() {
+  cd "$srcdir/$pkgname" || return 1  # Avoid `exit`, use return for errors
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+# Package creation
+package() {
+  # Create the necessary directories
+  mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+  mkdir -p "${pkgdir}${_destname}"
+
+  # Move LICENSE file with correct permissions
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+
+  # Copy the configuration files, preserve permissions and ownership
+  cp -r "${srcdir}/${_pkgname}/calamares/"* "${pkgdir}${_destname}/"
+
+  # Optionally, ensure the files are owned by root (as the package will typically be installed by root)
+  chown -R root:root "${pkgdir}${_destname}"
+  chmod -R 755 "${pkgdir}${_destname}"
+}
+

@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+declare -A COLORS=([RED]='\033[31m'
+    [GREEN]='\033[32m'
+    [YELLOW]='\033[33m'
+    [BLUE]='\033[34m'
+    [RESET]='\033[0m')
+
+msgerr() {
+	printf "${COLORS[RED]}ERROR:${COLORS[RESET]} %s\n" "${1}" >&2
+}
+
+msg() {
+	printf "${COLORS[GREEN]}==>${COLORS[RESET]} %s\n" "${1}"
+}
+
+msgwarn() {
+	printf "${COLORS[YELLOW]}WARNING:${COLORS[RESET]} %s\n" "${1}" >&2
+}
+
+msgfolders() {
+    printf "  ${COLORS[BLUE]}-> %s (%s)\n" "${1}" "${2}"
+}
+
+function _update_packages() {
+    folders=()
+
+    for entry in */; do
+        if [[ -d "${entry}" ]]; then
+            folders+=("${entry%/}")
+        fi
+    done
+
+    if [ "${#folders[@]}" -eq 0 ]; then
+        msgerr "Empty folders.";
+        exit 1
+    fi
+
+    IFS=$'\n' sorted_folders=($(printf "%s\n" "${folders[@]}" | sort))
+    unset IFS
+
+    while true; do
+        msg "Select folder:"
+
+        for i in "${!sorted_folders[@]}"; do
+            msgfolders "$((i + 1))" "${sorted_folders[$i]}"
+        done
+
+        read -p "$(msg "")" choice
+
+        if [[ "${choice}" =~ ^[0-9]+$ ]] && (( choice >= 1 && choice <= ${#sorted_folders[@]} )); then
+            break
+        else
+            msgwarn "Invalid choice."
+        fi
+    done
+
+    selected_folder="${sorted_folders[$((choice - 1))]}"
+
+    if [ ! -d "${selected_folder}/x86_64/" ]; then
+        msgerr "Directory '${selected_folder}/x86_64' does not exist";
+        exit 1
+    fi   
+
+    cd "${selected_folder}/x86_64/" >/dev/null
+        rm -rf "${selected_folder}"* *".sig"
+
+        for pkg in *".pkg.tar.zst"; do
+            gpg --yes --detach-sign "${pkg}"
+        done
+
+        repo-add "${selected_folder}.db.tar.gz" *".pkg.tar.zst" || {
+            msgerr "Failed to add packages.";
+            exit 1
+        }
+    cd - >/dev/null
+
+    exit 0
+}
+
+_update_packages

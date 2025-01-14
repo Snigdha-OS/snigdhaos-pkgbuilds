@@ -1,0 +1,37 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-updater
+pkgdesc="Updater for Snigdha OS"
+pkgver=1
+pkgrel=1
+arch=('any')
+license=('GPL')
+depends=('coreutils' 'sed' 'gawk' 'pacman' 'wget')
+backup=(etc/snigdhaos/snigdhaos-updater/config)
+source=("auto-pacman"
+	"config"
+	"snigdhaos-updater"
+	"rotation"
+	"core-script"
+	"aux-script")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	install -Dm755 snigdhaos-updater "$pkgdir"/usr/bin/snigdhaos-updater
+	ln -s /usr/bin/snigdhaos-updater "$pkgdir"/usr/bin/updater
+	install -Dm755 aux-script "$pkgdir"/usr/lib/snigdhaos/snigdhaos-updater/aux-script
+	install -Dm755 core-script "$pkgdir"/usr/lib/snigdhaos/snigdhaos-updater/core-script
+	install -Dm755 auto-pacman "$pkgdir"/usr/lib/snigdhaos/snigdhaos-updater/auto-pacman
+	install -Dm644 rotation "$pkgdir"/etc/logrotate.d/snigdhaos-updater
+	install -Dm644 config "$pkgdir"/etc/snigdhaos/snigdhaos-updater/config
+}

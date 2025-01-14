@@ -1,0 +1,30 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="fonts-tlwg"
+pkgver=0.7.3
+pkgrel=1
+pkgdesc="Collection of scalable Thai fonts"
+arch=("any")
+license=("GPL-3.0-or-later")
+makedepends=("fontforge")
+
+source=("https://github.com/tlwg/fonts-tlwg/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=("8c2b7878d9272573125b49ba2f3929154d291cb4")
+
+conflicts=("ttf-tlwg")
+provides=("ttf-tlwg")
+replaces=("ttf-tlwg")
+
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr --sysconfdir=/etc --enable-ttf --disable-otf --with-ttfdir=/usr/share/fonts/TTF
+    
+    make
+    make DESTDIR="${pkgdir}" install
+
+    mkdir -p "${pkgdir}/etc/fonts"
+    mv "${pkgdir}/usr/share/fontconfig/conf.avail" "${pkgdir}/etc/fonts"
+    
+    rm -r "${pkgdir}/usr/share/fontconfig"
+}

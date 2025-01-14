@@ -1,0 +1,30 @@
+# Maintainer: Eshan Roy <m.eshanized@gmail.com>
+
+pkgname=snigdhaos-zsh-config
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS Zsh Config"
+arch=(any)
+host="https://github.com/Snigdha-OS"
+url="${host}/snigdhaos-pkgbuild/${pkgname}"
+license=('GPL')
+conflicts=(
+    'snigdhaos-zsh-config-dev'
+)
+depends=(
+	'fzf'
+	'zsh'
+	'zsh-autosuggestions'
+	'zsh-completions'
+	'zsh-syntax-highlighting')
+makedepends=('git')
+source=('.zshrc')
+sha256sums=('SKIP')
+
+pkgver() {
+    	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	install -D -m644 zshrc "$pkgdir/etc/skel/.zshrc"
+}

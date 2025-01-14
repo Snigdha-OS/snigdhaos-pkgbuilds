@@ -1,0 +1,28 @@
+# Maintainer: RiO <d3v1l0n@outlook.in>
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="snigdhaos-lsb-release"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="LSB version query program for Snigdha OS"
+arch=("any")
+license=("GPL-3.0-or-later")
+depends=("sh")
+makedepends=("git")
+
+source=("git+https://github.com/LinuxStandardBase/lsb-samples.git#commit=a25a4fcd73c79bd5af0dd8d948a7c96dcbfd2d07"
+    "lsb-release"
+    "lsb_release_make_man_page_reproducible.patch")
+
+sha512sums=("SKIP"
+    "de463a4e2de77595cffe1c7259f6513facec6ab77ba8441290a7a5c3e9c640512fafb937ffe88cc9df49954ed65316899e1191be8eff44868b7bdbe6b0a8e008"
+    "3c9356d5ea2d6b0dcb1f8f2e30bf30fb22210f367303446a13d35df2647b77eb9a08075db97c753eb379196efe1f9758bff974c43ace02ba7f86abde2425d2d6")
+
+package() {
+	patch -d lsb-samples/lsb_release/src -Np1 -i "${srcdir}/lsb_release_make_man_page_reproducible.patch"
+	make -C lsb-samples/lsb_release/src
+
+	install -Dm755 "lsb-samples/lsb_release/src/lsb_release"      -t "${pkgdir}/usr/bin"
+	install -Dm644 "lsb-samples/lsb_release/src/lsb_release.1.gz" -t "${pkgdir}/usr/share/man/man1"
+	install -Dm644 "lsb-release"								  -t "${pkgdir}/etc"
+}

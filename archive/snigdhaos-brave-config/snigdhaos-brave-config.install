@@ -1,0 +1,14 @@
+post_install() {
+    echo -e "\n** Installation Complete **"
+    echo -e "The configuration files have been installed in /etc/skel/.config/BraveSoftware/\n"
+    echo -e "Ensure that your Brave Browser is configured to use these settings by default.\n"
+    echo -e "If you need to make further adjustments, the configuration files can be modified at:\n"
+    echo -e "  /etc/skel/.config/BraveSoftware/\n"
+}
+
+post_upgrade() {
+    echo -e "\n** Upgrade Complete **"
+    post_install
+    echo -e "Please check if any configuration changes are required after the upgrade.\n"
+    echo -e "If you're using a custom setup, ensure that your Brave settings are still intact.\n"
+}

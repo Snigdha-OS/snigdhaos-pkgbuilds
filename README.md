@@ -50,14 +50,32 @@ The directory structure of this repository is organized as follows:
 
 ```
 snigdhaos-pkgbuilds/
-├── PKGBUILDs/                # Directory containing individual PKGBUILD files for software packages
-│   ├── package1/             # Directory for a single package (e.g., package1)
-│   │   └── PKGBUILD          # PKGBUILD script for package1
-│   ├── package2/             # Directory for another package (e.g., package2)
-│   │   └── PKGBUILD          # PKGBUILD script for package2
+├── REPO_NAME/
+│   ├── source/
+│   │   ├── package1/
+│   │   │   └── PKGBUILD
+│   │   ├── package2/
+│   │   │   └── PKGBUILD
+│   │   └── ...
+│   ├── x86_64/
+│   │   ├── package1.pkg.tar.zst
+│   │   ├── package1.pkg.tar.zst.sig
+│   │   ├── package2.pkg.tar.zst
+│   │   ├── package2.pkg.tar.zst.sig
+│   │   └── ...
+│   └── packages.json
+├── archive/
+│   ├── package1/
+│   │   └── PKGBUILD
+│   ├── package2/
+│   │   └── PKGBUILD
 │   └── ...
-├── README.md                 # This README file
-└── LICENSE                   # Project license file
+├── config.sh
+├── LICENSE
+├── parse_packages
+├── push.sh
+├── README.md
+└── update_packages
 ```
 
 ### Explanation of the Structure:

@@ -1,0 +1,23 @@
+# Maintainer : Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-zed-config
+_filename=settings.json
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS Zed Config."
+arch=('any')
+license=("MIT")
+backup=()
+source=("settings.json")
+sha512sums=('SKIP')
+install=${pkgname}.install
+
+pkgver() {
+	# cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  mkdir -p "$pkgdir/.config/zed"
+  install -Dm 644 -t "$pkgdir/.config/zed/" $_filename
+}

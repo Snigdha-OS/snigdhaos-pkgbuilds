@@ -1,0 +1,28 @@
+# Contributor: Eshan Roy <eshan@snigdhaos.org>
+# Maintainer: CELESTIFYX Team <celestifyx@celestifyx.com>
+
+pkgname="snigdhaos-asian-fonts"
+pkgver=1.0.0
+pkgrel=1
+arch=("any")
+license=("GPL-3.0-or-later")
+pkgdesc="Meta-package containing common asian fonts"
+install="${pkgname}.install"
+
+depends=("fonts-tlwg"
+	"lohit-fonts"
+	"opendesktop-fonts"
+	"otf-ipafont"
+	"ttf-baekmuk"
+	"ttf-hannom"
+	"ttf-indic-otf"
+	"ttf-khmer"
+	"ttf-tibetan-machine")
+
+source=("90-bengali.conf")
+sha512sums=("df5c93a4fc2da919b749f839c4ae7c4fbfec8b0c4a5904753b17d8d5811b03a036cbaeda453684e196ec7429ea5f2b15805749df92c8e9c71243bce0843c0cfe")
+
+package() {
+	mkdir -p "$pkgdir"/etc/fonts/conf.d
+	install -D -m644 90-bengali.conf "$pkgdir"/etc/fonts/conf.d/90-bengali.conf
+}

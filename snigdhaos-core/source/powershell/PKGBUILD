@@ -1,0 +1,30 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="powershell"
+pkgver=7.4.6
+pkgrel=1
+pkgdesc="A cross-platform automation and configuration tool/framework (binary package)"
+arch=("x86_64")
+license=("GPL-3.0-or-later")
+
+depends=("gcc-libs"
+    "glibc"
+    "zlib")
+
+optdepends=("lttng-ust2.12: CoreCLR tracing")
+conflicts=("${pkgname}-bin")
+install="${pkgname}.install"
+
+source=("https://github.com/Powershell/Powershell/releases/download/v${pkgver}/powershell-${pkgver}-linux-x64.tar.gz")
+sha512sums=("0a449f458bafeeacb3c410d83ce2f89f117f001a4b4a18b57dd3282ac358f382a13019657343f66a5cbd9c23b93df346823ac5337393d1addc948d550d3bf89d")
+
+package() {
+    local pkgnum="${pkgver:0:1}"
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}-${pkgnum}"
+
+    cp -a ./* -t "${pkgdir}/usr/lib/${pkgname}-${pkgnum}"
+    chmod 755 "${pkgdir}/usr/lib/${pkgname}-${pkgnum}/pwsh"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/${pkgname}-${pkgnum}/pwsh" "${pkgdir}/usr/bin/pwsh"
+}

@@ -1,0 +1,40 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+pkgname=snigdhaos-bootloader-grub
+org=Snigdha-OS
+branch='master'
+_destination1="/etc/pacman.d/hooks"
+_licensedir="/usr/share/snigdhaos/licenses/"
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS Config File"
+arch=('any')
+url="https://snigdhaos.org/"
+license=('MIT')
+makedepends=()
+depends=('grub') # Example dependency
+conflicts=('snigdhaos-bootloader-grub-dev')
+backup=()
+provides=(
+    "$pkgname"
+    "${pkgname}-dev"
+)
+options=(
+    !strip
+    !emptydirs
+)
+source=("$pkgname.tar.gz")
+sha256sums=('SKIP')
+install=$pkgname.install
+
+pkgver() {
+    printf "r%s.%s" "$(git rev-list --count HEAD 2>/dev/null || echo 0)" \
+           "$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
+}
+
+package() {
+    install -dm755 "$pkgdir/$_licensedir/$pkgname"
+    install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$pkgname"
+
+    install -dm755 "$pkgdir/$_destination1"
+    cp -r "$srcdir/$pkgname/hooks/"* "$pkgdir/$_destination1/"
+}

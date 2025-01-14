@@ -1,0 +1,17 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="snigdhaos-mirrorlist"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Snigdha OS mirrorlist."
+arch=("any")
+license=("GPL-3.0-or-later")
+backup=("etc/pacman.d/snigdhaos-mirrorlist")
+
+source=("snigdhaos-mirrorlist")
+sha512sums=("335ed6d95f76a3590dd8a99c7970e53f426c57487163373b8b0d7b62783fbbc83e232e57275d2e076de9f416c9710e6c6fd25da1b23304f01f979ed49072cce9")
+
+package() {
+    install -Dm644 "${pkgname}" -t "${pkgdir}/etc/pacman.d/"
+}

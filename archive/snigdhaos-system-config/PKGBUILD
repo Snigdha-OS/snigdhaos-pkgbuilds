@@ -1,0 +1,46 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+
+pkgname=snigdhaos-system-config
+org="Snigdha-OS"
+_repo_name="snigdhaos-system-config"
+pkgver=1
+pkgrel=1
+pkgdesc="Snigdha OS System Config"
+arch=('any')
+url="https://github.com/$org/$_repo_name"
+license=('MIT')
+makedepends=('git')
+depends=()
+conflicts=('snigdhaos-system-config-next')
+backup=(
+    'etc/pacman.d/gnupg/gpg.conf'
+    'etc/X11/xorg.conf.d/30-touchpad.conf'
+)
+provides=($pkgname)
+options=('!strip' '!emptydirs')
+source=("${pkgname}::git+https://github.com/${org}/${_repo_name}")
+sha256sums=('SKIP')
+install="$pkgname.install"
+
+_licensedir="/usr/share/snigdhaos/licenses/$pkgname"
+_dest_etc="/etc"
+_dest_usr="/usr"
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    # Create license directory and install the license
+    install -dm755 "$pkgdir/$_licensedir"
+    install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir"
+
+    # Copy files to /etc
+    install -dm755 "$pkgdir$_dest_etc"
+    cp -r "$srcdir/$pkgname$_dest_etc"/* "$pkgdir$_dest_etc"
+
+    # Copy files to /usr
+    install -dm755 "$pkgdir$_dest_usr"
+    cp -r "$srcdir/$pkgname$_dest_usr"/* "$pkgdir$_dest_usr"
+}

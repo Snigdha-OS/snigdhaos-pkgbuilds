@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+set -e
+
+# Color definitions
+RESET="\033[0m"
+BOLD="\033[1m"
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+YELLOW="\033[1;33m"
+BLUE="\033[1;34m"
+CYAN="\033[1;36m"
+
+# Default shell
+LAUNCH_TERMINAL_SHELL="bash"
+
+function usage() {
+    # Use echo to output the help message with colors
+    echo -e "${BOLD}Usage:${RESET} ${0##*/} [cmd] [options]"
+    echo -e ""
+    echo -e "${BOLD}Options:${RESET}"
+    echo -e "  -s [shell]      Change the shell to [shell]."
+    echo -e "  -h              Display this help message."
+    echo -e ""
+    echo -e "${BOLD}Description:${RESET}"
+    echo -e "  This script launches a specified command in an appropriate terminal emulator,"
+    echo -e "  automatically detecting the best option based on the desktop environment."
+    echo -e ""
+    echo -e "${BOLD}Examples:${RESET}"
+    echo -e "  ${CYAN}${0##*/} \"echo Hello World\" -s zsh${RESET}"
+    exit "${1:-0}"
+}
+
+# Parse command-line options
+while getopts "s:h" arg; do
+    case "${arg}" in
+        s) LAUNCH_TERMINAL_SHELL="${OPTARG}" ;;
+        h | ?) usage 0 ;;
+
+        *) 
+            echo -e "${RED}Invalid argument: '${arg}'${RESET}";
+            usage 1
+        ;;
+    esac
+done
+
+shift "$((OPTIND - 1))"
+
+# Validate input command
+if [ "$#" -lt 1 ]; then
+    echo -e "${RED}Error:${RESET} A command is required to execute."
+    usage 1
+fi
+
+COMMAND="${1}"
+
+# Detect terminal emulator
+declare -A terminals=(["alacritty"]="alacritty -e bash -c"
+    ["konsole"]="konsole -e bash -c"
+    ["kgx"]="kgx -- bash -c"
+    ["gnome-terminal"]="gnome-terminal -- bash -c"
+    ["xfce4-terminal"]="xfce4-terminal --disable-server --command"
+    ["qterminal"]="qterminal -e bash -c"
+    ["lxterminal"]="lxterminal -e bash -c"
+    ["mate-terminal"]="mate-terminal --disable-factory -e bash -c"
+    ["xterm"]="xterm -e bash -c"
+    ["foot"]="foot -T exec-terminal -e bash -c")
+
+term_order=("alacritty"
+    "konsole"
+    "kgx"
+    "gnome-terminal"
+    "mate-terminal"
+    "xfce4-terminal"
+    "qterminal"
+    "lxterminal"
+    "xterm"
+    "foot")
+
+# Desktop environment-specific terminal preference
+case "${XDG_CURRENT_DESKTOP}" in
+    KDE) terminal="konsole" ;;
+
+    GNOME)
+        if command -v "kgx" &>/dev/null; then
+            terminal="kgx"
+        else
+            terminal="gnome-terminal"
+        fi
+    ;;
+
+    XFCE) terminal="xfce4-terminal" ;;
+    LXQt) terminal="qterminal" ;;
+    MATE) terminal="mate-terminal" ;;
+esac
+
+# Fallback: Check for available terminals
+if [ -z "${terminal}" ] || ! command -v "${terminal}" &>/dev/null; then
+    for i in "${term_order[@]}"; do
+        if command -v "${i}" &>/dev/null; then
+            terminal="${i}"
+            break
+        fi
+    done
+fi
+
+# Error handling if no terminal is found
+if [ -z "${terminal}" ]; then
+    echo -e "${RED}Error:${RESET} No terminal emulator found!";
+    notify-send -t 1500 --app-name="Terminal Launcher" "No terminal emulator found!";
+
+    exit 1
+fi
+
+# Debug detected terminal
+echo -e "${YELLOW}Detected terminal:${RESET} ${BOLD}${terminal}${RESET}"
+
+# Launch the command in the terminal
+echo -e "${CYAN}Launching command:${RESET} ${BOLD}${COMMAND}${RESET}"
+
+eval "${terminals[${terminal}]} \"${COMMAND}\"" || {
+    echo -e "${RED}Failed to launch command!${RESET}";
+    exit 2
+}
+
+# Success message
+echo -e "${GREEN}Command executed successfully in terminal!${RESET}"

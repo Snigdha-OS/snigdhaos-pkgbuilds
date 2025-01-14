@@ -1,0 +1,25 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Contributor: d3v1l0n <d3v1l0n@outlook.in>
+
+pkgname=snigdhaos-powershell
+org="Snigdha-OS"
+branch="master"
+pkgver=r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+pkgrel=1
+pkgdesc="Snigdha OS PowerShell Config"
+arch=('any')
+license=('MIT')
+depends=('powershell')
+source=(
+    "$pkgname.tar.xz"
+    "${pkgname}.desktop"
+)
+sha256sums=('SKIP' 'SKIP')
+install=$pkgname.install
+
+package() {
+    mkdir -p "${pkgdir}/etc/skel/.config"
+    cp -r "${srcdir}/etc/skel/.config"/* "${pkgdir}/etc/skel/.config/"
+    
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+}

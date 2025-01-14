@@ -1,0 +1,30 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="mkinitcpio-firmware"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Optional firmware for the default linux kernel to get rid of the annoying 'WARNING: Possibly missing firmware for module:' messages"
+url="https://aur.archlinux.org/packages/mkinitcpio-firmware"
+license=("GPL-3.0-or-later")
+arch=("any")
+
+depends=("linux-firmware"
+    "aic94xx-firmware"
+    "ast-firmware"
+    "linux-firmware-qlogic"
+    "linux-firmware-bnx2x"
+    "linux-firmware-liquidio"
+    "linux-firmware-mellanox"
+    "linux-firmware-nfp"
+    "wd719x-firmware"
+    "upd72020x-fw")
+
+optdepends=("mkinitcpio: build the initramfs"
+    "linux: default linux preset")
+
+source=("${pkgname}.hook")
+sha512sums=("dc7361911dc76575221237aa195358a93509d00d11a943e77a0308aa016df7585dffaf6c4b710f5c068ccfe18f7ecf856823a5edd69a8880ab8f3053c343e9eb")
+
+package() {
+    install -Dm644 "${pkgname}.hook" -t "${pkgdir}/usr/share/libalpm/hooks/"
+}

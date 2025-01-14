@@ -1,8 +1,0 @@
-######################################################
-####                                              ####
-####        Snigdha OS Repository Mirrorlist      ####
-####                                              ####
-######################################################
-
-# Worldwide
-Server = https://snigdha-os.github.io/$repo/$arch

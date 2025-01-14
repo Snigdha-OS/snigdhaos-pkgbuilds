@@ -1,0 +1,62 @@
+[
+    {
+        "name": "fonts-tlwg",
+        "version": "0.7.3",
+        "description": "Collection of scalable Thai fonts"
+    },
+    {
+        "name": "lohit-fonts",
+        "version": "1.0.0",
+        "description": "Indic TrueType fonts from Fedora Project"
+    },
+    {
+        "name": "lynxfetch",
+        "version": "1.0.2",
+        "description": "Super fast, versatile, and customizable command-line fetcher."
+    },
+    {
+        "name": "powershell",
+        "version": "7.4.6",
+        "description": "A cross-platform automation and configuration tool/framework (binary package)"
+    },
+    {
+        "name": "snigdhaos-asian-fonts",
+        "version": "1.0.0",
+        "description": "Meta-package containing common asian fonts"
+    },
+    {
+        "name": "snigdhaos-grub-theme",
+        "version": "1.0.0",
+        "description": "Grub Theme For Snigdha OS"
+    },
+    {
+        "name": "snigdhaos-keyring",
+        "version": "1.0.0",
+        "description": "Keyring for Snigdha OS."
+    },
+    {
+        "name": "snigdhaos-libs",
+        "version": "1.0.0",
+        "description": "Libs for Snigdha OS"
+    },
+    {
+        "name": "snigdhaos-lsb-release",
+        "version": "1.0.0",
+        "description": "LSB version query program for Snigdha OS"
+    },
+    {
+        "name": "snigdhaos-mirrorlist",
+        "version": "1.0.0",
+        "description": "Snigdha OS mirrorlist."
+    },
+    {
+        "name": "snigdhaos-sddm-sugar-candy",
+        "version": "1.0.0",
+        "description": "Sugar Candy is the sweetest login theme available for the SDDM display manager."
+    },
+    {
+        "name": "snigdhaos-welcome",
+        "version": "1.0.0",
+        "description": "Snigdha OS Welcome App"
+    }
+]

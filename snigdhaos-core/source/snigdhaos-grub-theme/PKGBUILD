@@ -1,0 +1,21 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="snigdhaos-grub-theme"
+branch=master
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Grub Theme For Snigdha OS"
+arch=("any")
+license=("GPL-3.0-or-later")
+makedepends=("git")
+depends=("grub")
+install="${pkgname}.install"
+
+source=("grub-theme::git+https://github.com/snigdha-os/${pkgname}.git")
+sha512sums=("SKIP")
+
+package() {
+	cd "grub-theme/snigdhaos-live" || exit
+	find . -type f -exec install -D -m644 {} "${pkgdir}"/usr/share/grub/themes/snigdhaos-grub-theme/{} \;
+}

@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+import os
+import json
+
+def parse_packages() -> None:
+    for dirpath, dirnames, _ in os.walk("."):
+        if "source" in dirnames:
+            output_file = os.path.join(dirpath, "packages.json")
+            packages    = []
+            source_path = os.path.join(dirpath, "source")
+
+            for package_dir in os.listdir(source_path):
+                package_path = os.path.join(source_path, package_dir, "PKGBUILD")
+
+                if os.path.isfile(package_path):
+                    with open(package_path, "r") as f:
+                        name = version = description = None
+
+                        for line in f:
+                            if line.startswith("pkgname="):
+                                name = line.split("=", 1)[1].strip().strip('"').strip("'")
+                            elif line.startswith("pkgver="):
+                                version = line.split("=", 1)[1].strip().strip('"').strip("'")
+                            elif line.startswith("pkgdesc="):
+                                description = line.split("=", 1)[1].strip().strip('"').strip("'")
+
+                        if name and version and description:
+                            packages.append({
+                                "name": name,
+                                "version": version,
+                                "description": description
+                            })
+
+            packages = sorted(packages, key=lambda x: x["name"])
+
+            with open(output_file, "w") as f:
+                json.dump(packages, f, indent=4)
+
+if __name__ == "__main__":
+    parse_packages()

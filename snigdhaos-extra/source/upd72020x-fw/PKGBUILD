@@ -1,0 +1,21 @@
+# Maintainer: Jack Chen <redchenjs@live.com>
+
+pkgname="upd72020x-fw"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Renesas uPD720201 / uPD720202 USB 3.0 chipsets firmware"
+url="https://github.com/denisandroid/uPD72020x-Firmware"
+license=("GPL-3.0-or-later")
+arch=("any")
+
+source=("uPD72020x-Firmware-${pkgver}.tar.gz::https://codeload.github.com/denisandroid/uPD72020x-Firmware/tar.gz/refs/tags/${pkgver}"
+    "upd72020x-fw.hook")
+
+sha512sums=("9d7e61c99a0f46d0ae96505317e763a468d3e8006f7398d10899ab78532b1ace608662b8a1b410a5577b268dc1f9275d1ebe3d03d209b85b2c4307ceb48dd261"
+    "693aa7d3a9545894b55f07965ece99e1e6c4e121ace67af88687a2560978b93bce75f7ecb0d56b0fd06fa37fd7a42724201b906550e74ea60f1888c20626a15e")
+
+package() {
+    install -Dm644 "uPD72020x-Firmware-${pkgver}/UPDATE.mem" "${pkgdir}/usr/lib/firmware/renesas_usb_fw.mem"
+    install -Dm644 /dev/null                                 "${pkgdir}/usr/lib/initcpio/hooks/${pkgname}"
+    install -Dm644 "${pkgname}.hook" -t                      "${pkgdir}/usr/share/libalpm/hooks/"
+}

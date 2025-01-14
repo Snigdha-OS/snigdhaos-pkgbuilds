@@ -1,0 +1,43 @@
+#!/bin/bash
+set -e
+
+get_children_recursive() {
+    local children="$(echo "$VOLUMES" | awk -v id=$1 '{if (id == $7) {print $2}}')"
+    if [ ! -z "$children" ]; then
+        while IFS= read -r line ; do get_children_recursive $line; done <<< "$children"
+        echo "$children"
+    fi
+}
+
+if [[ "$(findmnt / -o options)" != *"subvol=/@"* ]]; then
+  echo "You are still booted into a snapshot."
+  exit
+fi
+
+# First, we stop snapperd so we don't screw stuff up. It will auto start when needed anyway.
+systemctl stop snapperd
+
+VOLUMES="$(btrfs subvolume list /)"
+TO_DELETE=""
+
+OLD_ROOTS="$(echo "$VOLUMES" | awk '/@_backup_[0-9]+\S+$/ {print $2} /restore_backup_\S+_[0-9]+$/ {print $2} /timeshift-btrfs\/snapshots\/[^\/]+\/@$/ {print $2}')"
+# Find all children of OLD_ROOTS recursively
+OLD_ROOTS_CHILDREN="$(while IFS= read -r line ; do get_children_recursive $line; done <<< "$OLD_ROOTS")"
+
+TO_DELETE="$OLD_ROOTS_CHILDREN $OLD_ROOTS"
+
+SNAPSHOTS_VOL="$(echo "$VOLUMES" | awk '/ .snapshots$/ {print $2; exit}')"
+if [ ! -z "$SNAPSHOTS_VOL" ]; then
+    TO_DELETE+=" $(get_children_recursive $SNAPSHOTS_VOL) $SNAPSHOTS_VOL"
+fi
+
+for i in $TO_DELETE
+do
+  btrfs subvolume delete -i $i /
+done
+
+# Now we force recreate the snapper configs
+rm -f /etc/snapper/configs/*
+rm -r /.snapshots/ || true  
+sed -i /etc/conf.d/snapper -e 's,SNAPPER_CONFIGS=.*,SNAPPER_CONFIGS=\"\",'
+snapper create-config --template garuda /

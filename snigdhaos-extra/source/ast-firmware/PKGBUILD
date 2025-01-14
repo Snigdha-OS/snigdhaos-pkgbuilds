@@ -1,0 +1,20 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="ast-firmware"
+_pkgname="${pkgname%-*}"
+pkgver=501
+pkgrel=1
+pkgdesc="Aspeed VGA module from the IPMI"
+url="https://github.com/Labaman/ast-firmware"
+license=("GPL-3.0-or-later")
+arch=("any")
+
+source=("https://github.com/labaman/${pkgname}/raw/main/${_pkgname}_dp${pkgver}_fw.tar.gz")
+sha512sums=("6d99e9d567d5fa61ae9caa929ee7be07090d6161a364d065500663e22ffda4264a8370436f0a014f755844303043116a140cdb97f213c9ee61f9846e81f50f7a")
+
+package() {
+    bsdtar xvf "${_pkgname}_dp${pkgver}_fw.tar.gz"
+
+    chmod 644 "${srcdir}/${_pkgname}_dp${pkgver}_fw.bin"
+    install -Dm644 "${srcdir}/${_pkgname}_dp${pkgver}_fw.bin" "${pkgdir}/usr/lib/firmware/${_pkgname}_dp${pkgver}_fw.bin"
+}

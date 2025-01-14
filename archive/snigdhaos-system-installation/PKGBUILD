@@ -1,0 +1,40 @@
+# Maintainer: Eshan Roy <eshan@snigdhaos.org>
+# Contributor: [Contributor Name] <[Contributor Email]>
+
+pkgname=snigdhaos-system-installation
+org=Snigdha-OS
+_pkgname=snigdhaos-system-installation
+_destdirs=("/etc/" "/usr/local/bin/" "/usr/lib/systemd/system/")
+_licensedir="/usr/share/snigdhaos/licenses/"
+pkgver=1
+pkgrel=1
+pkgdesc="Installation files for Snigdha OS"
+arch=('any')
+url="https://github.com/${org}/${pkgname}"
+license=('MIT')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+https://github.com/${org}/${_pkgname}")
+sha256sums=('SKIP')
+install="${pkgname}.install"
+
+pkgver() {
+    cd "$srcdir/$pkgname" || exit
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    # License installation
+    install -dm755 "$pkgdir/$_licensedir/$_pkgname"
+    install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/$_licensedir/$_pkgname"
+
+    # Install directories and files
+    for dir in "${_destdirs[@]}"; do
+        if [ -d "$srcdir/$pkgname/$dir" ]; then
+            install -dm755 "$pkgdir/$dir"
+            find "$srcdir/$pkgname/$dir" -type f -exec install -Dm644 {} "$pkgdir/$dir" \;
+        fi
+    done
+}

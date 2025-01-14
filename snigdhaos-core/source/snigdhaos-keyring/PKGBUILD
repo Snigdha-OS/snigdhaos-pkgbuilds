@@ -1,0 +1,12 @@
+# Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
+
+pkgname="snigdhaos-keyring"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Keyring for Snigdha OS."
+arch=("any")
+license=("GPL-3.0-or-later")
+
+package() {
+    cp -r "../usr" "${pkgdir}"
+}

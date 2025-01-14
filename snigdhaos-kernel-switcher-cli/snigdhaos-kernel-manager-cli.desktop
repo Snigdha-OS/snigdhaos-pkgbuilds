@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Snigdha OS Kernel Manager CLI
-Comment=Manage Linux kernels on Snigdha OS
-Exec=sudo /usr/local/bin/snigdhaos-kernel-manager-cli.sh
-Icon=package-x-generic
-Terminal=true
-Type=Application
-Categories=System;Settings;
